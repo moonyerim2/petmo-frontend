@@ -1,0 +1,9 @@
+export { default as HomePage } from "./HomePage";
+export { default as AuthPage } from "./AuthPage";
+export { default as LoginPage } from "./LoginPage";
+export { default as JoinPage } from "./JoinPage";
+export { default as WritePostPage } from "./WritePostPage";
+export { default as PostViewPage } from "./PostViewPage";
+export { default as BookmarkPage } from "./BookmarkPage";
+export { default as ProfilePage } from "./ProfilePage";
+export { default as NotFoundPage } from "./NotFoundPage";
