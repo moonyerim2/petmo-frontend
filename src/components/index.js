@@ -1,2 +1,2 @@
 export { default as TextField } from "./TextField";
-export { default as LoginButton } from "./auth/LoginButton";
+export { default as Button } from "./Button";
