@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 function TextField({
   id,
@@ -33,5 +34,16 @@ function TextField({
     </label>
   );
 }
+
+TextField.propTypes = {
+  id: PropTypes.string,
+  label: PropTypes.string,
+  text: PropTypes.string,
+  type: PropTypes.string,
+  name: PropTypes.string,
+  placeholder: PropTypes.string,
+  pageInputs: PropTypes.object,
+  setPageInputs: PropTypes.func,
+};
 
 export default TextField;
