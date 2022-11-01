@@ -5,6 +5,7 @@ import {
   passwordFieldProps,
   nameFieldProps,
   nicknameFieldProps,
+  joinButtonProps,
 } from "../constants";
 
 function JoinPage() {
@@ -14,13 +15,14 @@ function JoinPage() {
     pageInputs: joinInputs,
     setPageInputs: setJoinInputs,
   };
+
   return (
     <>
       <TextField {...emailFieldProps} {...pageInputState} />
       <TextField {...passwordFieldProps} {...pageInputState} />
       <TextField {...nameFieldProps} {...pageInputState} />
       <TextField {...nicknameFieldProps} {...pageInputState} />
-      <Button text="가입하기" />
+      <Button {...joinButtonProps} onClick={onClickJoinButton} />
     </>
   );
 }
