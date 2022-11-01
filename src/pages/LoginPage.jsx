@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { auth } from "../api";
 import { TextField, Button } from "../components";
 import {
   emailFieldProps,
@@ -13,6 +14,10 @@ function LoginPage() {
   const pageInputState = {
     pageInputs: loginInputs,
     setPageInputs: setLoginInputs,
+  };
+
+  const onClickJoinButton = () => {
+    auth.login(loginInputs);
   };
 
   return (

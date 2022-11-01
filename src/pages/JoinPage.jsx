@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { auth } from "../api";
 import { TextField, Button } from "../components";
 import {
   emailFieldProps,
@@ -14,6 +15,10 @@ function JoinPage() {
   const pageInputState = {
     pageInputs: joinInputs,
     setPageInputs: setJoinInputs,
+  };
+
+  const onClickJoinButton = () => {
+    auth.join(joinInputs);
   };
 
   return (
