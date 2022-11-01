@@ -11,9 +11,10 @@ import {
   ProfilePage,
   NotFoundPage,
 } from "./pages";
+import { getCookie } from "./util";
 
 function App() {
-  const isLogin = false;
+  const isLogin = getCookie("session");
 
   return (
     <BrowserRouter>
