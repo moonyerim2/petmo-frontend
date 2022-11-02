@@ -9,7 +9,7 @@ export const loginInputs = atom({
 });
 
 export const loginInputsSelector = selector({
-  key: "setNewLoginInputs",
+  key: "loginInputsSelector",
   get: ({ get }) => {
     return get(loginInputs);
   },
@@ -18,7 +18,7 @@ export const loginInputsSelector = selector({
   },
 });
 
-export const loginValidationMessages = atom({
-  key: "loginValidationMessages",
-  default: [],
+export const loginValidationMessage = atom({
+  key: "loginValidationMessage",
+  default: "",
 });
