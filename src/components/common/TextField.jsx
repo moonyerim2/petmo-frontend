@@ -8,18 +8,10 @@ function TextField({
   type,
   name,
   placeholder,
-  pageInputs,
-  setPageInputs,
   onChange,
+  onBlur,
 }) {
   const [input, setInput] = useState(text);
-
-  const onBlur = (e) => {
-    const { value, name } = e.target;
-    const newInputs = { ...pageInputs, [name]: value };
-    setPageInputs(newInputs);
-    setInput(value);
-  };
 
   return (
     <label htmlFor={id}>
@@ -30,7 +22,10 @@ function TextField({
         name={name}
         defaultValue={input}
         placeholder={placeholder}
-        onBlur={onBlur}
+        onBlur={(e) => {
+          setInput(e.target.value);
+          if (onBlur) onBlur(e);
+        }}
         onChange={onChange}
       />
     </label>
@@ -47,6 +42,7 @@ TextField.propTypes = {
   pageInputs: PropTypes.object,
   setPageInputs: PropTypes.func,
   onChange: PropTypes.func,
+  onBlur: PropTypes.func,
 };
 
 export default TextField;

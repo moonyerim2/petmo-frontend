@@ -17,7 +17,7 @@ function LoginPage() {
     loginValidationMessage
   );
 
-  const onClickJoinButton = () => {
+  const onClickLoginButton = () => {
     const errorMessage = validateLoginInput(loginInputs);
     setValidationMessage(errorMessage);
     if (!errorMessage) {
@@ -25,13 +25,19 @@ function LoginPage() {
     }
   };
 
+  const onBlurTextField = ({ target }) => {
+    const { value, name } = target;
+    const textFieldInput = { [name]: value };
+    setLoginInputs(textFieldInput);
+  };
+
   return (
     <>
       <div>서비스에 대한 간략한 소개글</div>
-      <TextField {...emailFieldProps} setPageInputs={setLoginInputs} />
-      <TextField {...passwordFieldProps} setPageInputs={setLoginInputs} />
+      <TextField {...emailFieldProps} onBlur={onBlurTextField} />
+      <TextField {...passwordFieldProps} onBlur={onBlurTextField} />
       <p>{validationMessage}</p>
-      <Button {...loginButtonProps} onClick={onClickJoinButton} />
+      <Button {...loginButtonProps} onClick={onClickLoginButton} />
       <Link to="../join">회원가입</Link>
     </>
   );
