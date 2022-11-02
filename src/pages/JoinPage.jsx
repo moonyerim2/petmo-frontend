@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { TextField, Button } from "../components";
 import { joinInputsSelector, joinValidationMessagesSelector } from "../store";
 import { callJoinApi } from "../api";
+import { hasNotEmptyStingValue, hasOnlyEmptyStingValue } from "../util";
 import {
   emailFieldProps,
   passwordFieldProps,
   nameFieldProps,
   nicknameFieldProps,
-  joinButtonProps,
+  joinButtonProps as defaultJoinButtonProps,
 } from "../constants";
 
 function JoinPage() {
@@ -16,12 +17,29 @@ function JoinPage() {
   const [validationMessages, setValidationMessages] = useRecoilState(
     joinValidationMessagesSelector
   );
+  const [isRightInput, setIsRightInput] = useState(false);
+
+  useEffect(() => {
+    const isRightInput =
+      hasOnlyEmptyStingValue(validationMessages) &&
+      hasNotEmptyStingValue(joinInputs);
+
+    setIsRightInput(isRightInput);
+  }, [validationMessages, joinInputs]);
+
+  const joinButtonProps = () => {
+    if (isRightInput) {
+      return {
+        ...defaultJoinButtonProps,
+        isDisabled: false,
+      };
+    }
+
+    return defaultJoinButtonProps;
+  };
 
   const onClickJoinButton = () => {
-    const isRightInput = !Object.values(validationMessages).join("");
-    if (isRightInput) {
-      callJoinApi(joinInputs);
-    }
+    callJoinApi(joinInputs);
   };
 
   const onChangeTextField = ({ target }) => {
@@ -41,7 +59,7 @@ function JoinPage() {
       <p>{validationMessages.name}</p>
       <TextField {...nicknameFieldProps} onChange={onChangeTextField} />
       <p>{validationMessages.nickname}</p>
-      <Button {...joinButtonProps} onClick={onClickJoinButton} />
+      <Button {...joinButtonProps()} onClick={onClickJoinButton} />
     </>
   );
 }

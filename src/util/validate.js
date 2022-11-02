@@ -1,3 +1,9 @@
+export const hasNotEmptyStingValue = (object) =>
+  Object.values(object).every((value) => value !== "");
+
+export const hasOnlyEmptyStingValue = (object) =>
+  Object.values(object).every((value) => value === "");
+
 export const isEmptyString = (input) => input === "";
 
 export const validateLoginInput = (loginInputs) => {

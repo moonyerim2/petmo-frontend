@@ -9,5 +9,5 @@ export const joinButtonProps = {
   type: "submit",
   name: "join",
   text: "가입하기",
-  isDisabled: false,
+  isDisabled: true,
 };
