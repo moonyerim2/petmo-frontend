@@ -18,7 +18,7 @@ const Select = styled.select`
   padding: 17px;
 `;
 
-export const Header = () => {
+function Header() {
   return (
     <HeaderBox>
       <Select>
@@ -26,4 +26,6 @@ export const Header = () => {
       </Select>
     </HeaderBox>
   );
-};
+}
+
+export default Header;

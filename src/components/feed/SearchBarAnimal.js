@@ -18,7 +18,7 @@ const Animal = styled.span`
   opacity: 1;
 `;
 
-export const SearchBarAnimal = () => {
+function SearchBarAnimal() {
   return (
     <Wrapper>
       <Animal>
@@ -32,4 +32,6 @@ export const SearchBarAnimal = () => {
       </Animal>
     </Wrapper>
   );
-};
+}
+
+export default SearchBarAnimal;

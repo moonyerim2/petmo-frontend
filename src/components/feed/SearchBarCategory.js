@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-export const SearchBarCategory = () => {
+function SearchBarCategory() {
   return (
     <Wrapper>
       <span>전체</span>
@@ -24,4 +24,6 @@ export const SearchBarCategory = () => {
       &nbsp;
     </Wrapper>
   );
-};
+}
+
+export default SearchBarCategory;
