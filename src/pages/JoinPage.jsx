@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-import { callJoinApi } from "../api";
+import React from "react";
+import { useRecoilState } from "recoil";
 import { TextField, Button } from "../components";
+import { joinInputsSelector, joinValidationMessagesSelector } from "../store";
+import { callJoinApi } from "../api";
 import {
   emailFieldProps,
   passwordFieldProps,
@@ -10,23 +12,35 @@ import {
 } from "../constants";
 
 function JoinPage() {
-  const [joinInputs, setJoinInputs] = useState({ email: "", password: "" });
-
-  const pageInputState = {
-    pageInputs: joinInputs,
-    setPageInputs: setJoinInputs,
-  };
+  const [joinInputs, setjoinInputs] = useRecoilState(joinInputsSelector);
+  const [validationMessages, setValidationMessages] = useRecoilState(
+    joinValidationMessagesSelector
+  );
 
   const onClickJoinButton = () => {
-    callJoinApi(joinInputs);
+    const isRightInput = !Object.values(validationMessages).join("");
+    if (isRightInput) {
+      callJoinApi(joinInputs);
+    }
+  };
+
+  const onChangeTextField = ({ target }) => {
+    const { value, name } = target;
+    const textFieldInput = { [name]: value };
+    setjoinInputs(textFieldInput);
+    setValidationMessages(textFieldInput);
   };
 
   return (
     <>
-      <TextField {...emailFieldProps} {...pageInputState} />
-      <TextField {...passwordFieldProps} {...pageInputState} />
-      <TextField {...nameFieldProps} {...pageInputState} />
-      <TextField {...nicknameFieldProps} {...pageInputState} />
+      <TextField {...emailFieldProps} onChange={onChangeTextField} />
+      <p>{validationMessages.email}</p>
+      <TextField {...passwordFieldProps} onChange={onChangeTextField} />
+      <p>{validationMessages.password}</p>
+      <TextField {...nameFieldProps} onChange={onChangeTextField} />
+      <p>{validationMessages.name}</p>
+      <TextField {...nicknameFieldProps} onChange={onChangeTextField} />
+      <p>{validationMessages.nickname}</p>
       <Button {...joinButtonProps} onClick={onClickJoinButton} />
     </>
   );

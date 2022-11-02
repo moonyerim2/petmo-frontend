@@ -11,3 +11,10 @@ export const validateLoginInput = (loginInputs) => {
     ""
   );
 };
+
+export const validateFieldRules = (validationRules, string) => {
+  return validationRules.reduce((errorMessage, validationRule) => {
+    const { rule, match, message } = validationRule;
+    return rule.test(string) !== match ? message : errorMessage;
+  }, "");
+};

@@ -1,6 +1,8 @@
 export const textFieldLabels = {
   email: "이메일",
   password: "비밀번호",
+  name: "이름",
+  nickname: "닉네임",
 };
 
 export const emailFieldProps = {
@@ -14,7 +16,7 @@ export const emailFieldProps = {
 
 export const passwordFieldProps = {
   id: "password",
-  label: textFieldLabels.email,
+  label: textFieldLabels.password,
   text: "",
   type: "password",
   name: "password",
@@ -23,18 +25,18 @@ export const passwordFieldProps = {
 
 export const nameFieldProps = {
   id: "name",
-  label: "이름",
+  label: textFieldLabels.name,
   text: "",
-  type: "name",
+  type: "text",
   name: "name",
   placeholder: "",
 };
 
 export const nicknameFieldProps = {
   id: "nickname",
-  label: "닉네임",
+  label: textFieldLabels.nickname,
   text: "",
-  type: "nickname",
+  type: "text",
   name: "nickname",
   placeholder: "",
 };

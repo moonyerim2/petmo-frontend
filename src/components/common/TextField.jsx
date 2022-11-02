@@ -10,6 +10,7 @@ function TextField({
   placeholder,
   pageInputs,
   setPageInputs,
+  onChange,
 }) {
   const [input, setInput] = useState(text);
 
@@ -30,6 +31,7 @@ function TextField({
         defaultValue={input}
         placeholder={placeholder}
         onBlur={onBlur}
+        onChange={onChange}
       />
     </label>
   );
@@ -44,6 +46,7 @@ TextField.propTypes = {
   placeholder: PropTypes.string,
   pageInputs: PropTypes.object,
   setPageInputs: PropTypes.func,
+  onChange: PropTypes.func,
 };
 
 export default TextField;
