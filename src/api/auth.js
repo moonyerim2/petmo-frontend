@@ -2,9 +2,20 @@ import axios from "axios";
 
 const BASE_URL = "http://api.server.com";
 
-export const callLoginApi = (payload) => {
-  return axios.post(`${BASE_URL}/login`, payload);
+const fetch = async (endPoint, payload) => {
+  try {
+    const response = await axios.post(`${BASE_URL}${endPoint}`, payload);
+    if (response.statusText !== "OK") throw new Error("Request faild");
+    return response.data || response.json();
+  } catch (error) {
+    console.log(error);
+  }
 };
-export const callJoinApi = (payload) => {
-  return axios.post(`${BASE_URL}/join`, payload);
+
+export const callLoginApi = async (payload) => {
+  return await fetch("/login", payload);
+};
+
+export const callJoinApi = async (payload) => {
+  return await fetch("/join", payload);
 };
