@@ -50,7 +50,7 @@ function JoinPage() {
   };
 
   return (
-    <>
+    <form>
       <TextField {...emailFieldProps} onChange={onChangeTextField} />
       <p>{validationMessages.email}</p>
       <TextField {...passwordFieldProps} onChange={onChangeTextField} />
@@ -60,7 +60,7 @@ function JoinPage() {
       <TextField {...nicknameFieldProps} onChange={onChangeTextField} />
       <p>{validationMessages.nickname}</p>
       <Button {...joinButtonProps()} onClick={onClickJoinButton} />
-    </>
+    </form>
   );
 }
 

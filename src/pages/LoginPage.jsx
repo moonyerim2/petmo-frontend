@@ -32,14 +32,14 @@ function LoginPage() {
   };
 
   return (
-    <>
+    <form>
       <div>서비스에 대한 간략한 소개글</div>
       <TextField {...emailFieldProps} onBlur={onBlurTextField} />
       <TextField {...passwordFieldProps} onBlur={onBlurTextField} />
       <p>{validationMessage}</p>
       <Button {...loginButtonProps} onClick={onClickLoginButton} />
       <Link to="../join">회원가입</Link>
-    </>
+    </form>
   );
 }
 
