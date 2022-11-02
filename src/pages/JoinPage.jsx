@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { auth } from "../api";
+import { callJoinApi } from "../api";
 import { TextField, Button } from "../components";
 import {
   emailFieldProps,
@@ -18,7 +18,7 @@ function JoinPage() {
   };
 
   const onClickJoinButton = () => {
-    auth.join(joinInputs);
+    callJoinApi(joinInputs);
   };
 
   return (

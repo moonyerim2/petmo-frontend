@@ -8,15 +8,13 @@ function TextField({
   type,
   name,
   placeholder,
-  pageInputs,
   setPageInputs,
 }) {
   const [input, setInput] = useState(text);
 
   const onBlur = (e) => {
     const { value, name } = e.target;
-    const newInputs = { ...pageInputs, [name]: value };
-    setPageInputs(newInputs);
+    setPageInputs({ [name]: value });
     setInput(value);
   };
 

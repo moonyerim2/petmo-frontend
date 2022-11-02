@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
+import { useRecoilState } from "recoil";
 import { Link } from "react-router-dom";
-import { auth } from "../api";
 import { TextField, Button } from "../components";
+import { loginInputsSelector } from "../store";
+import { callLoginApi } from "../api";
 import {
   emailFieldProps,
   passwordFieldProps,
@@ -9,22 +11,17 @@ import {
 } from "../constants";
 
 function LoginPage() {
-  const [loginInputs, setLoginInputs] = useState({ email: "", password: "" });
-
-  const pageInputState = {
-    pageInputs: loginInputs,
-    setPageInputs: setLoginInputs,
-  };
+  const [loginInputs, setLoginInputs] = useRecoilState(loginInputsSelector);
 
   const onClickJoinButton = () => {
-    auth.login(loginInputs);
+    callLoginApi(loginInputs);
   };
 
   return (
     <>
       <div>서비스에 대한 간략한 소개글</div>
-      <TextField {...emailFieldProps} {...pageInputState} />
-      <TextField {...passwordFieldProps} {...pageInputState} />
+      <TextField {...emailFieldProps} setPageInputs={setLoginInputs} />
+      <TextField {...passwordFieldProps} setPageInputs={setLoginInputs} />
       <Button {...loginButtonProps} onClick={onClickJoinButton} />
       <Link to="../join">회원가입</Link>
     </>
