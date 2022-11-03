@@ -43,9 +43,15 @@ export const joinValidationMessagesSelector = selector({
       joinInputValidationRules[fieldName],
       text
     );
+
     set(joinValidationMessages, (prevState) => ({
       ...prevState,
       [fieldName]: errorMessage,
     }));
   },
+});
+
+export const isJoinCompleted = atom({
+  key: "isJoinCompleted",
+  default: false,
 });

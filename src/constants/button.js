@@ -11,3 +11,24 @@ export const joinButtonProps = {
   text: "가입하기",
   isDisabled: true,
 };
+
+export const backButtonProps = {
+  type: "button",
+  name: "back",
+  img: { src: "/img/back.svg", alt: "뒤로가기" },
+  isDisabled: false,
+};
+
+export const yesButtonProps = {
+  type: "button",
+  name: "yes",
+  text: "예",
+  isDisabled: false,
+};
+
+export const noButtonProps = {
+  type: "button",
+  name: "no",
+  text: "아니오",
+  isDisabled: false,
+};
