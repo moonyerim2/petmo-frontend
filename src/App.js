@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import {
   HomePage,
-  AuthPage,
+  LandingPage,
   LoginPage,
   JoinPage,
   WritePostPage,
@@ -24,7 +24,7 @@ function App() {
           element={isLogin ? <HomePage /> : <Navigate to="login" />}
         />
 
-        <Route path="auth" element={<AuthPage />} />
+        <Route path="auth" element={<LandingPage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="join" element={<JoinPage />} />
 

@@ -1,5 +1,5 @@
 export { default as HomePage } from "./HomePage";
-export { default as AuthPage } from "./AuthPage";
+export { default as LandingPage } from "./LandingPage";
 export { default as LoginPage } from "./LoginPage";
 export { default as JoinPage } from "./JoinPage";
 export { default as WritePostPage } from "./WritePostPage";

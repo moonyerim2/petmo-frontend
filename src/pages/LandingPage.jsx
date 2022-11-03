@@ -1,6 +1,6 @@
 import React from "react";
 
-function AuthPage() {
+function LandingPage() {
   return (
     <>
       <div>시작하기</div>
@@ -9,4 +9,4 @@ function AuthPage() {
   );
 }
 
-export default AuthPage;
+export default LandingPage;
