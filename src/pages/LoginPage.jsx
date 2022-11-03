@@ -1,8 +1,12 @@
 import React from "react";
 import { useRecoilState } from "recoil";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { TextField, Button } from "../components";
-import { loginInputsSelector, loginValidationMessage } from "../store";
+import {
+  loginInputsSelector,
+  loginValidationMessage,
+  authenticated,
+} from "../store";
 import { callLoginApi } from "../api";
 import { validateLoginInput } from "../util";
 import {
@@ -17,11 +21,20 @@ function LoginPage() {
     loginValidationMessage
   );
 
-  const onClickLoginButton = () => {
+  const [isAuthenticated, setIsAuthenticated] = useRecoilState(authenticated);
+  if (isAuthenticated) {
+    return <Navigate to={"../"} />;
+  }
+
+  const onClickLoginButton = async (e) => {
+    e.preventDefault();
     const errorMessage = validateLoginInput(loginInputs);
     setValidationMessage(errorMessage);
     if (!errorMessage) {
-      callLoginApi(loginInputs);
+      const status = await callLoginApi(loginInputs);
+      if (status === 200) {
+        setIsAuthenticated(true);
+      }
     }
   };
 

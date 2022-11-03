@@ -13,7 +13,13 @@ const fetch = async (endPoint, payload) => {
 };
 
 export const callLoginApi = async (payload) => {
-  return await fetch("/login", payload);
+  try {
+    const response = await axios.post(`${BASE_URL}/login`, payload);
+    if (response.status !== 200) throw new Error("Request faild");
+    return response.status;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const callJoinApi = async (payload) => {

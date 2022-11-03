@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { authenticated } from "./store";
 import {
   HomePage,
   LandingPage,
@@ -11,15 +13,17 @@ import {
   ProfilePage,
   NotFoundPage,
 } from "./pages";
-import { getCookie } from "./util";
 
 function App() {
-  const isLogin = getCookie("session");
+  const isAuthenticated = useRecoilValue(authenticated);
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={isLogin ? <HomePage /> : <LandingPage />} />
+        <Route
+          path="/"
+          element={isAuthenticated ? <HomePage /> : <LandingPage />}
+        />
 
         <Route path="login" element={<LoginPage />} />
         <Route path="join" element={<JoinPage />} />
