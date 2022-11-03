@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
   HomePage,
   LandingPage,
@@ -19,12 +19,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={isLogin ? <HomePage /> : <Navigate to="login" />}
-        />
+        <Route path="/" element={isLogin ? <HomePage /> : <LandingPage />} />
 
-        <Route path="auth" element={<LandingPage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="join" element={<JoinPage />} />
 
