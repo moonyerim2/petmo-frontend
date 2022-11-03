@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
+import { Navigate } from "react-router-dom";
 import { TextField, Button } from "../components";
 import { joinInputsSelector, joinValidationMessagesSelector } from "../store";
 import { callJoinApi } from "../api";
@@ -27,6 +28,11 @@ function JoinPage() {
     setIsRightInput(isRightInput);
   }, [validationMessages, joinInputs]);
 
+  const [isCompleted, setIsCompleted] = useState(false);
+  if (isCompleted) {
+    return <Navigate to={"../login"} />;
+  }
+
   const joinButtonProps = () => {
     if (isRightInput) {
       return {
@@ -38,8 +44,11 @@ function JoinPage() {
     return defaultJoinButtonProps;
   };
 
-  const onClickJoinButton = () => {
-    callJoinApi(joinInputs);
+  const onClickJoinButton = async () => {
+    const status = await callJoinApi(joinInputs);
+    if (status === 201) {
+      setIsCompleted(true);
+    }
   };
 
   const onChangeTextField = ({ target }) => {
