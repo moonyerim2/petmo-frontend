@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useRecoilState, useResetRecoilState } from "recoil";
-import { TextField, JoinButton } from "../../components";
+import { useRecoilValue, useResetRecoilState } from "recoil";
+import { JoinButton, JoinTextField } from "../../components";
 import {
   joinInputs as joinInputsAtom,
   joinInputsSelector,
@@ -16,10 +16,8 @@ import {
 import { hasNotEmptyStingValue, hasOnlyEmptyStingValue } from "../../util";
 
 function JoinForm() {
-  const [joinInputs, setJoinInputs] = useRecoilState(joinInputsSelector);
-  const [validationMessages, setValidationMessages] = useRecoilState(
-    joinValidationMessagesSelector
-  );
+  const joinInputs = useRecoilValue(joinInputsSelector);
+  const validationMessages = useRecoilValue(joinValidationMessagesSelector);
   const [isRightInput, setIsRightInput] = useState(false);
 
   const resetJoinInputs = useResetRecoilState(joinInputsAtom);
@@ -40,23 +38,12 @@ function JoinForm() {
     setIsRightInput(isRightInput);
   }, [validationMessages, joinInputs]);
 
-  const onChangeTextField = ({ target }) => {
-    const { value, name } = target;
-    const textFieldInput = { [name]: value };
-    setJoinInputs(textFieldInput);
-    setValidationMessages(textFieldInput);
-  };
-
   return (
     <form>
-      <TextField {...emailFieldProps} onChange={onChangeTextField} />
-      <p>{validationMessages.email}</p>
-      <TextField {...passwordFieldProps} onChange={onChangeTextField} />
-      <p>{validationMessages.password}</p>
-      <TextField {...nameFieldProps} onChange={onChangeTextField} />
-      <p>{validationMessages.name}</p>
-      <TextField {...nicknameFieldProps} onChange={onChangeTextField} />
-      <p>{validationMessages.nickname}</p>
+      <JoinTextField fieldProps={emailFieldProps} />
+      <JoinTextField fieldProps={passwordFieldProps} />
+      <JoinTextField fieldProps={nameFieldProps} />
+      <JoinTextField fieldProps={nicknameFieldProps} />
       <JoinButton isDisabled={!isRightInput} />
     </form>
   );
