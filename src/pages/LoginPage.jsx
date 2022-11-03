@@ -13,6 +13,7 @@ import {
   emailFieldProps,
   passwordFieldProps,
   loginButtonProps,
+  validateErrorMessage,
 } from "../constants";
 
 function LoginPage() {
@@ -34,6 +35,8 @@ function LoginPage() {
       const status = await callLoginApi(loginInputs);
       if (status === 200) {
         setIsAuthenticated(true);
+      } else {
+        setValidationMessage(validateErrorMessage.loginFailed);
       }
     }
   };

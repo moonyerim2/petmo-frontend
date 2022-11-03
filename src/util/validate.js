@@ -1,3 +1,5 @@
+import { validateErrorMessage } from "../constants";
+
 export const hasNotEmptyStingValue = (object) =>
   Object.values(object).every((value) => value !== "");
 
@@ -9,11 +11,11 @@ export const isEmptyString = (input) => input === "";
 export const validateLoginInput = (loginInputs) => {
   const { email, password } = loginInputs;
   if (isEmptyString(email)) {
-    return `이메일을 입력해 주세요.`;
+    return validateErrorMessage.wrongEmail;
   }
 
   if (isEmptyString(password)) {
-    return `비밀번호를 입력해 주세요.`;
+    return validateErrorMessage.wrongPassword;
   }
 };
 
