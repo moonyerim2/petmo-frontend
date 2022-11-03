@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { TextField, Button } from "../components";
 import { joinInputsSelector, joinValidationMessagesSelector } from "../store";
 import { callJoinApi } from "../api";
@@ -19,6 +19,8 @@ function JoinPage() {
     joinValidationMessagesSelector
   );
   const [isRightInput, setIsRightInput] = useState(false);
+  const [isCompleted, setIsCompleted] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const isRightInput =
@@ -28,9 +30,16 @@ function JoinPage() {
     setIsRightInput(isRightInput);
   }, [validationMessages, joinInputs]);
 
-  const [isCompleted, setIsCompleted] = useState(false);
+  useEffect(() => {
+    if (isCompleted) {
+      setTimeout(() => {
+        navigate("../login");
+      }, 1000);
+    }
+  }, [isCompleted, navigate]);
+
   if (isCompleted) {
-    return <Navigate to={"../login"} />;
+    return <div>회원가입이 완료되었습니다.</div>;
   }
 
   const joinButtonProps = () => {
@@ -44,7 +53,8 @@ function JoinPage() {
     return defaultJoinButtonProps;
   };
 
-  const onClickJoinButton = async () => {
+  const onClickJoinButton = async (e) => {
+    e.preventDefault();
     const status = await callJoinApi(joinInputs);
     if (status === 201) {
       setIsCompleted(true);
