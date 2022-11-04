@@ -26,6 +26,15 @@ export const exitButtonProps = {
   isDisabled: false,
 };
 
+export const submitButtonProps = (text, isDisabled) => {
+  return {
+    type: "submit",
+    name: "submit",
+    text: text,
+    isDisabled: isDisabled,
+  };
+};
+
 export const yesButtonProps = {
   type: "button",
   name: "yes",
