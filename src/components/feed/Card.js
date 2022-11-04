@@ -1,20 +1,21 @@
 import React from "react";
 import styled from "styled-components";
-import Card from "./Card";
+import Profile from "./Profile";
 
 const Wrapper = styled.div`
   box-sizing: border-box;
-  background: rgba(241, 241, 245, 1);
+  background-color: white;
   width: 100%;
-  height: 500px;
+  height: 300px;
+  display: flex;
+  padding: 10px;
 `;
 
-function Board() {
+function Card() {
   return (
     <Wrapper>
-      <Card />
+      <Profile />
     </Wrapper>
   );
 }
-
-export default Board;
+export default Card;

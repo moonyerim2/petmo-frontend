@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { authenticated } from "./store";
+import { Reset } from "styled-reset";
 import {
   HomePage,
   LandingPage,
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <Reset />
       <Routes>
         <Route
           path="/"
