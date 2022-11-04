@@ -11,10 +11,14 @@ function JoinPage() {
 
   useEffect(() => {
     if (isCompleted) {
-      setTimeout(() => {
+      const timeOut = setTimeout(() => {
         setIsCompleted(false);
         navigate("../login");
       }, 1000);
+
+      return () => {
+        clearTimeout(timeOut);
+      };
     }
   }, [isCompleted, navigate, setIsCompleted]);
 
