@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 function Button({ type, name, text, img, isDisabled, onClick }) {
   return (
     <button type={type} name={name} disabled={isDisabled} onClick={onClick}>
-      {img && <img src={process.env.PUBLIC_URL + img.src} alt={img.alt} />}
       {text}
+      {img && <img src={process.env.PUBLIC_URL + img.src} alt={img.alt} />}
     </button>
   );
 }

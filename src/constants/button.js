@@ -35,6 +35,14 @@ export const submitButtonProps = (text, isDisabled) => {
   };
 };
 
+export const setUpTownButtonProps = {
+  type: "submit",
+  name: "submit",
+  text: "동네 입력하기",
+  img: { src: "/img/plus.svg", alt: "동네 추가" },
+  isDisabled: false,
+};
+
 export const yesButtonProps = {
   type: "button",
   name: "yes",

@@ -7,6 +7,7 @@ import {
   LandingPage,
   LoginPage,
   JoinPage,
+  MyTownPage,
   WritePostPage,
   PostViewPage,
   BookmarkPage,
@@ -27,6 +28,7 @@ function App() {
 
         <Route path="login" element={<LoginPage />} />
         <Route path="join" element={<JoinPage />} />
+        <Route path="mytown" element={<MyTownPage />} />
 
         <Route path="post/:postId" element={<PostViewPage />} />
 
