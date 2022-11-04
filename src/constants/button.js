@@ -12,10 +12,17 @@ export const joinButtonProps = {
   isDisabled: true,
 };
 
-export const backButtonProps = {
+export const goBackButtonProps = {
   type: "button",
   name: "back",
   img: { src: "/img/back.svg", alt: "뒤로가기" },
+  isDisabled: false,
+};
+
+export const exitButtonProps = {
+  type: "button",
+  name: "back",
+  img: { src: "/img/exit.svg", alt: "닫기" },
   isDisabled: false,
 };
 
