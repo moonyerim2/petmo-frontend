@@ -7,8 +7,16 @@ const Wrapper = styled.div`
   box-sizing: border-box;
   background: rgba(241, 241, 245, 1);
   width: 100%;
-  height: 500px;
+
+  margin-top: 158px;
+  overflow: scroll;
+  -ms-overflow-style: none;
+
+  &&::-webkit-scrollbar {
+    display: none;
+  }
 `;
+
 const cardsDummyList = [
   {
     id: 1,

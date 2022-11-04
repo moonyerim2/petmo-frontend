@@ -14,14 +14,14 @@ const StyledSnackbar = styled(MuiSnackbar)`
     display: flex;
     align-items: center;
 
-    ${({ theme: { lineHeights, colors, fontSizes, sizes } }) =>
+    ${({ theme: { lineHeights, colors, fontSizes, sizes }, type }) =>
       css`
         ${{
           ...sizes.size4,
           lineHeight: lineHeights[140],
           fontSize: fontSizes.body2,
           color: colors.white,
-          backgroundColor: colors.black,
+          backgroundColor: type === "error" ? colors.error : colors.black,
         }}
       `}
   }
@@ -31,7 +31,7 @@ const StyledSnackbar = styled(MuiSnackbar)`
   }
 `;
 
-function Snackbar({ open, setOpen, snackbarMessage }) {
+function Snackbar({ open, setOpen, snackbarMessage, type }) {
   const handleClose = (open, reason) => {
     if (reason === "clickaway") {
       return;
@@ -46,6 +46,7 @@ function Snackbar({ open, setOpen, snackbarMessage }) {
       autoHideDuration={2000}
       onClose={handleClose}
       message={snackbarMessage}
+      type={type}
     />
   );
 }
@@ -54,6 +55,7 @@ Snackbar.propTypes = {
   open: PropTypes.bool,
   setOpen: PropTypes.func,
   snackbarMessage: PropTypes.string,
+  type: PropTypes.string,
 };
 
 export default Snackbar;

@@ -23,9 +23,9 @@ const findCurrentLocationButtonStyle = ({
   };
 };
 
-function FindCurrentLocationButton({ ip, searchTownByIp }) {
+function FindCurrentLocationButton({ searchTownByIp }) {
   const onClick = () => {
-    searchTownByIp(ip);
+    searchTownByIp();
   };
 
   return (
@@ -40,7 +40,6 @@ function FindCurrentLocationButton({ ip, searchTownByIp }) {
 }
 
 FindCurrentLocationButton.propTypes = {
-  ip: PropTypes.string,
   searchTownByIp: PropTypes.func,
 };
 

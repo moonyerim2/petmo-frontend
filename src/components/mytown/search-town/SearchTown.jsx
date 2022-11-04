@@ -8,7 +8,7 @@ import NotFoundTown from "./NotFoundTown";
 import { useSearchTown } from "../../../hooks";
 
 function SearchTown({ setIsSearchMode }) {
-  const { subTitle, searchResults, ip, searchTownByIp, searchTownByInput } =
+  const { subTitle, searchResults, searchTownByIp, searchTownByInput } =
     useSearchTown();
 
   return (
@@ -17,7 +17,7 @@ function SearchTown({ setIsSearchMode }) {
         searchTownByInput={searchTownByInput}
         setIsSearchMode={setIsSearchMode}
       />
-      <FindCurrentLocationButton ip={ip} searchTownByIp={searchTownByIp} />
+      <FindCurrentLocationButton searchTownByIp={searchTownByIp} />
       {!searchResults.length ? (
         <NotFoundTown />
       ) : (

@@ -4,11 +4,11 @@ import Fab from "@mui/material/Fab";
 import PostIcon from "../../../css/icon/PostIcon.svg";
 import { Link } from "react-router-dom";
 
-const WritePostIcon = styled.img``;
 const WritePostButton = styled(Fab)`
   &&.MuiButtonBase-root {
-    background-color: #fa3c89;
+    background-color: ${({ theme: { colors } }) => colors.main};
     position: fixed;
+    z-index: 998;
     right: 20px;
     bottom: 73px;
   }
@@ -17,7 +17,7 @@ const WritePostButton = styled(Fab)`
 export default function FloatingActionButtons() {
   return (
     <WritePostButton component={Link} to={"/write"}>
-      <WritePostIcon src={PostIcon} />
+      <img src={PostIcon} alt="게시글 작성" />
     </WritePostButton>
   );
 }

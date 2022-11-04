@@ -3,6 +3,7 @@ export { default as LandingPage } from "./LandingPage";
 export { default as LoginPage } from "./LoginPage";
 export { default as JoinPage } from "./JoinPage";
 export { default as MyTownPage } from "./MyTownPage";
+export { default as MyPetPage } from "./MyPetPage";
 export { default as WritePostPage } from "./WritePostPage";
 export { default as PostViewPage } from "./PostViewPage";
 export { default as BookmarkPage } from "./BookmarkPage";

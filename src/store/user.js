@@ -9,10 +9,15 @@ export const authenticated = atom({
 export const user = atom({
   key: "user",
   default: {
-    town: "",
-    img: "",
+    email: "",
+    address: {
+      addressName: "",
+      regionDepth1: "",
+      regionDepth2: "",
+    },
     nickname: "",
     hasPet: null,
+    first: null,
   },
 });
 

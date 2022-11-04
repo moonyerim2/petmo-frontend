@@ -30,15 +30,13 @@ const closeSearchTownButtonStyle = () => {
 };
 
 function AddressSearchBar({ searchTownByInput, setIsSearchMode }) {
-  const [userInput, setUserInput] = useState("");
+  const [userInput, setUserInput] = useState(null);
 
   useDebouncedEffect(
     () => {
-      const abortController = new AbortController();
-      searchTownByInput(userInput, abortController.signal);
-      return () => {
-        abortController.abort();
-      };
+      if (userInput !== null) {
+        searchTownByInput(userInput);
+      }
     },
     500,
     [userInput]
