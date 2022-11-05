@@ -7,6 +7,9 @@ const Wrapper = styled.div`
   height: 40px;
   display: flex;
   align-items: center;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
 `;
 const Photo = styled.span`
   width: 36px;

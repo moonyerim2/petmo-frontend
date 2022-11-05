@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Profile from "./Profile";
+import Content from "./Content";
+import ButtonBox from "./ButtonBox";
 
 const Wrapper = styled.div`
   box-sizing: border-box;
@@ -8,13 +10,16 @@ const Wrapper = styled.div`
   width: 100%;
   height: 300px;
   display: flex;
-  padding: 10px;
+  flex-direction: column;
+  position: relative;
 `;
 
 function Card() {
   return (
     <Wrapper>
       <Profile />
+      <Content />
+      <ButtonBox />
     </Wrapper>
   );
 }
