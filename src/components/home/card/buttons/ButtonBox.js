@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as CommentIcon } from "../../css/icon/CommentIcon.svg";
-import { ReactComponent as BookmarkIcon } from "../../css/icon/BookmarkIcon.svg";
-import { ReactComponent as HeartIcon } from "../../css/icon/HeartIcon.svg";
+import { ReactComponent as CommentIcon } from "../../../../css/icon/CommentIcon.svg";
+import { ReactComponent as BookmarkIcon } from "../../../../css/icon/BookmarkIcon.svg";
+import { ReactComponent as HeartIcon } from "../../../../css/icon/HeartIcon.svg";
 const Wrapper = styled.div`
   box-sizing: border-box;
   background-color: white;

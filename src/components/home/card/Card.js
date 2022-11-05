@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Profile from "./Profile";
 import Content from "./Content";
-import ButtonBox from "./ButtonBox";
+import ButtonBox from "./buttons/ButtonBox";
 
 const Wrapper = styled.div`
   box-sizing: border-box;
