@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as CommentIcon } from "../../../../css/icon/CommentIcon.svg";
-import { ReactComponent as BookmarkIcon } from "../../../../css/icon/BookmarkIcon.svg";
-import { ReactComponent as HeartIcon } from "../../../../css/icon/HeartIcon.svg";
+import HeartBtn from "./HeartBtn.js";
+import BookmarkBtn from "./BookmarkBtn.js";
+import CommentBtn from "./CommentBtn.js";
+import Watched from "./Watched.js";
+
 const Wrapper = styled.div`
   box-sizing: border-box;
   background-color: white;
@@ -17,7 +19,7 @@ const Wrapper = styled.div`
   padding-right: 10px;
   padding-left: 10px;
 `;
-const Buttons = styled.div`
+const Column_buttons = styled.div`
   display: flex;
 `;
 const Button = styled.button`
@@ -31,7 +33,7 @@ const Button = styled.button`
   display: flex;
   justify-content: space-between;
 `;
-const Watched = styled.div`
+const Collumn_watched = styled.div`
   color: #9a9a9a;
   font-family: Pretendard;
   font-weight: Regular;
@@ -42,24 +44,20 @@ const Watched = styled.div`
 function ButtonBox() {
   return (
     <Wrapper>
-      <Buttons>
+      <Column_buttons>
         <Button>
-          <HeartIcon />
-          <span>11</span>
+          <HeartBtn />
         </Button>
         <Button>
-          <BookmarkIcon />
-          <span>12</span>
+          <BookmarkBtn />
         </Button>
         <Button>
-          <CommentIcon />
-          <span>10</span>
+          <CommentBtn />
         </Button>
-      </Buttons>
-      <Watched>
-        <span>조회수</span>
-        <span>27</span>
-      </Watched>
+      </Column_buttons>
+      <Collumn_watched>
+        <Watched />
+      </Collumn_watched>
     </Wrapper>
   );
 }
