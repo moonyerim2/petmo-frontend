@@ -1,12 +1,25 @@
 import React from "react";
-import { ReactComponent as BookmarkIcon } from "../../../../css/icon/BookmarkIcon.svg";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import EmptyBookmarkIcon from "../../../../css/icon/EmptyBookmarkIcon.svg";
+import FullBookmarkIcon from "../../../../css/icon/FullBookmarkIcon.svg";
 
-function BookmarkBtn() {
+const Wrapper = styled.span``;
+function BookmarkBtn({ bookmarkNumber, bookmarkEmpty, onBookmark }) {
   return (
-    <>
-      <BookmarkIcon />
-      <span>12</span>
-    </>
+    <Wrapper onClick={onBookmark}>
+      <img
+        src={bookmarkEmpty ? EmptyBookmarkIcon : FullBookmarkIcon}
+        alt="img"
+      />
+      <span>{bookmarkNumber}</span>
+    </Wrapper>
   );
 }
+BookmarkBtn.propTypes = {
+  bookmarkEmpty: PropTypes.bool,
+  bookmarkNumber: PropTypes.number,
+  onBookmark: PropTypes.func,
+};
+
 export default BookmarkBtn;

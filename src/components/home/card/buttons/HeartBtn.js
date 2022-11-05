@@ -6,16 +6,16 @@ import FullHeartIcon from "../../../../css/icon/FullHeart.svg";
 
 const Wrapper = styled.span``;
 
-function HeartBtn({ likeNumber, empty, onHeart }) {
+function HeartBtn({ likeNumber, heartEmpty, onHeart }) {
   return (
     <Wrapper onClick={onHeart}>
-      <img src={empty ? EmptyHeartIcon : FullHeartIcon} alt="img" />
+      <img src={heartEmpty ? EmptyHeartIcon : FullHeartIcon} alt="img" />
       <span>{likeNumber}</span>
     </Wrapper>
   );
 }
 HeartBtn.propTypes = {
-  empty: PropTypes.bool,
+  heartEmpty: PropTypes.bool,
   likeNumber: PropTypes.number,
   onHeart: PropTypes.func,
 };

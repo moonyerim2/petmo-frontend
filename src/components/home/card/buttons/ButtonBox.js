@@ -42,28 +42,45 @@ const Collumn_watched = styled.div`
 `;
 
 function ButtonBox() {
-  const [makeEmpty, setMakeEmpty] = useState(true);
+  //HeartBtn 관련//
+  const [heartEmpty, setHeartEmpty] = useState(true);
   const [likeNumber, setLikeNumber] = useState(0);
   const handleHeart = () => {
-    if (makeEmpty) {
+    if (heartEmpty) {
       setLikeNumber(likeNumber + 1);
     } else {
       setLikeNumber(likeNumber - 1);
     }
-    setMakeEmpty(!makeEmpty);
+    setHeartEmpty(!heartEmpty);
   };
+  //BookmarkBtn 관련//
+  const [bookmarkEmpty, setBookmarkEmpty] = useState(true);
+  const [bookmarkNumber, setBookmarkNumber] = useState(0);
+  const handleBookmark = () => {
+    if (bookmarkEmpty) {
+      setBookmarkNumber(bookmarkNumber + 1);
+    } else {
+      setBookmarkNumber(bookmarkNumber - 1);
+    }
+    setBookmarkEmpty(!bookmarkEmpty);
+  };
+
   return (
     <Wrapper>
       <Column_buttons>
         <Button>
           <HeartBtn
-            empty={makeEmpty}
+            heartEmpty={heartEmpty}
             likeNumber={likeNumber}
             onHeart={handleHeart}
           />
         </Button>
         <Button>
-          <BookmarkBtn />
+          <BookmarkBtn
+            bookmarkEmpty={bookmarkEmpty}
+            bookmarkNumber={bookmarkNumber}
+            onBookmark={handleBookmark}
+          />
         </Button>
         <Button>
           <CommentBtn />
