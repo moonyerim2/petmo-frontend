@@ -1,12 +1,23 @@
 import React from "react";
-import { ReactComponent as HeartIcon } from "../../../../css/icon/HeartIcon.svg";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import EmptyHeartIcon from "../../../../css/icon/HeartIcon.svg";
+import FullHeartIcon from "../../../../css/icon/FullHeart.svg";
 
-function HeartBtn() {
+const Wrapper = styled.span``;
+
+function HeartBtn({ likeNumber, empty, onHeart }) {
   return (
-    <>
-      <HeartIcon />
-      <span>11</span>
-    </>
+    <Wrapper onClick={onHeart}>
+      <img src={empty ? EmptyHeartIcon : FullHeartIcon} alt="img" />
+      <span>{likeNumber}</span>
+    </Wrapper>
   );
 }
+HeartBtn.propTypes = {
+  empty: PropTypes.bool,
+  likeNumber: PropTypes.number,
+  onHeart: PropTypes.func,
+};
+
 export default HeartBtn;

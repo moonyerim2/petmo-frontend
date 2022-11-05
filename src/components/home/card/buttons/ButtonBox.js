@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import HeartBtn from "./HeartBtn.js";
 import BookmarkBtn from "./BookmarkBtn.js";
@@ -42,11 +42,25 @@ const Collumn_watched = styled.div`
 `;
 
 function ButtonBox() {
+  const [makeEmpty, setMakeEmpty] = useState(true);
+  const [likeNumber, setLikeNumber] = useState(0);
+  const handleHeart = () => {
+    if (makeEmpty) {
+      setLikeNumber(likeNumber + 1);
+    } else {
+      setLikeNumber(likeNumber - 1);
+    }
+    setMakeEmpty(!makeEmpty);
+  };
   return (
     <Wrapper>
       <Column_buttons>
         <Button>
-          <HeartBtn />
+          <HeartBtn
+            empty={makeEmpty}
+            likeNumber={likeNumber}
+            onHeart={handleHeart}
+          />
         </Button>
         <Button>
           <BookmarkBtn />
@@ -61,4 +75,5 @@ function ButtonBox() {
     </Wrapper>
   );
 }
+
 export default ButtonBox;
