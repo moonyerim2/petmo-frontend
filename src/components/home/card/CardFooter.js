@@ -1,24 +1,23 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import HeartBtn from "./HeartBtn.js";
-import BookmarkBtn from "./BookmarkBtn.js";
-import CommentBtn from "./CommentBtn.js";
-import Watched from "./Watched.js";
+import HeartBtn from "./buttons/HeartBtn.js";
+import BookmarkBtn from "./buttons/BookmarkBtn.js";
+import CommentBtn from "./buttons/CommentBtn.js";
+import Watched from "./buttons/Watched.js";
 import PropTypes from "prop-types";
 
 const Wrapper = styled.div`
   box-sizing: border-box;
-  background-color: white;
   border-top: 1px solid rgba(241, 241, 245, 1);
   width: 100%;
   height: 40px;
-  display: flex;
   position: absolute;
   bottom: 0px;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 10px;
-  padding-left: 10px;
+  padding-right: 20px;
+  padding-left: 12px;
 `;
 const Column_buttons = styled.div`
   display: flex;
@@ -28,11 +27,11 @@ const Button = styled.button`
   font-family: Pretendard;
   font-weight: Regular;
   font-size: 14px;
-  width: 42px;
   opacity: 1;
   border: none;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 `;
 const Collumn_watched = styled.div`
   color: #9a9a9a;
@@ -42,7 +41,7 @@ const Collumn_watched = styled.div`
   opacity: 1;
 `;
 
-function ButtonBox({
+function CardFooter({
   likeNumberProps,
   bookmarkNumberProps,
   commentNumberProps,
@@ -91,17 +90,17 @@ function ButtonBox({
           <CommentBtn commentNumber={commentNumberProps} />
         </Button>
       </Column_buttons>
+
       <Collumn_watched>
         <Watched />
       </Collumn_watched>
     </Wrapper>
   );
 }
-
-ButtonBox.propTypes = {
+CardFooter.propTypes = {
   likeNumberProps: PropTypes.number,
   bookmarkNumberProps: PropTypes.number,
   commentNumberProps: PropTypes.number,
 };
 
-export default ButtonBox;
+export default CardFooter;

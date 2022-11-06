@@ -4,11 +4,18 @@ import PropTypes from "prop-types";
 import EmptyBookmarkIcon from "../../../../css/icon/EmptyBookmarkIcon.svg";
 import FullBookmarkIcon from "../../../../css/icon/FullBookmarkIcon.svg";
 
-const Wrapper = styled.span``;
+const Wrapper = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const Icon = styled.img`
+  margin-right: 2px;
+`;
 function BookmarkBtn({ bookmarkNumber, bookmarkEmpty, onBookmark }) {
   return (
     <Wrapper onClick={onBookmark}>
-      <img
+      <Icon
         src={bookmarkEmpty ? EmptyBookmarkIcon : FullBookmarkIcon}
         alt="img"
       />

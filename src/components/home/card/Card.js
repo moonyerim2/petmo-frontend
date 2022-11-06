@@ -1,18 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import Profile from "./Profile";
+import CardHeader from "./CardHeader";
 import Content from "./Content";
-import ButtonBox from "./buttons/ButtonBox";
+import CardFooter from "./CardFooter";
 import PropTypes from "prop-types";
 
 const Wrapper = styled.div`
   box-sizing: border-box;
   background-color: white;
   width: 100%;
-  height: 300px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   position: relative;
+  margin-bottom: 8px;
 `;
 
 function Card({
@@ -25,9 +26,9 @@ function Card({
 }) {
   return (
     <Wrapper>
-      <Profile author={author} village={village} />
+      <CardHeader author={author} village={village} />
       <Content content={content} />
-      <ButtonBox
+      <CardFooter
         likeNumberProps={likeNumber}
         bookmarkNumberProps={bookmarkNumber}
         commentNumberProps={commentNumber}
