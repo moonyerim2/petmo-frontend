@@ -23,6 +23,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    background-color: ${({ theme: { colors } }) => colors.white};
     font-family: Pretendard,-apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif;
   }
 

@@ -18,7 +18,8 @@ const lineHeight = {
 };
 
 const colorsPalette = {
-  black: "#111111",
+  black: "#111",
+  white: "#fff",
   gray50: "#F7F7FB",
   gray100: "#F1F1F5",
   gray200: "#F0F0F6",
