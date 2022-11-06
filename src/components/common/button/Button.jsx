@@ -1,14 +1,11 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import PropTypes from "prop-types";
+import { setStyledComponent } from "../../../styled";
 
 const StyledButton = styled.button`
   ${({ theme, style }) => {
-    if (style !== undefined) {
-      return css`
-        ${{ ...style(theme) }}
-      `;
-    }
+    return setStyledComponent({ theme, style });
   }}
 `;
 

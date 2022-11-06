@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { HeaderTitle } from "../../../styled";
 
 function CommonHeader({ leftButton, pageTitle, rightButton }) {
   return (
     <Wrapper>
       <LeftButton>{leftButton}</LeftButton>
-      <Title>{pageTitle}</Title>
+      <HeaderTitle>{pageTitle}</HeaderTitle>
       <RightButton>{rightButton}</RightButton>
     </Wrapper>
   );
@@ -20,10 +21,6 @@ const Wrapper = styled.div`
   height: 56px;
 `;
 
-const Title = styled.span`
-  margin: 0 auto;
-`;
-
 const LeftButton = styled.span`
   position: absolute;
 `;
@@ -35,7 +32,7 @@ const RightButton = styled.span`
 
 CommonHeader.propTypes = {
   leftButton: PropTypes.node,
-  pageTitle: PropTypes.node,
+  pageTitle: PropTypes.string,
   rightButton: PropTypes.node,
 };
 

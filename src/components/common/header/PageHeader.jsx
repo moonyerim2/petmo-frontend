@@ -6,7 +6,7 @@ import { GoBackButton } from "../../common";
 function PageHeader({ pageTitle, rightButton }) {
   const headerComponents = {
     leftButton: <GoBackButton /> || null,
-    pageTitle: <h1>{pageTitle}</h1>,
+    pageTitle: pageTitle,
     rightButton: rightButton || null,
   };
 

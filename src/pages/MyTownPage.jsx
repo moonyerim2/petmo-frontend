@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { PageHeader, Button } from "../components";
+import { SubTitle } from "../styled";
 import { setUpTownButtonProps } from "../constants";
 
-const mytownDescription = `지역은 1개 설정할 수 있어요.\n동네설정은 시/군/구 단위로 설정하지만 구 단위로\n동네소식을 볼 수 있어요.`;
+const mytownDescription = "지역은 1개 설정할 수 있어요.";
 
 const setUpTownButtonStyle = ({ colors, common, borderRadius }) => {
   return {
@@ -20,7 +21,7 @@ function MyTownPage() {
   return (
     <>
       <PageHeader pageTitle="내 동네 설정하기" />
-      <h2>동네 선택</h2>
+      <SubTitle>동네 선택</SubTitle>
       <Description>{mytownDescription}</Description>
       <Button {...setUpTownButtonProps} style={setUpTownButtonStyle} />
     </>
