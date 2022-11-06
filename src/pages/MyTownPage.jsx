@@ -1,16 +1,31 @@
-import React from "react";
-import { PageHeader } from "../components";
-import { SubTitle, Wrapper } from "../styled";
-import SetUpTownButton from "../components/mytown/SetUpTownButton";
-import Description from "../components/mytown/Description";
+import React, { useState } from "react";
+import {
+  AddressSearchOpenButton,
+  PageHeader,
+  SearchTown,
+  Description,
+} from "../components";
+import { SubTitle1, Wrapper } from "../styled";
 
 function MyTownPage() {
+  const [isSearchMode, setIsSearchMode] = useState(false);
+
+  const onClickSetUpTownButton = () => {
+    setIsSearchMode(true);
+  };
+
   return (
     <Wrapper>
-      <PageHeader pageTitle="내 동네 설정하기" />
-      <SubTitle>동네 선택</SubTitle>
-      <Description />
-      <SetUpTownButton />
+      {isSearchMode ? (
+        <SearchTown />
+      ) : (
+        <>
+          <PageHeader pageTitle="내 동네 설정하기" />
+          <SubTitle1>동네 선택</SubTitle1>
+          <Description />
+          <AddressSearchOpenButton onClick={onClickSetUpTownButton} />
+        </>
+      )}
     </Wrapper>
   );
 }

@@ -1,15 +1,17 @@
 export const addressSearchOpenButtonProps = {
   type: "button",
-  name: "setUpTown",
+  name: "addressSearchOpen",
   text: "동네 입력하기",
   img: { src: "/img/plus.svg", alt: "동네 추가" },
+  imgLocation: "right",
   isDisabled: false,
 };
 
-export const FindByCurrentLocationButtonProps = {
+export const findCurrentLocationButtonProps = {
   type: "submit",
-  name: "submit",
+  name: "findCurrentLocation",
   text: "현재 위치로 찾기",
-  img: { src: "/img/plus.svg", alt: "위치" },
+  img: { src: "/img/location.svg", alt: "위치" },
+  imgLocation: "left",
   isDisabled: false,
 };

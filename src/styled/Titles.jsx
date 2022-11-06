@@ -10,12 +10,22 @@ export const HeaderTitle = styled.h1`
   `}
 `;
 
-export const SubTitle = styled.h2`
+export const SubTitle1 = styled.h2`
   ${({ theme: { fontSizes } }) => css`
     ${{
       padding: "24px 0 4px 0",
       fontSize: fontSizes.subtitle2,
       fontWeight: "500",
+    }}
+  `}
+`;
+
+export const SubTitle2 = styled.h2`
+  ${({ theme: { fontSizes } }) => css`
+    ${{
+      paddingBottom: "8px",
+      fontSize: fontSizes.caption,
+      fontWeight: "700",
     }}
   `}
 `;
