@@ -30,6 +30,10 @@ const GlobalStyle = createGlobalStyle`
   ol, ul {
     list-style: none;
   }
+
+  button {
+    background-color: transparent;
+  }
 `;
 
 export default GlobalStyle;

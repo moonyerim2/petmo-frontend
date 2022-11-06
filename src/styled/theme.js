@@ -71,20 +71,25 @@ const colors = (() => {
 })();
 
 const borderRadius = {
-  1: pixelToRem(8),
-  2: pixelToRem(200),
+  small: pixelToRem(8),
+  big: pixelToRem(200),
 };
 
 const common = {
-  flexCenter: `
-    display: flex;
-    justify-contents: center;
-    align-items: center;
-  `,
-  buttonSize: `
-    width: 320px;
-    height: 56px;
-  `,
+  flexCenter: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  flex_aCenter_jBetween: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  buttonSize: {
+    width: "320px",
+    height: "56px",
+  },
 };
 
 const theme = {
