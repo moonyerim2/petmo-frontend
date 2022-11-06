@@ -1,16 +1,16 @@
 const pixelToRem = (size) => `${size / 16}rem`;
 
 const fontSizes = {
-  10: pixelToRem(44),
-  9: pixelToRem(36),
-  8: pixelToRem(32),
-  7: pixelToRem(28),
-  6: pixelToRem(24),
-  5: pixelToRem(20),
-  4: pixelToRem(18),
-  3: pixelToRem(16),
-  2: pixelToRem(14),
-  1: pixelToRem(12),
+  h1: pixelToRem(44),
+  h2: pixelToRem(36),
+  h3: pixelToRem(32),
+  h4: pixelToRem(28),
+  h5: pixelToRem(24),
+  subtitle1: pixelToRem(20),
+  subtitle2: pixelToRem(18),
+  body1: pixelToRem(16),
+  body2: pixelToRem(14),
+  caption: pixelToRem(12),
 };
 
 const lineHeight = {
@@ -81,8 +81,8 @@ const common = {
     align-items: center;
   `,
   buttonSize: `
-  width: 320px;
-  height: 56px;
+    width: 320px;
+    height: 56px;
   `,
 };
 
