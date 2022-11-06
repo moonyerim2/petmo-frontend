@@ -13,18 +13,17 @@ const Icon = styled.img`
   margin-right: 2px;
 `;
 
-function HeartBtn({ likeNumber, heartEmpty, onHeart }) {
+function HeartBtn({ likeNumber, myLike }) {
   return (
-    <Wrapper onClick={onHeart}>
-      <Icon src={heartEmpty ? EmptyHeartIcon : FullHeartIcon} alt="img" />
+    <Wrapper>
+      <Icon src={myLike ? EmptyHeartIcon : FullHeartIcon} alt="img" />
       <span>{likeNumber}</span>
     </Wrapper>
   );
 }
 HeartBtn.propTypes = {
-  heartEmpty: PropTypes.bool,
+  myLike: PropTypes.bool,
   likeNumber: PropTypes.number,
-  onHeart: PropTypes.func,
 };
 
 export default HeartBtn;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import HeartBtn from "./buttons/HeartBtn.js";
 import BookmarkBtn from "./buttons/BookmarkBtn.js";
@@ -45,45 +45,19 @@ function CardFooter({
   likeNumberProps,
   bookmarkNumberProps,
   commentNumberProps,
+  myLike,
+  myBookmark,
 }) {
-  //HeartBtn 관련//
-  const [heartEmpty, setHeartEmpty] = useState(true);
-  const [likeNumber, setLikeNumber] = useState({ likeNumberProps });
-  const handleHeart = () => {
-    if (heartEmpty) {
-      setLikeNumber(likeNumber + 1);
-    } else {
-      setLikeNumber(likeNumber - 1);
-    }
-    setHeartEmpty(!heartEmpty);
-  };
-  //BookmarkBtn 관련//
-  const [bookmarkEmpty, setBookmarkEmpty] = useState(true);
-  const [bookmarkNumber, setBookmarkNumber] = useState({ bookmarkNumberProps });
-  const handleBookmark = () => {
-    if (bookmarkEmpty) {
-      setBookmarkNumber(bookmarkNumber + 1);
-    } else {
-      setBookmarkNumber(bookmarkNumber - 1);
-    }
-    setBookmarkEmpty(!bookmarkEmpty);
-  };
-
   return (
     <Wrapper>
       <Column_buttons>
         <Button>
-          <HeartBtn
-            heartEmptyProps={heartEmpty}
-            likeNumber={likeNumberProps}
-            onHeart={handleHeart}
-          />
+          <HeartBtn myLike={myLike} likeNumber={likeNumberProps} />
         </Button>
         <Button>
           <BookmarkBtn
-            bookmarkEmpty={bookmarkEmpty}
+            myBookmark={myBookmark}
             bookmarkNumber={bookmarkNumberProps}
-            onBookmark={handleBookmark}
           />
         </Button>
         <Button>
@@ -101,6 +75,8 @@ CardFooter.propTypes = {
   likeNumberProps: PropTypes.number,
   bookmarkNumberProps: PropTypes.number,
   commentNumberProps: PropTypes.number,
+  myLike: PropTypes.bool,
+  myBookmark: PropTypes.bool,
 };
 
 export default CardFooter;

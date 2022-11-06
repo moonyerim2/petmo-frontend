@@ -20,24 +20,27 @@ const Photo = styled.span`
   height: 36px;
   border-radius: 50%;
   background-color: black;
-  margin: 7px;
+  margin: 8px;
 `;
 const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
 `;
 const UserName = styled.span`
   font-family: Pretendard;
-  font-weight: Medium;
   font-size: 12px;
-  padding: 2px;
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 140%;
 `;
 const UserInfo = styled.span`
   font-family: Pretendard;
   font-weight: Regular;
   font-size: 12px;
   color: rgba(118, 118, 118, 1);
-  padding: 2px;
 `;
 const CardHeaderTags = styled.div`
   padding-right: 20px;
@@ -82,14 +85,16 @@ const AnimalTag = styled.span`
   margin: 2px;
 `;
 
-function CardHeader({ author, village }) {
+function CardHeader({ author, village, time }) {
   return (
     <Header>
       <CardHeaderInfo>
         <Photo></Photo>
         <InfoBox>
           <UserName>{author}</UserName>
-          <UserInfo>{village}</UserInfo>
+          <UserInfo>
+            {village} · {time}
+          </UserInfo>
         </InfoBox>
       </CardHeaderInfo>
       <CardHeaderTags>
@@ -102,6 +107,7 @@ function CardHeader({ author, village }) {
 export default CardHeader;
 
 CardHeader.propTypes = {
-  author: PropTypes.string,
-  village: PropTypes.string,
+  author: PropTypes.node,
+  village: PropTypes.node,
+  time: PropTypes.node,
 };

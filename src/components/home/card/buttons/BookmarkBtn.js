@@ -12,21 +12,17 @@ const Wrapper = styled.span`
 const Icon = styled.img`
   margin-right: 2px;
 `;
-function BookmarkBtn({ bookmarkNumber, bookmarkEmpty, onBookmark }) {
+function BookmarkBtn({ bookmarkNumber, myBookmark }) {
   return (
-    <Wrapper onClick={onBookmark}>
-      <Icon
-        src={bookmarkEmpty ? EmptyBookmarkIcon : FullBookmarkIcon}
-        alt="img"
-      />
+    <Wrapper>
+      <Icon src={myBookmark ? EmptyBookmarkIcon : FullBookmarkIcon} alt="img" />
       <span>{bookmarkNumber}</span>
     </Wrapper>
   );
 }
 BookmarkBtn.propTypes = {
-  bookmarkEmpty: PropTypes.bool,
+  myBookmark: PropTypes.bool,
   bookmarkNumber: PropTypes.number,
-  onBookmark: PropTypes.func,
 };
 
 export default BookmarkBtn;

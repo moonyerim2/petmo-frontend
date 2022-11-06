@@ -19,16 +19,21 @@ const Wrapper = styled.div`
 function Card({
   author,
   village,
+  time,
   content,
   likeNumber,
   bookmarkNumber,
   commentNumber,
+  myLike,
+  myBookmark,
 }) {
   return (
     <Wrapper>
-      <CardHeader author={author} village={village} />
+      <CardHeader author={author} village={village} time={time} />
       <Content content={content} />
       <CardFooter
+        myLike={myLike}
+        myBookmark={myBookmark}
         likeNumberProps={likeNumber}
         bookmarkNumberProps={bookmarkNumber}
         commentNumberProps={commentNumber}
@@ -39,10 +44,13 @@ function Card({
 Card.propTypes = {
   author: PropTypes.node,
   village: PropTypes.node,
+  time: PropTypes.node,
   content: PropTypes.node,
   likeNumber: PropTypes.number,
   bookmarkNumber: PropTypes.number,
   commentNumber: PropTypes.number,
+  myLike: PropTypes.bool,
+  myBookmark: PropTypes.bool,
 };
 
 export default Card;
