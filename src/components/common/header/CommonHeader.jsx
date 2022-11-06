@@ -17,7 +17,6 @@ const Wrapper = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  padding: 0 20px;
   height: 56px;
 `;
 
@@ -27,7 +26,7 @@ const LeftButton = styled.span`
 
 const RightButton = styled.span`
   position: absolute;
-  right: 20px;
+  right: 0;
 `;
 
 CommonHeader.propTypes = {

@@ -4,13 +4,19 @@ const GlobalStyle = createGlobalStyle`
   @font-face {
       font-family: 'Pretendard';
       src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-      font-weight: regular;
+      font-weight: 400;
+  }
+
+  @font-face {
+      font-family: 'Pretendard';
+      src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff') format('woff');
+      font-weight: 500;
   }
 
   @font-face {
       font-family: 'Pretendard';
       src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
-      font-weight: bold;
+      font-weight: 700;
   }
 
   *, *::before, *::after {
@@ -24,7 +30,9 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     background-color: ${({ theme: { colors } }) => colors.white};
+    color: ${({ theme: { colors } }) => colors.black};
     font-family: Pretendard,-apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif;
+    font-weight: 400;
   }
 
   ol, ul {
@@ -33,6 +41,10 @@ const GlobalStyle = createGlobalStyle`
 
   button {
     background-color: transparent;
+  }
+
+  h1,h2,h3,h4,h5,h6 {
+    font-weight: 400;
   }
 `;
 

@@ -13,8 +13,9 @@ const fontSizes = {
   caption: pixelToRem(12),
 };
 
-const lineHeight = {
-  1: "150%",
+const lineHeights = {
+  150: "150%",
+  140: "140%",
 };
 
 const colorsPalette = {
@@ -94,7 +95,7 @@ const common = {
 
 const theme = {
   fontSizes,
-  lineHeight,
+  lineHeights,
   borderRadius,
   colors,
   common,
