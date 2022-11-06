@@ -4,6 +4,7 @@ import HeartBtn from "./HeartBtn.js";
 import BookmarkBtn from "./BookmarkBtn.js";
 import CommentBtn from "./CommentBtn.js";
 import Watched from "./Watched.js";
+import PropTypes from "prop-types";
 
 const Wrapper = styled.div`
   box-sizing: border-box;
@@ -41,10 +42,14 @@ const Collumn_watched = styled.div`
   opacity: 1;
 `;
 
-function ButtonBox() {
+function ButtonBox({
+  likeNumberProps,
+  bookmarkNumberProps,
+  commentNumberProps,
+}) {
   //HeartBtn 관련//
   const [heartEmpty, setHeartEmpty] = useState(true);
-  const [likeNumber, setLikeNumber] = useState(0);
+  const [likeNumber, setLikeNumber] = useState({ likeNumberProps });
   const handleHeart = () => {
     if (heartEmpty) {
       setLikeNumber(likeNumber + 1);
@@ -55,7 +60,7 @@ function ButtonBox() {
   };
   //BookmarkBtn 관련//
   const [bookmarkEmpty, setBookmarkEmpty] = useState(true);
-  const [bookmarkNumber, setBookmarkNumber] = useState(0);
+  const [bookmarkNumber, setBookmarkNumber] = useState({ bookmarkNumberProps });
   const handleBookmark = () => {
     if (bookmarkEmpty) {
       setBookmarkNumber(bookmarkNumber + 1);
@@ -70,20 +75,20 @@ function ButtonBox() {
       <Column_buttons>
         <Button>
           <HeartBtn
-            heartEmpty={heartEmpty}
-            likeNumber={likeNumber}
+            heartEmptyProps={heartEmpty}
+            likeNumber={likeNumberProps}
             onHeart={handleHeart}
           />
         </Button>
         <Button>
           <BookmarkBtn
             bookmarkEmpty={bookmarkEmpty}
-            bookmarkNumber={bookmarkNumber}
+            bookmarkNumber={bookmarkNumberProps}
             onBookmark={handleBookmark}
           />
         </Button>
         <Button>
-          <CommentBtn />
+          <CommentBtn commentNumber={commentNumberProps} />
         </Button>
       </Column_buttons>
       <Collumn_watched>
@@ -92,5 +97,11 @@ function ButtonBox() {
     </Wrapper>
   );
 }
+
+ButtonBox.propTypes = {
+  likeNumberProps: PropTypes.number,
+  bookmarkNumberProps: PropTypes.number,
+  commentNumberProps: PropTypes.number,
+};
 
 export default ButtonBox;

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const Wrapper = styled.div`
   box-sizing: border-box;
@@ -36,15 +37,20 @@ const UserInfo = styled.span`
   padding: 2px;
 `;
 
-function Profile() {
+function Profile({ author, village }) {
   return (
     <Wrapper>
       <Photo></Photo>
       <InfoBox>
-        <UserName>userName</UserName>
-        <UserInfo>village</UserInfo>
+        <UserName>{author}</UserName>
+        <UserInfo>{village}</UserInfo>
       </InfoBox>
     </Wrapper>
   );
 }
 export default Profile;
+
+Profile.propTypes = {
+  author: PropTypes.string,
+  village: PropTypes.string,
+};
