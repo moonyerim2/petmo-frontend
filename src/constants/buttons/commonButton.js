@@ -1,17 +1,3 @@
-export const loginButtonProps = {
-  type: "submit",
-  name: "login",
-  text: "로그인",
-  isDisabled: false,
-};
-
-export const joinButtonProps = {
-  type: "submit",
-  name: "join",
-  text: "가입하기",
-  isDisabled: true,
-};
-
 export const goBackButtonProps = {
   type: "button",
   name: "back",
@@ -33,14 +19,6 @@ export const submitButtonProps = (text, isDisabled) => {
     text: text,
     isDisabled: isDisabled,
   };
-};
-
-export const setUpTownButtonProps = {
-  type: "submit",
-  name: "submit",
-  text: "동네 입력하기",
-  img: { src: "/img/plus.svg", alt: "동네 추가" },
-  isDisabled: false,
 };
 
 export const yesButtonProps = {
