@@ -12,7 +12,6 @@ const StyledButton = styled.button`
 const Text = styled.span`
   ${({ imgLocation }) =>
     imgLocation === "left" ? "margin-left" : "margin-right"}:4px;
-  font-weight: 700;
 `;
 
 function Button({
@@ -36,7 +35,7 @@ function Button({
       {img && imgLocation === "left" && (
         <img src={process.env.PUBLIC_URL + img.src} alt={img.alt} />
       )}
-      <Text imgLocation={imgLocation}>{text}</Text>
+      {text && <Text imgLocation={imgLocation}>{text}</Text>}
       {img && imgLocation === "right" && (
         <img src={process.env.PUBLIC_URL + img.src} alt={img.alt} />
       )}
