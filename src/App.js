@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useRecoilValue } from "recoil";
-import { authenticated } from "./store";
+import { useUser } from "./hooks";
 import {
   HomePage,
   LandingPage,
@@ -16,7 +15,7 @@ import {
 } from "./pages";
 
 function App() {
-  const isAuthenticated = useRecoilValue(authenticated);
+  const isAuthenticated = useUser();
 
   return (
     <BrowserRouter>

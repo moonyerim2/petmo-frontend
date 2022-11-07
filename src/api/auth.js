@@ -20,3 +20,13 @@ export const callJoinApi = async (payload) => {
     console.log(error);
   }
 };
+
+export const callGetUserApi = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}/user`);
+    if (response.status !== 200) throw new Error("Request faild");
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
