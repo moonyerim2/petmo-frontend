@@ -31,12 +31,13 @@ function LoginPage() {
     e.preventDefault();
     const errorMessage = validateLoginInput(loginInputs);
     setValidationMessage(errorMessage);
+
     if (!errorMessage) {
-      const status = await callLoginApi(loginInputs);
-      if (status === 200) {
-        setIsAuthenticated(true);
-      } else {
+      const data = await callLoginApi(loginInputs);
+      if (Object.prototype.hasOwnProperty.call(data, "message")) {
         setValidationMessage(validateErrorMessage.loginFailed);
+      } else {
+        setIsAuthenticated(true);
       }
     }
   };
