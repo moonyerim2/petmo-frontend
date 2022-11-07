@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
-import { callGetMytownApi } from "../api/mytown";
+import { useRecoilValue } from "recoil";
 import {
   AddressSearchOpenButton,
   PageHeader,
@@ -8,18 +7,12 @@ import {
   Description,
   Address,
 } from "../components";
+import { user } from "../store";
 import { SubTitle1, Wrapper } from "../styled";
 
 function MyTownPage() {
   const [isSearchMode, setIsSearchMode] = useState(false);
-  const [mytown, setMytown] = useState("");
-
-  useEffect(() => {
-    (async () => {
-      const data = await callGetMytownApi();
-      setMytown(data.town);
-    })();
-  }, [mytown]);
+  const { town } = useRecoilValue(user);
 
   const onClickSetUpTownButton = () => {
     setIsSearchMode(true);
@@ -34,8 +27,8 @@ function MyTownPage() {
           <PageHeader pageTitle="내 동네 설정하기" />
           <SubTitle1>동네 선택</SubTitle1>
           <Description />
-          {mytown ? (
-            <Address town={mytown} />
+          {town ? (
+            <Address town={town} />
           ) : (
             <AddressSearchOpenButton onClick={onClickSetUpTownButton} />
           )}
