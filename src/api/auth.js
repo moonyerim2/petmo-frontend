@@ -1,6 +1,5 @@
 import axios from "axios";
-
-const BASE_URL = "http://api.server.com";
+import { BASE_URL } from "../constants";
 
 export const callLoginApi = async (payload) => {
   try {

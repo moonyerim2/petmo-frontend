@@ -12,4 +12,8 @@ export const handlers = [
     console.log(req);
     return res(ctx.status(201));
   }),
+
+  rest.get(`${BASE_URL}/mytown`, (_, res, ctx) => {
+    return res(ctx.json({ town: "시흥시" }));
+  }),
 ];
