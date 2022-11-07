@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import DeleteButton from "../common/button/DeleteButton";
+import DeleteButton from "./DeleteButton";
 import styled, { css } from "styled-components";
 
 const Wrapper = styled.div`
