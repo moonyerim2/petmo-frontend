@@ -14,13 +14,12 @@ export const exitButtonProps = {
   isDisabled: false,
 };
 
-export const submitButtonProps = (text, isDisabled) => {
-  return {
-    type: "submit",
-    name: "submit",
-    text: text,
-    isDisabled: isDisabled,
-  };
+export const deleteButtonProps = {
+  type: "submit",
+  name: "delete",
+  img: { src: "/img/delete.svg", alt: "삭제" },
+  imgLocation: "left",
+  isDisabled: false,
 };
 
 export const yesButtonProps = {
