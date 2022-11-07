@@ -3,10 +3,15 @@ import PropTypes from "prop-types";
 import { Button } from "..";
 import { addressSearchOpenButtonProps } from "../../constants";
 
-const addressSearchOpenButtonStyle = ({ colors, common, borderRadius }) => {
+const addressSearchOpenButtonStyle = ({
+  colors,
+  layout,
+  size,
+  borderRadius,
+}) => {
   return {
-    ...common.flex_aCenter_jBetween,
-    ...common.buttonSize,
+    ...layout.flex_aCenter_jBetween,
+    ...size.bigButtonSize,
     padding: "16px 16px 16px 12px",
     border: `1px solid ${colors.gray400}`,
     borderRadius: borderRadius.small,

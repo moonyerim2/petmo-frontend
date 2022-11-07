@@ -1,6 +1,6 @@
 const pixelToRem = (size) => `${size / 16}rem`;
 
-const fontSizes = {
+export const fontSizes = {
   h1: pixelToRem(44),
   h2: pixelToRem(36),
   h3: pixelToRem(32),
@@ -13,7 +13,7 @@ const fontSizes = {
   caption: pixelToRem(12),
 };
 
-const lineHeights = {
+export const lineHeights = {
   150: "150%",
   140: "140%",
 };
@@ -52,7 +52,7 @@ const colorsPalette = {
   red: "#D32F2F",
 };
 
-const colors = (() => {
+export const colors = (() => {
   return {
     ...colorsPalette,
     main: colorsPalette.pink300,
@@ -71,34 +71,7 @@ const colors = (() => {
   };
 })();
 
-const borderRadius = {
+export const borderRadius = {
   small: pixelToRem(8),
   big: pixelToRem(200),
 };
-
-const common = {
-  flexCenter: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  flex_aCenter_jBetween: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  buttonSize: {
-    width: "320px",
-    height: "56px",
-  },
-};
-
-const theme = {
-  fontSizes,
-  lineHeights,
-  borderRadius,
-  colors,
-  common,
-};
-
-export default theme;
