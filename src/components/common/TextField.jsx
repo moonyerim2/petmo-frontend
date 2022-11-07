@@ -1,22 +1,39 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import styled, { css } from "styled-components";
+
+const StyledLabel = styled.label`
+  ${({ theme, isLabelHidden }) => css`
+    ${isLabelHidden ? { ...theme.a11yHidden } : null}
+  `}
+`;
+
+const StyledInput = styled.input`
+  ${({ theme, style }) => css`
+    ${{ ...style(theme) }}
+  `}
+`;
 
 function TextField({
   id,
   label,
+  isLabelHidden,
   text,
   type,
   name,
   placeholder,
   onChange,
   onBlur,
+  style,
 }) {
   const [input, setInput] = useState(text);
 
   return (
-    <label htmlFor={id}>
-      {label}
-      <input
+    <>
+      <StyledLabel isLabelHidden={isLabelHidden} htmlFor={id}>
+        {label}
+      </StyledLabel>
+      <StyledInput
         type={type}
         id={id}
         name={name}
@@ -27,14 +44,16 @@ function TextField({
           if (onBlur) onBlur(e);
         }}
         onChange={onChange}
+        style={style}
       />
-    </label>
+    </>
   );
 }
 
 TextField.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
+  isLabelHidden: PropTypes.bool,
   text: PropTypes.string,
   type: PropTypes.string,
   name: PropTypes.string,
@@ -43,6 +62,7 @@ TextField.propTypes = {
   setPageInputs: PropTypes.func,
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
+  style: PropTypes.func,
 };
 
 export default TextField;
