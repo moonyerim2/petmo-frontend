@@ -1,38 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { SubTitle2 } from "../../../styled";
 import FindCurrentLocationButton from "./FindCurrentLocationButton";
 import AddressList from "./AddressList";
 import AddressSearchBar from "./AddressSearchBar";
-import { useIp } from "../../../hooks";
-import { callSearchTownApi } from "../../../api";
+import { useSearchTown } from "../../../hooks";
 
 function SearchTown({ setIsSearchMode }) {
-  const ip = useIp();
-  const [searchResults, setSearchReasults] = useState([]);
-
-  const searchTown = async (payload, signal) => {
-    const data = await callSearchTownApi(payload, signal);
-    setSearchReasults(data);
-  };
-
-  useEffect(() => {
-    if (ip) {
-      searchTown({ ip });
-    }
-  }, [ip]);
+  const { subTitle, searchResults, ip, setSearchResults, searchTownByInput } =
+    useSearchTown();
 
   return (
     <>
       <AddressSearchBar
-        searchTown={searchTown}
+        searchTownByInput={searchTownByInput}
         setIsSearchMode={setIsSearchMode}
       />
-      <FindCurrentLocationButton
-        ip={ip}
-        setSearchReasults={setSearchReasults}
-      />
-      <SubTitle2>근처동네</SubTitle2>
+      <FindCurrentLocationButton ip={ip} setSearchReasults={setSearchResults} />
+      <SubTitle2>{subTitle}</SubTitle2>
       <AddressList
         searchResults={searchResults}
         setIsSearchMode={setIsSearchMode}

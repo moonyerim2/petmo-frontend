@@ -29,13 +29,13 @@ const closeSearchTownButtonStyle = () => {
   };
 };
 
-function AddressSearchBar({ searchTown, setIsSearchMode }) {
+function AddressSearchBar({ searchTownByInput, setIsSearchMode }) {
   const [userInput, setUserInput] = useState("");
 
   useDebouncedEffect(
     () => {
       const abortController = new AbortController();
-      searchTown({ input: userInput }, abortController.signal);
+      searchTownByInput(userInput, abortController.signal);
       return () => {
         abortController.abort();
       };
@@ -70,7 +70,7 @@ function AddressSearchBar({ searchTown, setIsSearchMode }) {
 
 AddressSearchBar.propTypes = {
   setIsSearchMode: PropTypes.func,
-  searchTown: PropTypes.func,
+  searchTownByInput: PropTypes.func,
 };
 
 export default AddressSearchBar;
