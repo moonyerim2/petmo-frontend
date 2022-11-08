@@ -1,24 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SubTitle2 } from "../../../styled";
 import FindCurrentLocationButton from "./FindCurrentLocationButton";
 import AddressList from "./AddressList";
 import AddressSearchBar from "./AddressSearchBar";
+import { useIp } from "../../../hooks";
+import { callSearchTownApi } from "../../../api";
 
 function SearchTown() {
-  const [searchResults, setSearchReasults] = useState([
-    { id: 1, town: "시흥시" },
-    { id: 2, town: "달서구" },
-    { id: 3, town: "남구" },
-    { id: 4, town: "서구" },
-    { id: 5, town: "동구" },
-    { id: 6, town: "송파구" },
-    { id: 7, town: "구로구" },
-  ]);
+  const ip = useIp();
+  const [searchResults, setSearchReasults] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      if (ip) {
+        const data = await callSearchTownApi({ ip });
+        setSearchReasults(data);
+      }
+    })();
+  }, [ip]);
 
   return (
     <>
       <AddressSearchBar setSearchReasults={setSearchReasults} />
-      <FindCurrentLocationButton setSearchReasults={setSearchReasults} />
+      <FindCurrentLocationButton
+        ip={ip}
+        setSearchReasults={setSearchReasults}
+      />
       <SubTitle2>근처동네</SubTitle2>
       <AddressList searchResults={searchResults} />
     </>

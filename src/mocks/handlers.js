@@ -4,12 +4,10 @@ const BASE_URL = "http://api.server.com";
 
 export const handlers = [
   rest.post(`${BASE_URL}/login`, (req, res, ctx) => {
-    console.log(req);
     return res(ctx.status(200), ctx.cookie("session", "abc-123"));
   }),
 
   rest.get(`${BASE_URL}/user`, (req, res, ctx) => {
-    console.log(req);
     return res(
       ctx.json({
         userId: 123,
@@ -22,12 +20,10 @@ export const handlers = [
   }),
 
   rest.post(`${BASE_URL}/join`, (req, res, ctx) => {
-    console.log(req);
     return res(ctx.status(201));
   }),
 
   rest.delete(`${BASE_URL}/delete-mytown/:userId`, (req, res, ctx) => {
-    console.log(req.params);
     return res(
       ctx.status(200),
       ctx.json({
@@ -38,5 +34,25 @@ export const handlers = [
         hasPet: null,
       })
     );
+  }),
+
+  rest.post(`${BASE_URL}/search-town`, async (req, res, ctx) => {
+    const body = await req.json();
+    if (Object.hasOwnProperty.call(body, "ip")) {
+      return res(
+        ctx.json([
+          { id: 1, town: "경기도 시흥시" },
+          { id: 2, town: "경기도 부천시" },
+        ])
+      );
+    } else {
+      return res(
+        ctx.json([
+          { id: 1, town: "대구광역시 남구" },
+          { id: 2, town: "대구광역시 달서구" },
+          { id: 3, town: "대구광역시 서구" },
+        ])
+      );
+    }
   }),
 ];
