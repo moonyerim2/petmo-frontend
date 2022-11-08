@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button } from "../../common";
 import { findCurrentLocationButtonProps } from "../../../constants";
-import { callSearchTownApi } from "../../../api";
 
 const findCurrentLocationButtonStyle = ({
   colors,
@@ -24,10 +23,9 @@ const findCurrentLocationButtonStyle = ({
   };
 };
 
-function FindCurrentLocationButton({ ip, setSearchReasults }) {
-  const onClick = async () => {
-    const data = await callSearchTownApi({ ip });
-    setSearchReasults(data);
+function FindCurrentLocationButton({ ip, searchTownByIp }) {
+  const onClick = () => {
+    searchTownByIp(ip);
   };
 
   return (
@@ -43,7 +41,7 @@ function FindCurrentLocationButton({ ip, setSearchReasults }) {
 
 FindCurrentLocationButton.propTypes = {
   ip: PropTypes.string,
-  setSearchReasults: PropTypes.func,
+  searchTownByIp: PropTypes.func,
 };
 
 export default FindCurrentLocationButton;

@@ -23,7 +23,7 @@ export const SubTitle1 = styled.h2`
 export const SubTitle2 = styled.h2`
   ${({ theme: { fontSizes } }) => css`
     ${{
-      paddingBottom: "20px",
+      paddingBottom: "8px",
       fontSize: fontSizes.caption,
       fontWeight: "700",
     }}

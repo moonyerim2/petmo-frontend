@@ -14,7 +14,11 @@ const useSearchTown = () => {
   };
 
   const searchTownByInput = async (input, signal) => {
-    if (input === "") return;
+    if (input === "") {
+      setSearchResults([]);
+      return;
+    }
+
     const data = await callSearchTownApi({ input }, signal);
     setSearchResults(data);
     setSubTitle(`${input} 검색결과`);
@@ -26,7 +30,7 @@ const useSearchTown = () => {
     }
   }, [ip]);
 
-  return { subTitle, searchResults, ip, setSearchResults, searchTownByInput };
+  return { subTitle, searchResults, ip, searchTownByIp, searchTownByInput };
 };
 
 export default useSearchTown;
