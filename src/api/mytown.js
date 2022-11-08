@@ -23,3 +23,12 @@ export const callDeleteMyTownApi = async () => {
     console.log(error);
   }
 };
+
+export const callRegisterMyTownApi = async (payload) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/register-mytown`, payload);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};

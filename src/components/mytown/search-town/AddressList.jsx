@@ -1,6 +1,9 @@
 import React from "react";
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
+import { useSetRecoilState } from "recoil";
+import { user } from "../../../store";
+import { callRegisterMyTownApi } from "../../../api";
 
 const AddressItem = styled.li`
   ${({ theme: { fontSizes, colors } }) =>
@@ -15,18 +18,29 @@ const AddressItem = styled.li`
     `}
 `;
 
-function AddressList({ searchResults }) {
+function AddressList({ searchResults, setIsSearchMode }) {
+  const setUser = useSetRecoilState(user);
+
+  const onClick = async ({ target }) => {
+    const data = await callRegisterMyTownApi({ town: target.innerText });
+    setUser(data);
+    setIsSearchMode(false);
+  };
+
   return (
     <ul>
       {searchResults.map(({ id, town }) => (
-        <AddressItem key={id}>{town}</AddressItem>
+        <AddressItem key={id} tabIndex={0} onClick={onClick}>
+          {town}
+        </AddressItem>
       ))}
     </ul>
   );
 }
 
-AddressList.prototypes = {
+AddressList.propTypes = {
   searchResults: PropTypes.array,
+  setIsSearchMode: PropTypes.func,
 };
 
 export default AddressList;

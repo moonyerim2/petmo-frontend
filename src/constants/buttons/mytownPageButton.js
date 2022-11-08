@@ -15,3 +15,11 @@ export const findCurrentLocationButtonProps = {
   imgLocation: "left",
   isDisabled: false,
 };
+
+export const closeSearchTownButtonProps = {
+  type: "button",
+  name: "claseSearchTown",
+  img: { src: "/img/back.svg", alt: "뒤로가기" },
+  imgLocation: "left",
+  isDisabled: false,
+};

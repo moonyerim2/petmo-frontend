@@ -33,7 +33,10 @@ function SearchTown({ setIsSearchMode }) {
         setSearchReasults={setSearchReasults}
       />
       <SubTitle2>근처동네</SubTitle2>
-      <AddressList searchResults={searchResults} />
+      <AddressList
+        searchResults={searchResults}
+        setIsSearchMode={setIsSearchMode}
+      />
     </>
   );
 }
