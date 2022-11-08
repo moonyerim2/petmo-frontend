@@ -1,4 +1,5 @@
 import React from "react";
+import { PropTypes } from "prop-types";
 import styled, { css } from "styled-components";
 
 const AddressItem = styled.li`
@@ -14,16 +15,18 @@ const AddressItem = styled.li`
     `}
 `;
 
-function AddressList() {
+function AddressList({ searchResults }) {
   return (
     <ul>
-      <AddressItem>경기도 시흥시</AddressItem>
-      <AddressItem>경기도 시흥시</AddressItem>
-      <AddressItem>경기도 시흥시</AddressItem>
-      <AddressItem>경기도 시흥시</AddressItem>
-      <AddressItem>경기도 시흥시</AddressItem>
+      {searchResults.map(({ id, town }) => (
+        <AddressItem key={id}>{town}</AddressItem>
+      ))}
     </ul>
   );
 }
+
+AddressList.prototypes = {
+  searchResults: PropTypes.array,
+};
 
 export default AddressList;
