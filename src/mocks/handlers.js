@@ -45,7 +45,7 @@ export const handlers = [
           { id: 2, town: "경기도 부천시" },
         ])
       );
-    } else {
+    } else if (Object.hasOwnProperty.call(body, "input")) {
       return res(
         ctx.json([
           { id: 1, town: "대구광역시 남구" },

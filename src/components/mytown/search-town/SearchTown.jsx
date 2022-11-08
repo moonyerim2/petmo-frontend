@@ -10,18 +10,20 @@ function SearchTown() {
   const ip = useIp();
   const [searchResults, setSearchReasults] = useState([]);
 
+  const searchTown = async (payload, signal) => {
+    const data = await callSearchTownApi(payload, signal);
+    setSearchReasults(data);
+  };
+
   useEffect(() => {
-    (async () => {
-      if (ip) {
-        const data = await callSearchTownApi({ ip });
-        setSearchReasults(data);
-      }
-    })();
+    if (ip) {
+      searchTown({ ip });
+    }
   }, [ip]);
 
   return (
     <>
-      <AddressSearchBar setSearchReasults={setSearchReasults} />
+      <AddressSearchBar searchTown={searchTown} />
       <FindCurrentLocationButton
         ip={ip}
         setSearchReasults={setSearchReasults}
