@@ -10,9 +10,9 @@ export const callSearchTownApi = async (payload) => {
   }
 };
 
-export const callDeleteMyTownApi = async (params) => {
+export const callDeleteMyTownApi = async () => {
   try {
-    const response = await axios.delete(`${BASE_URL}/delete-mytown/${params}`);
+    const response = await axios.delete(`${BASE_URL}/delete-mytown`);
     return response.data;
   } catch (error) {
     console.log(error);
