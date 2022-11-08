@@ -17,8 +17,8 @@ const StyledLabel = styled.label`
 `;
 
 const StyledInput = styled.input`
-  ${({ theme, inputStyle }) => css`
-    ${inputStyle instanceof Function && { ...inputStyle(theme) }}
+  ${({ theme, inputStyle, isFocus }) => css`
+    ${inputStyle instanceof Function && { ...inputStyle(theme, isFocus) }}
   `}
 `;
 
@@ -32,10 +32,12 @@ function TextField({
   placeholder,
   onChange,
   onBlur,
+  onFocus,
   labelStyle,
   inputStyle,
 }) {
   const [input, setInput] = useState(text);
+  const [isFocus, setIsFocus] = useState(false);
 
   return (
     <>
@@ -52,8 +54,14 @@ function TextField({
         name={name}
         defaultValue={input}
         placeholder={placeholder}
+        isFocus={isFocus}
+        onFocus={(e) => {
+          setIsFocus(true);
+          if (onFocus) onFocus(e);
+        }}
         onBlur={(e) => {
           setInput(e.target.value);
+          setIsFocus(false);
           if (onBlur) onBlur(e);
         }}
         onChange={onChange}
@@ -75,6 +83,7 @@ TextField.propTypes = {
   setPageInputs: PropTypes.func,
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
+  onFocus: PropTypes.func,
   labelStyle: PropTypes.func,
   inputStyle: PropTypes.func,
 };
