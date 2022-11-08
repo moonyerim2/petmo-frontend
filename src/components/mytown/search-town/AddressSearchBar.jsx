@@ -61,7 +61,7 @@ function AddressSearchBar({ searchTownByInput, setIsSearchMode }) {
       />
       <TextField
         {...addressSearchFieldProps}
-        style={addressSearchFieldStyle}
+        inputStyle={addressSearchFieldStyle}
         onChange={onChange}
       />
     </Wrapper>
