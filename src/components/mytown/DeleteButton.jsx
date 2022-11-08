@@ -15,7 +15,7 @@ const deleteButtonStyle = () => {
 function DeleteButton() {
   const [{ userId }, setUser] = useRecoilState(user);
 
-  const onClick = async () => {
+  const onClick = () => {
     const data = callDeleteMyTownApi(userId);
     setUser(data);
   };

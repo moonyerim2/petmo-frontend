@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { TextField, GoBackButton } from "../../common";
-import { addressSearchFieldProps } from "../../../constants";
 import { useDebouncedEffect } from "../../../hooks";
+import { Button, TextField } from "../../common";
+import {
+  addressSearchFieldProps,
+  closeSearchTownButtonProps,
+} from "../../../constants";
 
 const Wrapper = styled.div`
   ${({ theme }) => css`
@@ -19,7 +22,14 @@ const addressSearchFieldStyle = () => {
   };
 };
 
-function AddressSearchBar({ searchTown }) {
+const closeSearchTownButtonStyle = () => {
+  return {
+    width: "24px",
+    height: "24px",
+  };
+};
+
+function AddressSearchBar({ searchTown, setIsSearchMode }) {
   const [userInput, setUserInput] = useState("");
 
   useDebouncedEffect(
@@ -38,9 +48,17 @@ function AddressSearchBar({ searchTown }) {
     setUserInput(target.value);
   };
 
+  const onClick = () => {
+    setIsSearchMode(false);
+  };
+
   return (
     <Wrapper>
-      <GoBackButton />
+      <Button
+        {...closeSearchTownButtonProps}
+        onClick={onClick}
+        style={closeSearchTownButtonStyle}
+      />
       <TextField
         {...addressSearchFieldProps}
         style={addressSearchFieldStyle}
@@ -51,7 +69,7 @@ function AddressSearchBar({ searchTown }) {
 }
 
 AddressSearchBar.propTypes = {
-  searchResults: PropTypes.array,
+  setIsSearchMode: PropTypes.func,
   searchTown: PropTypes.func,
 };
 

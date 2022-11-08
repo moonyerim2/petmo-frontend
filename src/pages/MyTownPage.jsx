@@ -14,14 +14,14 @@ function MyTownPage() {
   const [isSearchMode, setIsSearchMode] = useState(false);
   const { town } = useRecoilValue(user);
 
-  const onClickSetUpTownButton = () => {
+  const onClickRegisterTownButton = () => {
     setIsSearchMode(true);
   };
 
   return (
     <Wrapper>
       {isSearchMode ? (
-        <SearchTown />
+        <SearchTown setIsSearchMode={setIsSearchMode} />
       ) : (
         <>
           <PageHeader pageTitle="내 동네 설정하기" />
@@ -30,7 +30,7 @@ function MyTownPage() {
           {town ? (
             <Address town={town} />
           ) : (
-            <AddressSearchOpenButton onClick={onClickSetUpTownButton} />
+            <AddressSearchOpenButton onClick={onClickRegisterTownButton} />
           )}
         </>
       )}

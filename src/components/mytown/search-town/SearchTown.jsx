@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { SubTitle2 } from "../../../styled";
 import FindCurrentLocationButton from "./FindCurrentLocationButton";
 import AddressList from "./AddressList";
@@ -6,7 +7,7 @@ import AddressSearchBar from "./AddressSearchBar";
 import { useIp } from "../../../hooks";
 import { callSearchTownApi } from "../../../api";
 
-function SearchTown() {
+function SearchTown({ setIsSearchMode }) {
   const ip = useIp();
   const [searchResults, setSearchReasults] = useState([]);
 
@@ -23,7 +24,10 @@ function SearchTown() {
 
   return (
     <>
-      <AddressSearchBar searchTown={searchTown} />
+      <AddressSearchBar
+        searchTown={searchTown}
+        setIsSearchMode={setIsSearchMode}
+      />
       <FindCurrentLocationButton
         ip={ip}
         setSearchReasults={setSearchReasults}
@@ -33,5 +37,9 @@ function SearchTown() {
     </>
   );
 }
+
+SearchTown.propTypes = {
+  setIsSearchMode: PropTypes.func,
+};
 
 export default SearchTown;
