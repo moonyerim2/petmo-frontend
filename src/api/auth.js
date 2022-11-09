@@ -8,6 +8,7 @@ export const callLoginApi = async (payload) => {
     return response.status;
   } catch (error) {
     console.log(error);
+    return error.response.status;
   }
 };
 

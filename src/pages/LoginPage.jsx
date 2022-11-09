@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { Link, Navigate } from "react-router-dom";
-import { TextField, Button } from "../components";
+import { FormTextField, Button, PageHeader } from "../components";
+import { Wrapper } from "../styled";
 import {
   loginInputsSelector,
   loginValidationMessage,
@@ -18,6 +19,10 @@ import {
 
 function LoginPage() {
   const [loginInputs, setLoginInputs] = useRecoilState(loginInputsSelector);
+  const [errorField, setErrorField] = useState({
+    email: false,
+    password: false,
+  });
   const [validationMessage, setValidationMessage] = useRecoilState(
     loginValidationMessage
   );
@@ -29,12 +34,14 @@ function LoginPage() {
 
   const onClickLoginButton = async (e) => {
     e.preventDefault();
-    const errorMessage = validateLoginInput(loginInputs);
+    const { errorField, errorMessage } = validateLoginInput(loginInputs);
+    setErrorField(errorField);
     setValidationMessage(errorMessage);
 
     if (!errorMessage) {
-      const data = await callLoginApi(loginInputs);
-      if (Object.prototype.hasOwnProperty.call(data, "message")) {
+      const status = await callLoginApi(loginInputs);
+      if (status === 400) {
+        setErrorField({ email: true, password: true });
         setValidationMessage(validateErrorMessage.loginFailed);
       } else {
         setIsAuthenticated(true);
@@ -49,14 +56,24 @@ function LoginPage() {
   };
 
   return (
-    <form>
-      <div>서비스에 대한 간략한 소개글</div>
-      <TextField {...emailFieldProps} onBlur={onBlurTextField} />
-      <TextField {...passwordFieldProps} onBlur={onBlurTextField} />
-      <p>{validationMessage}</p>
-      <Button {...loginButtonProps} onClick={onClickLoginButton} />
-      <Link to="../join">회원가입</Link>
-    </form>
+    <Wrapper>
+      <form>
+        <PageHeader pageTitle="로그인" />
+        <FormTextField
+          {...emailFieldProps}
+          onBlur={onBlurTextField}
+          isValid={!errorField.email}
+        />
+        <FormTextField
+          {...passwordFieldProps}
+          onBlur={onBlurTextField}
+          isValid={!errorField.password}
+        />
+        <p>{validationMessage}</p>
+        <Button {...loginButtonProps} onClick={onClickLoginButton} />
+        <Link to="../join">회원가입</Link>
+      </form>
+    </Wrapper>
   );
 }
 
