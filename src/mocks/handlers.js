@@ -1,6 +1,5 @@
 import { rest } from "msw";
-
-const BASE_URL = "http://api.server.com";
+import { BASE_URL } from "../constants";
 
 export const handlers = [
   rest.post(`${BASE_URL}/auth/sign-in`, (req, res, ctx) => {
@@ -58,23 +57,41 @@ export const handlers = [
     );
   }),
 
-  rest.post(`${BASE_URL}/search-town`, async (req, res, ctx) => {
-    const body = await req.json();
-    if (Object.hasOwnProperty.call(body, "ip")) {
-      return res(
-        ctx.json([
-          { id: 1, town: "경기도 시흥시" },
-          { id: 2, town: "경기도 부천시" },
-        ])
-      );
-    } else if (Object.hasOwnProperty.call(body, "input")) {
-      return res(
-        ctx.json([
-          { id: 1, town: "대구광역시 남구" },
-          { id: 2, town: "대구광역시 달서구" },
-          { id: 3, town: "대구광역시 서구" },
-        ])
-      );
-    }
+  rest.post(`${BASE_URL}/users/address/search/ip`, async (req, res, ctx) => {
+    return res(
+      ctx.json([
+        {
+          id: 1,
+          addressName: "서울특별시 강서구 마곡동",
+          regionDepth1: "서울특별시",
+          regionDepth2: "강서구",
+          regionDepth3: "마곡동",
+        },
+        {
+          id: 2,
+          addressName: "서울특별시 강서구 마곡동",
+          regionDepth1: "서울특별시",
+          regionDepth2: "강서구",
+          regionDepth3: "마곡동",
+        },
+      ])
+    );
+  }),
+
+  rest.get(`${BASE_URL}/users/address/search/query`, async (req, res, ctx) => {
+    return res(
+      ctx.json([
+        {
+          id: 1,
+          regionDepth1: "경기",
+          regionDepth2: "시흥",
+        },
+        {
+          id: 2,
+          regionDepth1: "경기",
+          regionDepth2: "시흥",
+        },
+      ])
+    );
   }),
 ];

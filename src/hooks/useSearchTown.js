@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { callSearchTownApi } from "../api";
+import { callSearchTownByIpApi, callSearchTownByQueryApi } from "../api";
 import { useIp } from "../hooks";
 
 const useSearchTown = () => {
@@ -8,7 +8,7 @@ const useSearchTown = () => {
   const [searchResults, setSearchResults] = useState([]);
 
   const searchTownByIp = async (ip, signal) => {
-    const data = await callSearchTownApi({ ip }, signal);
+    const data = await callSearchTownByIpApi({ ip }, signal);
     setSearchResults(data);
     setSubTitle("근처동네");
   };
@@ -19,14 +19,14 @@ const useSearchTown = () => {
       return;
     }
 
-    const data = await callSearchTownApi({ input }, signal);
+    const data = await callSearchTownByQueryApi(input, signal);
     setSearchResults(data);
     setSubTitle(`${input} 검색결과`);
   };
 
   useEffect(() => {
     if (ip) {
-      searchTownByIp({ ip });
+      searchTownByIp(ip);
     }
   }, [ip]);
 

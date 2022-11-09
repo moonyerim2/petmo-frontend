@@ -1,11 +1,32 @@
 import axios from "axios";
 import { BASE_URL } from "../constants";
 
-export const callSearchTownApi = async (payload, signal) => {
+export const callSearchTownByQueryApi = async (query, signal) => {
   try {
-    const response = await axios.post(`${BASE_URL}/search-town`, payload, {
+    const encodedUrl = encodeURI(
+      `${BASE_URL}/users/address/search/query?query=${query}`
+    );
+    const response = await axios.get(encodedUrl, {
       signal,
     });
+    return response.data;
+  } catch (error) {
+    if (error.name === "AbortError") {
+      return "Request Aborted";
+    }
+    console.log(error);
+  }
+};
+
+export const callSearchTownByIpApi = async (payload, signal) => {
+  try {
+    const response = await axios.post(
+      `${BASE_URL}/users/address/search/ip`,
+      payload,
+      {
+        signal,
+      }
+    );
     return response.data;
   } catch (error) {
     if (error.name === "AbortError") {
