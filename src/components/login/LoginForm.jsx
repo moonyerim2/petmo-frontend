@@ -4,7 +4,11 @@ import LoginButton from "./LoginButton";
 import { FormTextField } from "../common";
 import { FormField } from "../../styled";
 import { useLogin } from "../../hooks";
-import { emailFieldProps, passwordFieldProps } from "../../constants";
+import {
+  emailFieldProps,
+  localLoginButtonProps,
+  passwordFieldProps,
+} from "../../constants";
 
 const ErrorMessage = styled.p`
   ${({ theme: { colors, fontSizes } }) =>
@@ -43,7 +47,11 @@ function LoginForm() {
           />
         </FormField>
         <ErrorMessage>{validationMessage}</ErrorMessage>
-        <LoginButton loginFn={login} />
+        <LoginButton
+          loginFn={login}
+          buttonProps={localLoginButtonProps}
+          buttonStyle={{ fontColor: "white", bgColor: "main" }}
+        />
       </form>
     </>
   );

@@ -1,7 +1,8 @@
 export const bigButtonStyle =
   (fontColor, bgColor) =>
-  ({ colors, fontSizes, size, borderRadius, lineHeights }) => {
+  ({ layout, colors, fontSizes, size, borderRadius, lineHeights }) => {
     return {
+      ...layout.flexCenter,
       ...size.bigButtonSize,
       backgroundColor: colors[bgColor],
       color: colors[fontColor],

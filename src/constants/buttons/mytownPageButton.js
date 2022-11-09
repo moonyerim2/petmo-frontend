@@ -13,6 +13,7 @@ export const findCurrentLocationButtonProps = {
   text: "현재 위치로 찾기",
   img: { src: "/img/location.svg", alt: "위치" },
   imgLocation: "left",
+  gap: 4,
   isDisabled: false,
 };
 

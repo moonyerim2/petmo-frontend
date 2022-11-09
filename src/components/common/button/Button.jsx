@@ -10,8 +10,10 @@ const StyledButton = styled.button`
 `;
 
 const Text = styled.span`
-  ${({ imgLocation }) =>
-    imgLocation === "left" ? "margin-left" : "margin-right"}:4px;
+  ${({ imgLocation, gap }) =>
+    gap && imgLocation === "left"
+      ? `margin-left: ${gap}px;`
+      : `margin-right: ${gap}px;`}
 `;
 
 function Button({
@@ -20,6 +22,7 @@ function Button({
   text,
   img,
   imgLocation,
+  gap,
   isDisabled,
   onClick,
   style,
@@ -35,7 +38,11 @@ function Button({
       {img && imgLocation === "left" && (
         <img src={process.env.PUBLIC_URL + img.src} alt={img.alt} />
       )}
-      {text && <Text imgLocation={imgLocation}>{text}</Text>}
+      {text && (
+        <Text imgLocation={imgLocation} gap={gap}>
+          {text}
+        </Text>
+      )}
       {img && imgLocation === "right" && (
         <img src={process.env.PUBLIC_URL + img.src} alt={img.alt} />
       )}
@@ -49,6 +56,7 @@ Button.propTypes = {
   text: PropTypes.string,
   img: PropTypes.object,
   imgLocation: PropTypes.string,
+  gap: PropTypes.number,
   isDisabled: PropTypes.bool,
   onClick: PropTypes.func,
   style: PropTypes.func,
