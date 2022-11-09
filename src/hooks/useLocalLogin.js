@@ -9,7 +9,7 @@ import { callLoginApi } from "../api";
 import { validateLoginInput } from "../util";
 import { validateErrorMessage } from "../constants";
 
-const useLogin = () => {
+const useLocalLogin = () => {
   const setIsAuthenticated = useSetRecoilState(authenticated);
   const [loginInputs, setLoginInputs] = useRecoilState(loginInputsSelector);
   const [errorField, setErrorField] = useState({
@@ -39,4 +39,4 @@ const useLogin = () => {
   return { errorField, validationMessage, login, setLoginInputs };
 };
 
-export default useLogin;
+export default useLocalLogin;

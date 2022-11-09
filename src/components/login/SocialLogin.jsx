@@ -1,8 +1,10 @@
 import React from "react";
+import styled from "styled-components";
 import CaptionWithSideLine from "../common/CaptionWithSideLine";
 import LoginButton from "./LoginButton";
+
 import { kakaoLoginButtonProps, naverLoginButtonProps } from "../../constants";
-import styled from "styled-components";
+import { useSocialLogin } from "../../hooks";
 
 const Wrapper = styled.section`
   padding: 56px 0;
@@ -17,15 +19,19 @@ const ButtonWrapper = styled.div`
 `;
 
 function SocialLogin() {
+  const { login } = useSocialLogin();
+
   return (
     <Wrapper>
       <CaptionWithSideLine>간편 로그인</CaptionWithSideLine>
       <ButtonWrapper>
         <LoginButton
+          loginFn={login("kakao")}
           buttonProps={kakaoLoginButtonProps}
           buttonStyle={{ fontColor: "black", bgColor: "kakao" }}
         />
         <LoginButton
+          loginFn={login("naver")}
           buttonProps={naverLoginButtonProps}
           buttonStyle={{ fontColor: "white", bgColor: "naver" }}
         />

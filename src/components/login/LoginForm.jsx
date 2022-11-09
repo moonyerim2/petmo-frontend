@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import LoginButton from "./LoginButton";
 import { FormTextField } from "../common";
 import { FormField } from "../../styled";
-import { useLogin } from "../../hooks";
+import { useLocalLogin } from "../../hooks";
 import {
   emailFieldProps,
   localLoginButtonProps,
@@ -23,7 +23,8 @@ const ErrorMessage = styled.p`
 `;
 
 function LoginForm() {
-  const { errorField, validationMessage, login, setLoginInputs } = useLogin();
+  const { errorField, validationMessage, login, setLoginInputs } =
+    useLocalLogin();
 
   const onBlurTextField = ({ target }) => {
     const { value, name } = target;

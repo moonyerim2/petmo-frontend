@@ -7,6 +7,14 @@ export const handlers = [
     return res(ctx.status(200), ctx.cookie("SESSION", "abc-123"));
   }),
 
+  rest.get(`${BASE_URL}/oauth2/authorization/naver`, (req, res, ctx) => {
+    return res(ctx.status(302), ctx.cookie("SESSION", "abc-123"));
+  }),
+
+  rest.get(`${BASE_URL}/oauth2/authorization/kakao`, (req, res, ctx) => {
+    return res(ctx.status(302), ctx.cookie("SESSION", "abc-123"));
+  }),
+
   rest.get(`${BASE_URL}/user`, (req, res, ctx) => {
     return res(
       ctx.json({
