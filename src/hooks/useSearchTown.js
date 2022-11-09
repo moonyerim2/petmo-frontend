@@ -14,7 +14,7 @@ const useSearchTown = () => {
   };
 
   const searchTownByInput = async (input, signal) => {
-    if (input === "") {
+    if (input.length < 2) {
       setSearchResults([]);
       return;
     }
