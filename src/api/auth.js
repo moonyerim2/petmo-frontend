@@ -3,7 +3,7 @@ import { BASE_URL } from "../constants";
 
 export const callLoginApi = async (payload) => {
   try {
-    const response = await axios.post(`${BASE_URL}/login`, payload);
+    const response = await axios.post(`${BASE_URL}/auth/sign-in`, payload);
     if (response.status !== 200) throw new Error("Request faild");
     return response.status;
   } catch (error) {

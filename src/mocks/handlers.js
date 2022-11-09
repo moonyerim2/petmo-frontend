@@ -3,7 +3,7 @@ import { rest } from "msw";
 const BASE_URL = "http://api.server.com";
 
 export const handlers = [
-  rest.post(`${BASE_URL}/login`, (req, res, ctx) => {
+  rest.post(`${BASE_URL}/auth/sign-in`, (req, res, ctx) => {
     return res(ctx.status(200), ctx.cookie("SESSION", "abc-123"));
   }),
 
