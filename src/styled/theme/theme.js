@@ -50,6 +50,8 @@ const colorsPalette = {
   blue800: "#0D5DF1",
   blue900: "#2537D2",
   red: "#D32F2F",
+  yellow: "#FEEB00",
+  green: "#1EC800",
 };
 
 export const colors = (() => {
@@ -68,6 +70,8 @@ export const colors = (() => {
     fontLight1: colorsPalette.gray800,
     fontLight2: colorsPalette.gray700,
     error: colorsPalette.red,
+    kakao: colorsPalette.yellow,
+    naver: colorsPalette.green,
   };
 })();
 

@@ -1,7 +1,12 @@
 import React from "react";
 import { useRecoilState } from "recoil";
 import { Navigate } from "react-router-dom";
-import { PageHeader, LoginForm, GoToJoinLink } from "../components";
+import {
+  PageHeader,
+  LoginForm,
+  GoToJoinLink,
+  SocialLogin,
+} from "../components";
 import { Wrapper } from "../styled";
 import { authenticated } from "../store";
 
@@ -15,6 +20,7 @@ function LoginPage() {
     <Wrapper>
       <PageHeader pageTitle="로그인" />
       <LoginForm setIsAuthenticated={setIsAuthenticated} />
+      <SocialLogin />
       <GoToJoinLink />
     </Wrapper>
   );
