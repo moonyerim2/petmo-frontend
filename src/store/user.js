@@ -3,7 +3,7 @@ import { getCookie } from "../util";
 
 export const authenticated = atom({
   key: "authenticated",
-  default: getCookie("session"),
+  default: getCookie("SESSION"),
 });
 
 export const user = atom({

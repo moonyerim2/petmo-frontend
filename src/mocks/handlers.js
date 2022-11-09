@@ -4,7 +4,7 @@ const BASE_URL = "http://api.server.com";
 
 export const handlers = [
   rest.post(`${BASE_URL}/login`, (req, res, ctx) => {
-    return res(ctx.status(200), ctx.cookie("session", "abc-123"));
+    return res(ctx.status(200), ctx.cookie("SESSION", "abc-123"));
   }),
 
   rest.get(`${BASE_URL}/user`, (req, res, ctx) => {
