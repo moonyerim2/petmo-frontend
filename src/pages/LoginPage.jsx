@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { Navigate } from "react-router-dom";
 import { PageHeader } from "../components";
@@ -16,6 +17,7 @@ function LoginPage() {
     <Wrapper>
       <PageHeader pageTitle="로그인" />
       <LoginForm setIsAuthenticated={setIsAuthenticated} />
+      <Link to="../join">회원가입</Link>
     </Wrapper>
   );
 }

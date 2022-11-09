@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button } from "../common";
+import { Button, bigButtonStyle } from "../common";
 import { loginButtonProps } from "../../constants";
 
 function LoginButton({ loginFn }) {
@@ -9,7 +9,13 @@ function LoginButton({ loginFn }) {
     loginFn();
   };
 
-  return <Button {...loginButtonProps} onClick={onClickLoginButton} />;
+  return (
+    <Button
+      {...loginButtonProps}
+      onClick={onClickLoginButton}
+      style={bigButtonStyle("white", "main")}
+    />
+  );
 }
 
 LoginButton.propTypes = {

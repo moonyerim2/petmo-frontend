@@ -1,9 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import styled, { css } from "styled-components";
 import LoginButton from "./LoginButton";
 import { FormTextField } from "../common";
-import { emailFieldProps, passwordFieldProps } from "../../constants";
+import { FormField } from "../../styled";
 import { useLogin } from "../../hooks";
+import { emailFieldProps, passwordFieldProps } from "../../constants";
+
+const ErrorMessage = styled.p`
+  ${({ theme: { colors, fontSizes } }) =>
+    css`
+      ${{
+        fontSize: fontSizes.caption,
+        color: colors.error,
+        padding: "6px 0 16px",
+        whiteSpace: "pre-wrap",
+      }}
+    `}
+`;
 
 function LoginForm() {
   const { errorField, validationMessage, login, setLoginInputs } = useLogin();
@@ -15,21 +28,24 @@ function LoginForm() {
   };
 
   return (
-    <form>
-      <FormTextField
-        {...emailFieldProps}
-        onBlur={onBlurTextField}
-        isValid={!errorField.email}
-      />
-      <FormTextField
-        {...passwordFieldProps}
-        onBlur={onBlurTextField}
-        isValid={!errorField.password}
-      />
-      <p>{validationMessage}</p>
-      <LoginButton loginFn={login} />
-      <Link to="../join">회원가입</Link>
-    </form>
+    <>
+      <form>
+        <FormField>
+          <FormTextField
+            {...emailFieldProps}
+            onBlur={onBlurTextField}
+            isValid={!errorField.email}
+          />
+          <FormTextField
+            {...passwordFieldProps}
+            onBlur={onBlurTextField}
+            isValid={!errorField.password}
+          />
+        </FormField>
+        <ErrorMessage>{validationMessage}</ErrorMessage>
+        <LoginButton loginFn={login} />
+      </form>
+    </>
   );
 }
 
