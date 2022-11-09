@@ -15,6 +15,7 @@ export const callSearchTownByQueryApi = async (query, signal) => {
       return "Request Aborted";
     }
     console.log(error);
+    return error.response.status;
   }
 };
 
@@ -33,6 +34,7 @@ export const callSearchTownByIpApi = async (payload, signal) => {
       return "Request Aborted";
     }
     console.log(error);
+    return error.response.status;
   }
 };
 

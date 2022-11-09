@@ -9,8 +9,10 @@ const useSearchTown = () => {
 
   const searchTownByIp = async (ip, signal) => {
     const data = await callSearchTownByIpApi({ ip }, signal);
-    setSearchResults(data);
-    setSubTitle("근처동네");
+    if (data !== 500) {
+      setSearchResults(data);
+      setSubTitle("근처동네");
+    }
   };
 
   const searchTownByInput = async (input, signal) => {
@@ -20,8 +22,10 @@ const useSearchTown = () => {
     }
 
     const data = await callSearchTownByQueryApi(input, signal);
-    setSearchResults(data);
-    setSubTitle(`${input} 검색결과`);
+    if (data !== 500) {
+      setSearchResults(data);
+      setSubTitle(`${input} 검색결과`);
+    }
   };
 
   useEffect(() => {
