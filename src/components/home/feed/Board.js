@@ -6,7 +6,8 @@ const Wrapper = styled.div`
   box-sizing: border-box;
   background: rgba(241, 241, 245, 1);
   width: 100%;
-  height: 500px;
+  height: 502px;
+  margin-bottom: 1px;
 `;
 const cardsDummyList = [
   {
@@ -33,8 +34,31 @@ const cardsDummyList = [
     bookmarkNumber: 3,
     commentNumber: 6,
   },
+  {
+    id: 3,
+    author: "림",
+    village: "대구시",
+    time: "9분전",
+    content: "내용",
+    myLike: false,
+    myBookmark: true,
+    likeNumber: 4,
+    bookmarkNumber: 1,
+    commentNumber: 8,
+  },
+  {
+    id: 4,
+    author: "민",
+    village: "대구시",
+    time: "9분전",
+    content: "내용",
+    myLike: false,
+    myBookmark: true,
+    likeNumber: 4,
+    bookmarkNumber: 1,
+    commentNumber: 8,
+  },
 ];
-
 function Board() {
   return (
     <Wrapper>
