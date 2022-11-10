@@ -21,7 +21,7 @@ const inputStyle =
       : colors.lineMedium;
 
     return {
-      ...size.bigButtonSize,
+      ...size.size1,
       display: "flex",
       alignItems: "center",
       padding: "16px 0 16px 12px",

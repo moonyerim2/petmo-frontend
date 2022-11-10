@@ -10,7 +10,7 @@ import {
 
 const Wrapper = styled.div`
   ${({ theme }) => css`
-    ${{ ...theme.layout.flexCenter, ...theme.size.bigButtonSize }}
+    ${{ ...theme.layout.flexCenter, ...theme.size.size1 }}
   `}
 `;
 

@@ -38,11 +38,7 @@ function LoginForm() {
           message={validationMessage}
           style={{ padding: "6px 0 16px" }}
         />
-        <LoginButton
-          loginFn={login}
-          buttonProps={localLoginButtonProps}
-          buttonStyle={{ fontColor: "white", bgColor: "main" }}
-        />
+        <LoginButton loginFn={login} buttonProps={localLoginButtonProps} />
       </form>
     </>
   );

@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import { Button, bigButtonStyle } from "../common";
 
 function LoginButton({ loginFn, buttonProps, buttonStyle }) {
+  const fontColor = buttonStyle ? buttonStyle.fontColor : null;
+  const bgColor = buttonStyle ? buttonStyle.bgColor : null;
+
   const onClickLoginButton = async (e) => {
     e.preventDefault();
     loginFn();
@@ -12,7 +15,7 @@ function LoginButton({ loginFn, buttonProps, buttonStyle }) {
     <Button
       {...buttonProps}
       onClick={onClickLoginButton}
-      style={bigButtonStyle(buttonStyle.fontColor, buttonStyle.bgColor)}
+      style={bigButtonStyle(fontColor, bgColor)}
     />
   );
 }

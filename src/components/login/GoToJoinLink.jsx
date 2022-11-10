@@ -13,7 +13,7 @@ export const goToJoinLinkStyle = ({
   layout,
 }) => {
   return {
-    ...size.bigButtonSize,
+    ...size.size1,
     ...layout.flexCenter,
     fontSize: fontSizes.body1,
     fontWeight: 500,

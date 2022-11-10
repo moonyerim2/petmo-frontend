@@ -11,7 +11,7 @@ const addressSearchOpenButtonStyle = ({
 }) => {
   return {
     ...layout.flex_aCenter_jBetween,
-    ...size.bigButtonSize,
+    ...size.size1,
     padding: "16px 16px 16px 12px",
     border: `1px solid ${colors.gray400}`,
     borderRadius: borderRadius.small,
