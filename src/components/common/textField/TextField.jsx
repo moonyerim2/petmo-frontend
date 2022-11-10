@@ -18,9 +18,6 @@ const StyledLabel = styled.label`
 
 const StyledInput = styled.input`
   ${({ theme, inputStyle, isFocus }) => css`
-    &::placeholder {
-      color: ${theme.colors.gray600};
-    }
     ${inputStyle instanceof Function && { ...inputStyle(theme, isFocus) }}
   `}
 `;
