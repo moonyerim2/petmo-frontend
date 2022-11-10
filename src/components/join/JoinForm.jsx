@@ -12,6 +12,7 @@ import {
   emailFieldProps,
   passwordFieldProps,
   nicknameFieldProps,
+  passwordCheckFieldProps,
 } from "../../constants";
 import { hasNotEmptyStingValue, hasOnlyEmptyStingValue } from "../../util";
 
@@ -54,6 +55,10 @@ function JoinForm() {
         <JoinTextField
           fieldProps={passwordFieldProps}
           isValid={isValid("password")}
+        />
+        <JoinTextField
+          fieldProps={passwordCheckFieldProps}
+          isValid={isValid("passwordCheck")}
         />
       </FormField>
       <JoinButton isDisabled={!isRightInput} />

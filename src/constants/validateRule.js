@@ -23,14 +23,21 @@ export const checkEmailFormat = () => ({
   message: `이메일 형식이 잘못 입력되었습니다.`,
 });
 
-export const passwordValidateRule = () => ({
+export const checkPasswordFormat = () => ({
   rule: /^.*(?=^.{8,}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/,
   match: true,
   message: `비밀번호 형식이 잘못 입력되었습니다.`,
 });
 
+export const isSameWithPassword = () => ({
+  rule: { test: (password, string) => password === string },
+  match: true,
+  message: `비밀번호가 일치하지 않습니다.`,
+});
+
 export const joinInputValidationRules = {
   email: [checkEmailFormat(), cantContainWhitespace],
-  password: [passwordValidateRule(), cantContainWhitespace],
+  password: [checkPasswordFormat(), cantContainWhitespace],
+  passwordCheck: [isSameWithPassword(), cantContainWhitespace],
   nickname: [minimumLengthLimit(2), cantContainWhitespace],
 };

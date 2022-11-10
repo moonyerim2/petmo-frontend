@@ -30,9 +30,16 @@ export const validateLoginInput = (loginInputs) => {
   };
 };
 
-export const validateFieldRules = (validationRules, string) => {
+export const validateFieldRules = ({
+  validationRules,
+  string,
+  comparisonTarget,
+}) => {
   return validationRules.reduce((errorMessage, validationRule) => {
     const { rule, match, message } = validationRule;
-    return rule.test(string) !== match ? message : errorMessage;
+    const result = comparisonTarget
+      ? rule.test(comparisonTarget, string)
+      : rule.test(string);
+    return result !== match ? message : errorMessage;
   }, "");
 };

@@ -1,6 +1,7 @@
 export const textFieldLabels = {
   email: "이메일",
   password: "비밀번호",
+  passwordCheck: "비밀번호 재입력",
   name: "이름",
   nickname: "닉네임",
 };
@@ -22,6 +23,16 @@ export const passwordFieldProps = {
   text: "",
   type: "password",
   name: "password",
+  placeholder: "",
+};
+
+export const passwordCheckFieldProps = {
+  id: "passwordCheck",
+  label: textFieldLabels.passwordCheck,
+  isLabelHidden: false,
+  text: "",
+  type: "password",
+  name: "passwordCheck",
   placeholder: "",
 };
 
