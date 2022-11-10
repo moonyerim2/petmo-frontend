@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
+import history from "history/browser";
 import { CancelJoinPopup, PageHeader, JoinForm } from "../components";
 import { PageWrapper } from "../styled";
 import { isJoinCompleted } from "../store";
@@ -9,6 +10,19 @@ function JoinPage() {
   const [isCompleted, setIsCompleted] = useRecoilState(isJoinCompleted);
   const [isGoBack, setIsGoBack] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    let unlisten = history.listen(() => {
+      if (history.action === "POP") {
+        navigate("../join");
+        setIsGoBack(true);
+      }
+    });
+
+    return () => {
+      unlisten();
+    };
+  }, [history]);
 
   useEffect(() => {
     if (isCompleted) {
