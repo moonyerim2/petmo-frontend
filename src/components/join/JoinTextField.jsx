@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useSetRecoilState, useRecoilState } from "recoil";
-import { FormTextField } from "../../components";
+import { FormTextField, FormErrorMessage } from "../../components";
 import {
   joinInputsSelector,
   joinValidationMessagesSelector,
@@ -28,7 +28,10 @@ function JoinTextField({ fieldProps, isValid }) {
         onChange={onChangeTextField}
         isValid={isValid}
       />
-      <p>{validationMessages[name]}</p>
+      <FormErrorMessage
+        message={validationMessages[name]}
+        style={{ paddingTop: "6px" }}
+      />
     </>
   );
 }

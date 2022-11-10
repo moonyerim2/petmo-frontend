@@ -1,7 +1,6 @@
 import React from "react";
-import styled, { css } from "styled-components";
 import LoginButton from "./LoginButton";
-import { FormTextField } from "../common";
+import { FormErrorMessage, FormTextField } from "../common";
 import { FormField } from "../../styled";
 import { useLocalLogin } from "../../hooks";
 import {
@@ -9,18 +8,6 @@ import {
   localLoginButtonProps,
   passwordFieldProps,
 } from "../../constants";
-
-const ErrorMessage = styled.p`
-  ${({ theme: { colors, fontSizes } }) =>
-    css`
-      ${{
-        fontSize: fontSizes.caption,
-        color: colors.error,
-        padding: "6px 0 16px",
-        whiteSpace: "pre-wrap",
-      }}
-    `}
-`;
 
 function LoginForm() {
   const { errorField, validationMessage, login, setLoginInputs } =
@@ -47,7 +34,10 @@ function LoginForm() {
             isValid={!errorField.password}
           />
         </FormField>
-        <ErrorMessage>{validationMessage}</ErrorMessage>
+        <FormErrorMessage
+          message={validationMessage}
+          style={{ padding: "6px 0 16px" }}
+        />
         <LoginButton
           loginFn={login}
           buttonProps={localLoginButtonProps}
