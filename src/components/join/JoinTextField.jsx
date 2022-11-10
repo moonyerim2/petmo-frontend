@@ -18,7 +18,10 @@ function JoinTextField({ fieldProps, isValid }) {
     const { value, name } = target;
     const password = joinInputs.password;
     const textFieldInput = { [name]: value };
-    setJoinInputs(textFieldInput);
+
+    if (name !== "passwordCheck") {
+      setJoinInputs(textFieldInput);
+    }
     setValidationMessages({ textFieldInput, password });
   };
 
