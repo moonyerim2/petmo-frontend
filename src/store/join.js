@@ -7,7 +7,6 @@ export const joinInputs = atom({
   default: {
     email: "",
     password: "",
-    name: "",
     nickname: "",
   },
 });
@@ -27,7 +26,6 @@ export const joinValidationMessages = atom({
   default: {
     email: "",
     password: "",
-    name: "",
     nickname: "",
   },
 });

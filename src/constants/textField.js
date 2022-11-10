@@ -25,16 +25,6 @@ export const passwordFieldProps = {
   placeholder: "",
 };
 
-export const nameFieldProps = {
-  id: "name",
-  label: textFieldLabels.name,
-  isLabelHidden: false,
-  text: "",
-  type: "text",
-  name: "name",
-  placeholder: "",
-};
-
 export const nicknameFieldProps = {
   id: "nickname",
   label: textFieldLabels.nickname,

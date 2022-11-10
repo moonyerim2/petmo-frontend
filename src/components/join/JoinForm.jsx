@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useRecoilValue, useResetRecoilState } from "recoil";
 import { JoinButton, JoinTextField } from "../../components";
+import { FormField } from "../../styled";
 import {
   joinInputs as joinInputsAtom,
   joinInputsSelector,
@@ -10,7 +11,6 @@ import {
 import {
   emailFieldProps,
   passwordFieldProps,
-  nameFieldProps,
   nicknameFieldProps,
 } from "../../constants";
 import { hasNotEmptyStingValue, hasOnlyEmptyStingValue } from "../../util";
@@ -38,12 +38,24 @@ function JoinForm() {
     setIsRightInput(isRightInput);
   }, [validationMessages, joinInputs]);
 
+  const isValid = (fieldName) => validationMessages[fieldName] === "";
+
   return (
     <form>
-      <JoinTextField fieldProps={emailFieldProps} />
-      <JoinTextField fieldProps={passwordFieldProps} />
-      <JoinTextField fieldProps={nameFieldProps} />
-      <JoinTextField fieldProps={nicknameFieldProps} />
+      <FormField>
+        <JoinTextField
+          fieldProps={nicknameFieldProps}
+          isValid={isValid("nickname")}
+        />
+        <JoinTextField
+          fieldProps={emailFieldProps}
+          isValid={isValid("email")}
+        />
+        <JoinTextField
+          fieldProps={passwordFieldProps}
+          isValid={isValid("password")}
+        />
+      </FormField>
       <JoinButton isDisabled={!isRightInput} />
     </form>
   );

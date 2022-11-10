@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useSetRecoilState, useRecoilState } from "recoil";
-import { TextField } from "../../components";
+import { FormTextField } from "../../components";
 import {
   joinInputsSelector,
   joinValidationMessagesSelector,
 } from "../../store";
 
-function JoinTextField({ fieldProps }) {
+function JoinTextField({ fieldProps, isValid }) {
   const setJoinInputs = useSetRecoilState(joinInputsSelector);
   const [validationMessages, setValidationMessages] = useRecoilState(
     joinValidationMessagesSelector
@@ -23,7 +23,11 @@ function JoinTextField({ fieldProps }) {
 
   return (
     <>
-      <TextField {...fieldProps} onChange={onChangeTextField} />
+      <FormTextField
+        {...fieldProps}
+        onChange={onChangeTextField}
+        isValid={isValid}
+      />
       <p>{validationMessages[name]}</p>
     </>
   );
@@ -31,6 +35,7 @@ function JoinTextField({ fieldProps }) {
 
 JoinTextField.propTypes = {
   fieldProps: PropTypes.object,
+  isValid: PropTypes.bool,
 };
 
 export default JoinTextField;
