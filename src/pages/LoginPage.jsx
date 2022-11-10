@@ -7,7 +7,7 @@ import {
   GoToJoinLink,
   SocialLogin,
 } from "../components";
-import { Wrapper } from "../styled";
+import { PageWrapper } from "../styled";
 import { authenticated } from "../store";
 
 function LoginPage() {
@@ -17,12 +17,12 @@ function LoginPage() {
   }
 
   return (
-    <Wrapper>
+    <PageWrapper>
       <PageHeader pageTitle="로그인" />
       <LoginForm setIsAuthenticated={setIsAuthenticated} />
       <SocialLogin />
       <GoToJoinLink />
-    </Wrapper>
+    </PageWrapper>
   );
 }
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import { CancelJoinPopup, PageHeader, JoinForm } from "../components";
+import { PageWrapper } from "../styled";
 import { isJoinCompleted } from "../store";
 
 function JoinPage() {
@@ -27,11 +28,11 @@ function JoinPage() {
   }
 
   return (
-    <>
+    <PageWrapper>
       <PageHeader pageTitle="계정정보" />
       <JoinForm />
       {isGoBack && <CancelJoinPopup setIsGoBack={setIsGoBack} />}
-    </>
+    </PageWrapper>
   );
 }
 

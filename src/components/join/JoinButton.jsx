@@ -12,6 +12,7 @@ const joinButtonStyle =
     return {
       ...size.bigButtonSize,
       position: "absolute",
+      left: 0,
       bottom: 0,
       color: isDisabled ? colors.gray600 : colors.white,
       fontSize: fontSizes.body1,
