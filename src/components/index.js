@@ -1,5 +1,5 @@
 export * from "./common";
-export * from "./feed";
+export * from "./home";
 export * from "./join";
 export * from "./login";
 export * from "./mytown";

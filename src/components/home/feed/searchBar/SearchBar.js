@@ -5,8 +5,8 @@ import SearchBarCategory from "./SearchBarCategory";
 function SearchBar() {
   return (
     <div className="search-bar">
-      <SearchBarAnimal />
       <SearchBarCategory />
+      <SearchBarAnimal />
     </div>
   );
 }

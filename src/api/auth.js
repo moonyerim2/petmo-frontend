@@ -1,6 +1,16 @@
 import axios from "axios";
 import { BASE_URL } from "../constants";
 
+export const callHomeApi = async (payload) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/`, payload);
+    if (response.status !== 200) throw new Error("Request failed");
+    return response.status;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const callLoginApi = async (payload) => {
   try {
     const response = await axios.post(`${BASE_URL}/auth/sign-in`, payload);
@@ -28,7 +38,7 @@ export const callSocialLoginApi = async (type) => {
 export const callJoinApi = async (payload) => {
   try {
     const response = await axios.post(`${BASE_URL}/join`, payload);
-    if (response.status !== 201) throw new Error("Request faild");
+    if (response.status !== 201) throw new Error("Request failed");
     return response.status;
   } catch (error) {
     console.log(error);
