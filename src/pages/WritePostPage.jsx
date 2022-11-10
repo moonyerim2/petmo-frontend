@@ -3,7 +3,7 @@ import {
   PageHeader,
   RegisterPostButton,
   TagSelector,
-  PictureUploader,
+  ImageUploader,
   PostTextarea,
 } from "../components";
 import { PageWrapper } from "../styled";
@@ -28,7 +28,7 @@ function WritePostPage() {
       <TagSelector placeholder={placeholder.topic} />
       <TagSelector placeholder={placeholder.pet} />
       <PostTextarea />
-      <PictureUploader />
+      <ImageUploader />
     </form>
   );
 }
