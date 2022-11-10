@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Reset } from "styled-reset";
 import { useUser } from "./hooks";
 import {
   HomePage,
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <Reset />
       <Routes>
         <Route
           path="/"
