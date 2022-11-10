@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
@@ -57,14 +58,20 @@ function Nav() {
       >
         <NavButton
           label="피드"
+          component={Link}
+          to={"/"}
           icon={<Icon src={value === 0 ? coloredFeed : FeedIcon} />}
         />
         <NavButton
           label="북마크"
+          component={Link}
+          to={"/bookmark"}
           icon={<Icon src={value === 1 ? coloredBookmark : BookmarkIcon} />}
         />
         <NavButton
           label="프로필"
+          component={Link}
+          to={"/profile/:userId"}
           icon={<Icon src={value === 2 ? coloredProfile : ProfileIcon} />}
         />
       </NavButtonBox>

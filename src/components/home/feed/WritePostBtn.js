@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Fab from "@mui/material/Fab";
 import PostIcon from "../../../css/icon/PostIcon.svg";
+import { Link } from "react-router-dom";
 
 const WritePostIcon = styled.img``;
 const WritePostButton = styled(Fab)`
@@ -15,7 +16,7 @@ const WritePostButton = styled(Fab)`
 
 export default function FloatingActionButtons() {
   return (
-    <WritePostButton>
+    <WritePostButton component={Link} to={"/write"}>
       <WritePostIcon src={PostIcon} />
     </WritePostButton>
   );
