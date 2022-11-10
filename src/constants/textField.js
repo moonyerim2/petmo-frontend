@@ -8,6 +8,7 @@ export const textFieldLabels = {
 export const emailFieldProps = {
   id: "email",
   label: textFieldLabels.email,
+  isLabelHidden: false,
   text: "",
   type: "email",
   name: "email",
@@ -17,6 +18,7 @@ export const emailFieldProps = {
 export const passwordFieldProps = {
   id: "password",
   label: textFieldLabels.password,
+  isLabelHidden: false,
   text: "",
   type: "password",
   name: "password",
@@ -26,6 +28,7 @@ export const passwordFieldProps = {
 export const nameFieldProps = {
   id: "name",
   label: textFieldLabels.name,
+  isLabelHidden: false,
   text: "",
   type: "text",
   name: "name",
@@ -35,8 +38,19 @@ export const nameFieldProps = {
 export const nicknameFieldProps = {
   id: "nickname",
   label: textFieldLabels.nickname,
+  isLabelHidden: false,
   text: "",
   type: "text",
   name: "nickname",
   placeholder: "",
+};
+
+export const addressSearchFieldProps = {
+  id: "addressSearch",
+  label: "주소 검색",
+  isLabelHidden: true,
+  text: "",
+  type: "text",
+  name: "addressSearch",
+  placeholder: "구명(시,군)으로 검색 (ex. 구로구)",
 };

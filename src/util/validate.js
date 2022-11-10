@@ -11,12 +11,23 @@ export const isEmptyString = (input) => input === "";
 export const validateLoginInput = (loginInputs) => {
   const { email, password } = loginInputs;
   if (isEmptyString(email)) {
-    return validateErrorMessage.wrongEmail;
+    return {
+      errorField: { email: true, password: false },
+      errorMessage: validateErrorMessage.wrongEmail,
+    };
   }
 
   if (isEmptyString(password)) {
-    return validateErrorMessage.wrongPassword;
+    return {
+      errorField: { email: false, password: true },
+      errorMessage: validateErrorMessage.wrongPassword,
+    };
   }
+
+  return {
+    errorField: { email: false, password: false },
+    errorMessage: null,
+  };
 };
 
 export const validateFieldRules = (validationRules, string) => {

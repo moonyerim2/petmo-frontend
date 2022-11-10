@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useRecoilValue } from "recoil";
-import { authenticated } from "./store";
 import { Reset } from "styled-reset";
+import { useUser } from "./hooks";
 import {
   HomePage,
   LandingPage,
   LoginPage,
   JoinPage,
+  MyTownPage,
   WritePostPage,
   PostViewPage,
   BookmarkPage,
@@ -16,7 +16,7 @@ import {
 } from "./pages";
 
 function App() {
-  const isAuthenticated = useRecoilValue(authenticated);
+  const isAuthenticated = useUser();
 
   return (
     <BrowserRouter>
@@ -29,6 +29,7 @@ function App() {
 
         <Route path="login" element={<LoginPage />} />
         <Route path="join" element={<JoinPage />} />
+        <Route path="mytown" element={<MyTownPage />} />
 
         <Route path="post/:postId" element={<PostViewPage />} />
 
