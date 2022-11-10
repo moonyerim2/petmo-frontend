@@ -26,7 +26,7 @@ export const handlers = [
     );
   }),
 
-  rest.post(`${BASE_URL}/join`, (req, res, ctx) => {
+  rest.post(`${BASE_URL}/auth/sign-up`, (req, res, ctx) => {
     return res(ctx.status(201));
   }),
 

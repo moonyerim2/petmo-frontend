@@ -38,8 +38,8 @@ function JoinButton({ isDisabled }) {
 
   const onClickJoinButton = async (e) => {
     e.preventDefault();
-    const status = await callJoinApi(joinInputs);
-    if (status === 201) {
+    const response = await callJoinApi(joinInputs);
+    if (response.status === 201) {
       setIsCompleted(true);
     }
   };

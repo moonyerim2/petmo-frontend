@@ -27,11 +27,12 @@ export const callSocialLoginApi = async (type) => {
 
 export const callJoinApi = async (payload) => {
   try {
-    const response = await axios.post(`${BASE_URL}/join`, payload);
+    const response = await axios.post(`${BASE_URL}/auth/sign-up`, payload);
     if (response.status !== 201) throw new Error("Request faild");
-    return response.status;
+    return response;
   } catch (error) {
     console.log(error);
+    return error.response;
   }
 };
 
