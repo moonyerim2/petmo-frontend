@@ -40,12 +40,14 @@ function FormTextField(props) {
       {...props}
       labelStyle={labelStyle}
       inputStyle={inputStyle(props.isValid)}
+      onChange={props.onChange}
     />
   );
 }
 
 FormTextField.propTypes = {
   isValid: PropTypes.bool,
+  onChange: PropTypes.func,
 };
 
 export default FormTextField;

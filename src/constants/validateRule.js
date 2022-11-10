@@ -17,9 +17,27 @@ export const minimumLengthLimit = (limit) => ({
   message: `최소한 ${limit}글자 이상 이어야 합니다.`,
 });
 
+export const checkEmailFormat = () => ({
+  rule: /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i,
+  match: true,
+  message: `이메일 형식이 잘못 입력되었습니다.`,
+});
+
+export const checkPasswordFormat = () => ({
+  rule: /^.*(?=^.{8,}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/,
+  match: true,
+  message: `비밀번호 형식이 잘못 입력되었습니다.`,
+});
+
+export const isSameWithPassword = () => ({
+  rule: { test: (password, string) => password === string },
+  match: true,
+  message: `비밀번호가 일치하지 않습니다.`,
+});
+
 export const joinInputValidationRules = {
-  email: [cantContainWhitespace],
-  password: [minimumLengthLimit(8), cantContainWhitespace],
-  name: [minimumLengthLimit(1), cantContainWhitespace],
+  email: [checkEmailFormat(), cantContainWhitespace],
+  password: [checkPasswordFormat(), cantContainWhitespace],
+  passwordCheck: [isSameWithPassword(), cantContainWhitespace],
   nickname: [minimumLengthLimit(2), cantContainWhitespace],
 };

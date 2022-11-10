@@ -6,6 +6,21 @@ import { isJoinCompleted, joinInputsSelector } from "../../store";
 import { callJoinApi } from "../../api";
 import { joinButtonProps as defaultJoinButtonProps } from "../../constants";
 
+const joinButtonStyle =
+  (isDisabled) =>
+  ({ colors, fontSizes, size }) => {
+    return {
+      ...size.bigButtonSize,
+      position: "absolute",
+      left: 0,
+      bottom: 0,
+      color: isDisabled ? colors.gray600 : colors.white,
+      fontSize: fontSizes.body1,
+      fontWeight: 500,
+      backgroundColor: isDisabled ? colors.gray400 : colors.main,
+    };
+  };
+
 function JoinButton({ isDisabled }) {
   const joinInputs = useRecoilValue(joinInputsSelector);
   const setIsCompleted = useSetRecoilState(isJoinCompleted);
@@ -23,13 +38,19 @@ function JoinButton({ isDisabled }) {
 
   const onClickJoinButton = async (e) => {
     e.preventDefault();
-    const status = await callJoinApi(joinInputs);
-    if (status === 201) {
+    const response = await callJoinApi(joinInputs);
+    if (response.status === 201) {
       setIsCompleted(true);
     }
   };
 
-  return <Button {...joinButtonProps()} onClick={onClickJoinButton} />;
+  return (
+    <Button
+      {...joinButtonProps()}
+      onClick={onClickJoinButton}
+      style={joinButtonStyle(isDisabled)}
+    />
+  );
 }
 
 JoinButton.propTypes = {

@@ -8,7 +8,7 @@ import {
   Address,
 } from "../components";
 import { user } from "../store";
-import { SubTitle1, Wrapper } from "../styled";
+import { SubTitle1, PageWrapper } from "../styled";
 
 function MyTownPage() {
   const [isSearchMode, setIsSearchMode] = useState(false);
@@ -19,7 +19,7 @@ function MyTownPage() {
   };
 
   return (
-    <Wrapper>
+    <PageWrapper>
       {isSearchMode ? (
         <SearchTown setIsSearchMode={setIsSearchMode} />
       ) : (
@@ -34,7 +34,7 @@ function MyTownPage() {
           )}
         </>
       )}
-    </Wrapper>
+    </PageWrapper>
   );
 }
 

@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useSetRecoilState, useRecoilState } from "recoil";
-import { TextField } from "../../components";
+import { useRecoilState } from "recoil";
+import { FormTextField, FormErrorMessage } from "../../components";
 import {
   joinInputsSelector,
   joinValidationMessagesSelector,
 } from "../../store";
 
-function JoinTextField({ fieldProps }) {
-  const setJoinInputs = useSetRecoilState(joinInputsSelector);
+function JoinTextField({ fieldProps, isValid }) {
+  const [joinInputs, setJoinInputs] = useRecoilState(joinInputsSelector);
   const [validationMessages, setValidationMessages] = useRecoilState(
     joinValidationMessagesSelector
   );
@@ -16,21 +16,30 @@ function JoinTextField({ fieldProps }) {
 
   const onChangeTextField = ({ target }) => {
     const { value, name } = target;
+    const password = joinInputs.password;
     const textFieldInput = { [name]: value };
     setJoinInputs(textFieldInput);
-    setValidationMessages(textFieldInput);
+    setValidationMessages({ textFieldInput, password });
   };
 
   return (
     <>
-      <TextField {...fieldProps} onChange={onChangeTextField} />
-      <p>{validationMessages[name]}</p>
+      <FormTextField
+        {...fieldProps}
+        onChange={onChangeTextField}
+        isValid={isValid}
+      />
+      <FormErrorMessage
+        message={validationMessages[name]}
+        style={{ paddingTop: "6px" }}
+      />
     </>
   );
 }
 
 JoinTextField.propTypes = {
   fieldProps: PropTypes.object,
+  isValid: PropTypes.bool,
 };
 
 export default JoinTextField;

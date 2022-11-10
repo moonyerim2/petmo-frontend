@@ -7,7 +7,7 @@ export const joinInputs = atom({
   default: {
     email: "",
     password: "",
-    name: "",
+    passwordCheck: "",
     nickname: "",
   },
 });
@@ -27,7 +27,7 @@ export const joinValidationMessages = atom({
   default: {
     email: "",
     password: "",
-    name: "",
+    passwordCheck: "",
     nickname: "",
   },
 });
@@ -37,12 +37,15 @@ export const joinValidationMessagesSelector = selector({
   get: ({ get }) => {
     return get(joinValidationMessages);
   },
-  set: ({ set }, textFieldInput) => {
+  set: ({ set }, { textFieldInput, password }) => {
     const [fieldName, text] = Object.entries(textFieldInput)[0];
-    const errorMessage = validateFieldRules(
-      joinInputValidationRules[fieldName],
-      text
-    );
+    const validateParams = {
+      validationRules: joinInputValidationRules[fieldName],
+      string: text,
+      comparisonTarget: fieldName === "passwordCheck" ? password : null,
+    };
+
+    const errorMessage = validateFieldRules({ ...validateParams });
 
     set(joinValidationMessages, (prevState) => ({
       ...prevState,
