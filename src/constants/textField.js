@@ -13,7 +13,7 @@ export const emailFieldProps = {
   text: "",
   type: "email",
   name: "email",
-  placeholder: "",
+  placeholder: "예) pmr7348.navaer.com",
 };
 
 export const passwordFieldProps = {
@@ -23,7 +23,7 @@ export const passwordFieldProps = {
   text: "",
   type: "password",
   name: "password",
-  placeholder: "",
+  placeholder: "영문, 숫자, 특수문자 조합 8자리 이상",
 };
 
 export const passwordCheckFieldProps = {
@@ -33,7 +33,7 @@ export const passwordCheckFieldProps = {
   text: "",
   type: "password",
   name: "passwordCheck",
-  placeholder: "",
+  placeholder: "영문, 숫자, 특수문자 조합 8자리 이상",
 };
 
 export const nicknameFieldProps = {
@@ -43,7 +43,7 @@ export const nicknameFieldProps = {
   text: "",
   type: "text",
   name: "nickname",
-  placeholder: "",
+  placeholder: "최소 2글자 이상",
 };
 
 export const addressSearchFieldProps = {
