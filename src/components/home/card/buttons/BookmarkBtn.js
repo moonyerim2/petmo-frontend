@@ -8,6 +8,7 @@ const Wrapper = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 12px;
 `;
 const Icon = styled.img`
   margin-right: 2px;

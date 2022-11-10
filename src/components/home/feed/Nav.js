@@ -11,21 +11,21 @@ import ProfileIcon from "../../../css/icon/ProfileIcon.svg";
 import coloredProfile from "../../../css/icon/coloredProfile.svg";
 
 const Wrapper = styled(Box)`
-  height: 57px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  bottom: 0;
-  background-color: white;
+  &.MuiBox-root {
+    height: 57px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+  }
 `;
 const NavButtonBox = styled(BottomNavigation)`
   &.MuiBottomNavigation-root {
-    width: 320px;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 0px 20px;
   }
 `;
 
@@ -33,6 +33,7 @@ const NavButton = styled(BottomNavigationAction)`
   &.MuiButtonBase-root {
     padding: 0px;
     margin: 0px;
+    min-width: 0px;
   }
   &&.Mui-selected {
     color: #fa3c89;

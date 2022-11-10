@@ -1,5 +1,5 @@
 import React from "react";
-import { Header, SearchBar, Board, Nav } from "../components";
+import { Header, SearchBar, Board, Nav, WritePostBtn } from "../components";
 
 export function HomePage() {
   return (
@@ -7,6 +7,7 @@ export function HomePage() {
       <Header />
       <SearchBar />
       <Board />
+      <WritePostBtn />
       <Nav />
     </div>
   );

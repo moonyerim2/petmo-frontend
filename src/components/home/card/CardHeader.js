@@ -43,8 +43,7 @@ const UserInfo = styled.span`
   color: rgba(118, 118, 118, 1);
 `;
 const CardHeaderTags = styled.div`
-  padding-right: 20px;
-  padding-left: 20px;
+  margin: 8px 20px;
   height: 26px;
   display: flex;
   align-items: center;

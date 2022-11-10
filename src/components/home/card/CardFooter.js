@@ -27,6 +27,7 @@ const Button = styled.button`
   font-family: Pretendard;
   font-weight: Regular;
   font-size: 14px;
+  color: #767676;
   opacity: 1;
   border: none;
   display: flex;
