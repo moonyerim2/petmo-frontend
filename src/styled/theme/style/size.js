@@ -10,9 +10,15 @@ const size2 = {
   height: "46px",
 };
 
+const size3 = {
+  width: "57px",
+  height: "36px",
+};
+
 export const sizes = {
   size1,
   size2,
+  size3,
 };
 
 export default sizes;

@@ -18,7 +18,7 @@ export const disabledButtonStyle = ({ colors }) => {
 };
 
 export const buttonStyle =
-  (
+  ({
     isDisabled,
     fontColor,
     bgColor,
@@ -26,8 +26,8 @@ export const buttonStyle =
     fontSize,
     fontWeight,
     lineHeight,
-    borderRadius
-  ) =>
+    borderRadius,
+  }) =>
   ({ fontSizes, sizes, colors, layout, lineHeights, borderRadiuses }) => {
     return {
       ...layout.flexCenter,
