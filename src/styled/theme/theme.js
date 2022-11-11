@@ -75,7 +75,8 @@ export const colors = (() => {
   };
 })();
 
-export const borderRadius = {
+export const borderRadiuses = {
   small: pixelToRem(8),
+  medium: pixelToRem(40),
   big: pixelToRem(200),
 };

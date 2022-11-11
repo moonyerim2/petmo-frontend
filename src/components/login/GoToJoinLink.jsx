@@ -7,7 +7,7 @@ const goToJoinButtonText = "아직 회원이 아니신가요? 회원가입하기
 export const goToJoinLinkStyle = ({
   sizes,
   colors,
-  borderRadius,
+  borderRadiuses,
   fontSizes,
   lineHeights,
   layout,
@@ -19,7 +19,7 @@ export const goToJoinLinkStyle = ({
     fontWeight: 500,
     lineHeight: lineHeights[150],
     border: `1px solid ${colors.black}`,
-    borderRadius: borderRadius.big,
+    borderRadius: borderRadiuses.big,
   };
 };
 

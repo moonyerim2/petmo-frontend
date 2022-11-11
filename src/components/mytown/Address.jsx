@@ -4,14 +4,14 @@ import DeleteButton from "./DeleteButton";
 import styled, { css } from "styled-components";
 
 const Wrapper = styled.div`
-  ${({ theme: { colors, layout, sizes, borderRadius } }) =>
+  ${({ theme: { colors, layout, sizes, borderRadiuses } }) =>
     css`
       ${{
         ...layout.flex_aCenter_jBetween,
         ...sizes.size1,
         padding: "16px 16px 16px 12px",
         backgroundColor: colors.main,
-        borderRadius: borderRadius.small,
+        borderRadius: borderRadiuses.small,
         color: colors.white,
       }}
     `}

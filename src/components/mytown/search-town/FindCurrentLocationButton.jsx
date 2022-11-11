@@ -7,7 +7,7 @@ const findCurrentLocationButtonStyle = ({
   colors,
   fontSizes,
   layout,
-  borderRadius,
+  borderRadiuses,
 }) => {
   return {
     ...layout.flexCenter,
@@ -17,7 +17,7 @@ const findCurrentLocationButtonStyle = ({
     marginBottom: "24px",
     backgroundColor: colors["main"],
     fontSize: fontSizes.body2,
-    borderRadius: borderRadius.small,
+    borderRadius: borderRadiuses.small,
     color: colors.white,
     fontWeight: 700,
   };

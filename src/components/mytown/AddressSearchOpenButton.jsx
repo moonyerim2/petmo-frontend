@@ -7,14 +7,14 @@ const addressSearchOpenButtonStyle = ({
   colors,
   layout,
   sizes,
-  borderRadius,
+  borderRadiuses,
 }) => {
   return {
     ...layout.flex_aCenter_jBetween,
     ...sizes.size1,
     padding: "16px 16px 16px 12px",
     border: `1px solid ${colors.gray400}`,
-    borderRadius: borderRadius.small,
+    borderRadius: borderRadiuses.small,
     color: colors.gray600,
   };
 };

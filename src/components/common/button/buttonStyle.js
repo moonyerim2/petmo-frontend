@@ -16,3 +16,26 @@ export const disabledButtonStyle = ({ colors }) => {
     backgroundColor: colors.gray400,
   };
 };
+
+export const buttonStyle =
+  (
+    isDisabled,
+    fontColor,
+    bgColor,
+    size,
+    fontSize,
+    fontWeight,
+    lineHeight,
+    borderRadius
+  ) =>
+  ({ fontSizes, sizes, colors, layout, lineHeights, borderRadiuses }) => {
+    return {
+      ...layout.flexCenter,
+      ...sizes[size],
+      ...buttonColors(isDisabled, fontColor, bgColor)({ colors }),
+      fontSize: fontSizes[fontSize],
+      fontWeight: fontWeight,
+      lineHeight: lineHeights[lineHeight],
+      borderRadius: borderRadiuses[borderRadius],
+    };
+  };

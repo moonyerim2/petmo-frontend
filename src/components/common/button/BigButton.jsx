@@ -5,7 +5,7 @@ import { buttonColors } from "./buttonStyle";
 
 const bigButtonStyle =
   (isDisabled, fontColor, bgColor) =>
-  ({ fontSizes, sizes, colors, borderRadius, layout, lineHeights }) => {
+  ({ fontSizes, sizes, colors, borderRadiuses, layout, lineHeights }) => {
     return {
       ...layout.flexCenter,
       ...sizes.size1,
@@ -13,7 +13,7 @@ const bigButtonStyle =
       fontSize: fontSizes.body1,
       fontWeight: 500,
       lineHeight: lineHeights[150],
-      borderRadius: borderRadius.small,
+      borderRadius: borderRadiuses.small,
     };
   };
 
@@ -28,7 +28,7 @@ function BigButton({ buttonProps, isDisabled, fontColor, bgColor, onClick }) {
 }
 
 BigButton.propTypes = {
-  buttonProps: PropTypes.string,
+  buttonProps: PropTypes.object,
   isDisabled: PropTypes.bool,
   fontColor: PropTypes.string,
   bgColor: PropTypes.string,

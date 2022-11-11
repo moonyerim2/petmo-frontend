@@ -30,12 +30,12 @@ const ButtonContainer = styled.div`
 
 const tagButtonStyle =
   (isSelected) =>
-  ({ colors, borderRadius }) => {
+  ({ colors, borderRadiuses }) => {
     return {
       height: "46px",
       color: isSelected ? colors.main : colors.black,
       border: `1px solid ${isSelected ? colors.main : colors.gray400}`,
-      borderRadius: borderRadius.small,
+      borderRadius: borderRadiuses.small,
     };
   };
 
