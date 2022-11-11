@@ -7,7 +7,7 @@ const Header = styled.div`
   flex-direction: column;
 `;
 const CardHeaderInfo = styled.div`
-  height: 40px;
+  height: 57px;
   display: flex;
   align-items: center;
   padding-top: 20px;

@@ -9,7 +9,6 @@ const Wrapper = styled.div`
   box-sizing: border-box;
   background-color: white;
   width: 100%;
-  height: 200px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -45,7 +44,7 @@ Card.propTypes = {
   author: PropTypes.node,
   village: PropTypes.node,
   time: PropTypes.node,
-  content: PropTypes.node,
+  content: PropTypes.object,
   likeNumber: PropTypes.number,
   bookmarkNumber: PropTypes.number,
   commentNumber: PropTypes.number,

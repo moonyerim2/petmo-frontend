@@ -7,17 +7,15 @@ import Watched from "./buttons/Watched.js";
 import PropTypes from "prop-types";
 
 const Wrapper = styled.div`
-  box-sizing: border-box;
   border-top: 1px solid rgba(241, 241, 245, 1);
   width: 100%;
   height: 40px;
-  position: absolute;
   bottom: 0px;
+  padding: 0px 20px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 20px;
-  padding-left: 12px;
 `;
 const Column_buttons = styled.div`
   display: flex;
