@@ -13,3 +13,18 @@ export const imageUploadButtonProps = (currentNum, maxNum) => ({
   imgLocation: "left",
   isDisabled: false,
 });
+
+export const petModalButtonProps = (text) => {
+  return {
+    type: "button",
+    name: "tag",
+    text: text,
+    isDisabled: false,
+  };
+};
+
+export const petModalCloseButtonProps = {
+  type: "button",
+  text: "확인",
+  isDisabled: true,
+};

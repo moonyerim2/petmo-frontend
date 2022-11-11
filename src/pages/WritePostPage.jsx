@@ -7,6 +7,7 @@ import {
   PostTextarea,
   BottomModal,
   TopicModalContent,
+  PetModalContent,
 } from "../components";
 import { PageWrapper } from "../styled";
 
@@ -22,7 +23,10 @@ function WritePostPage() {
   const [isOpen, setIsOpen] = useState(false);
 
   const registerPostButton = <RegisterPostButton />;
-  const modalContent = [<TopicModalContent key={0} selectedTag="자유" />];
+  const modalContent = [
+    <TopicModalContent key={0} selectedTag="자유" />,
+    <PetModalContent key={1} />,
+  ];
 
   useEffect(() => {
     setIsOpen(true);
