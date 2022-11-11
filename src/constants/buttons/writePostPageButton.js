@@ -11,6 +11,7 @@ export const imageUploadButtonProps = (currentNum, maxNum) => ({
   text: `${currentNum}/${maxNum}`,
   img: { src: "/img/image.svg", alt: "사진업로드" },
   imgLocation: "left",
+  gap: 8,
   isDisabled: false,
 });
 

@@ -1,16 +1,44 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useRef } from "react";
+import styled, { css } from "styled-components";
 
 const placeholder =
   "공유하고 싶은 이야기를 적어보세요.\n링크나 사진을 업로드할 수도 있어요.";
 
 const TextArea = styled.textarea`
-  width: 100%;
-  height: 300px;
+  ${({ theme: { colors, fontSizes, lineHeights } }) =>
+    css`
+      ${{
+        width: "100%",
+        padding: "20px",
+        fontSize: fontSizes.body1,
+        lineHeight: lineHeights[140],
+        borderTop: `8px solid ${colors.lineLight}`,
+        resize: "none",
+      }}
+
+      &::placeholder {
+        font-size: ${fontSizes.body1};
+      }
+    `}
 `;
 
 function PostTextarea() {
-  return <TextArea name="register-post" placeholder={placeholder} />;
+  const textarea = useRef(null);
+
+  const onChange = () => {
+    textarea.current.style.height = "auto";
+    textarea.current.style.height = `${textarea.current.scrollHeight}px`;
+  };
+
+  return (
+    <TextArea
+      ref={textarea}
+      name="content"
+      placeholder={placeholder}
+      maxLength="150"
+      onChange={onChange}
+    />
+  );
 }
 
 export default PostTextarea;
