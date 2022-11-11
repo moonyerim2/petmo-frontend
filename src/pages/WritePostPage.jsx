@@ -6,6 +6,7 @@ import {
   ImageUploader,
   PostTextarea,
   BottomModal,
+  TopicModalContent,
 } from "../components";
 import { PageWrapper } from "../styled";
 
@@ -16,24 +17,12 @@ const placeholder = {
 
 const CLOSE = -1;
 
-const style = {
-  border: "1px solid red",
-  height: "100px",
-};
-
 function WritePostPage() {
   const [modalIndex, setModalIndex] = useState(CLOSE);
   const [isOpen, setIsOpen] = useState(false);
 
   const registerPostButton = <RegisterPostButton />;
-  const modalContent = [
-    <div key={0} style={style}>
-      1
-    </div>,
-    <div key={1} style={style}>
-      2
-    </div>,
-  ];
+  const modalContent = [<TopicModalContent key={0} selectedTag="자유" />];
 
   useEffect(() => {
     setIsOpen(true);

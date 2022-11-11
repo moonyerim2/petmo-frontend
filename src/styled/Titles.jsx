@@ -29,3 +29,12 @@ export const SubTitle2 = styled.h2`
     }}
   `}
 `;
+
+export const ModalTitle = styled.p`
+  ${({ theme: { fontSizes } }) => css`
+    ${{
+      fontSize: fontSizes.body1,
+      fontWeight: "700",
+    }}
+  `}
+`;
