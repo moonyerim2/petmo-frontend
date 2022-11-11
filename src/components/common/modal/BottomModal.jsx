@@ -3,17 +3,13 @@ import { PropTypes } from "prop-types";
 import styled, { css } from "styled-components";
 
 const DimLayer = styled.div`
-  ${() =>
-    css`
-      ${{
-        position: "absolute",
-        left: 0,
-        top: 0,
-        backgroundColor: "rgba(0, 0, 0, 0.6)",
-        width: "100%",
-        height: "100vh",
-      }}
-    `}
+  display: ${({ isOpen }) => (isOpen ? "block" : "none")};
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100vh;
 `;
 
 const Content = styled.div`
@@ -31,22 +27,48 @@ const Content = styled.div`
     `}
 `;
 
-function BottomModal({ content, closeModal }) {
+const List = styled.div`
+  overflow: hidden;
+`;
+
+const Items = styled.div`
+  display: flex;
+  flexwrap: nowrap;
+  transform: ${({ turn }) => `translateX(-${turn}00%)`};
+  transition: transform 500ms;
+`;
+
+const Item = styled.div`
+  flex-shrink: 0;
+  width: 100%;
+`;
+
+function BottomModal({ content, index, isOpen, toggleModal }) {
   const onClickDimLayer = (e) => {
     if (e.target !== e.currentTarget) return;
-    closeModal();
+    toggleModal(false);
   };
 
   return (
-    <DimLayer onClick={onClickDimLayer}>
-      <Content>{content}</Content>
+    <DimLayer isOpen={isOpen} onClick={onClickDimLayer}>
+      <Content>
+        <List>
+          <Items turn={index}>
+            {content.map((item, i) => (
+              <Item key={i}>{item}</Item>
+            ))}
+          </Items>
+        </List>
+      </Content>
     </DimLayer>
   );
 }
 
 BottomModal.propTypes = {
   content: PropTypes.node,
-  closeModal: PropTypes.func,
+  index: PropTypes.number,
+  isOpen: PropTypes.bool,
+  toggleModal: PropTypes.func,
 };
 
 export default BottomModal;
