@@ -8,9 +8,9 @@ import { joinButtonProps as defaultJoinButtonProps } from "../../constants";
 
 const joinButtonStyle =
   (isDisabled) =>
-  ({ fontSizes, size, colors }) => {
+  ({ fontSizes, sizes, colors }) => {
     return {
-      ...size.size1,
+      ...sizes.size1,
       ...buttonColors(isDisabled)({ colors }),
       position: "absolute",
       left: 0,

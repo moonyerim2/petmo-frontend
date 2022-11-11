@@ -6,12 +6,12 @@ import { addressSearchOpenButtonProps } from "../../constants";
 const addressSearchOpenButtonStyle = ({
   colors,
   layout,
-  size,
+  sizes,
   borderRadius,
 }) => {
   return {
     ...layout.flex_aCenter_jBetween,
-    ...size.size1,
+    ...sizes.size1,
     padding: "16px 16px 16px 12px",
     border: `1px solid ${colors.gray400}`,
     borderRadius: borderRadius.small,

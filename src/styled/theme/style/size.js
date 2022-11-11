@@ -10,9 +10,9 @@ const size2 = {
   height: "46px",
 };
 
-export const size = {
+export const sizes = {
   size1,
   size2,
 };
 
-export default size;
+export default sizes;

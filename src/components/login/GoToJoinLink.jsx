@@ -5,7 +5,7 @@ import { useTheme } from "styled-components";
 const goToJoinButtonText = "아직 회원이 아니신가요? 회원가입하기";
 
 export const goToJoinLinkStyle = ({
-  size,
+  sizes,
   colors,
   borderRadius,
   fontSizes,
@@ -13,7 +13,7 @@ export const goToJoinLinkStyle = ({
   layout,
 }) => {
   return {
-    ...size.size1,
+    ...sizes.size1,
     ...layout.flexCenter,
     fontSize: fontSizes.body1,
     fontWeight: 500,

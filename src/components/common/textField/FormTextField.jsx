@@ -13,7 +13,7 @@ const labelStyle = ({ fontSizes, lineHeights }) => {
 
 const inputStyle =
   (isValid) =>
-  ({ colors, fontSizes, lineHeights, size }, isFocus) => {
+  ({ colors, fontSizes, lineHeights, sizes }, isFocus) => {
     const borderColor = isFocus
       ? colors.main
       : !isValid
@@ -21,7 +21,7 @@ const inputStyle =
       : colors.lineMedium;
 
     return {
-      ...size.size1,
+      ...sizes.size1,
       display: "flex",
       alignItems: "center",
       padding: "16px 0 16px 12px",

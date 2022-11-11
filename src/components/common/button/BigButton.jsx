@@ -5,10 +5,10 @@ import { buttonColors } from "./buttonStyle";
 
 const bigButtonStyle =
   (isDisabled, fontColor, bgColor) =>
-  ({ fontSizes, size, colors, borderRadius, layout, lineHeights }) => {
+  ({ fontSizes, sizes, colors, borderRadius, layout, lineHeights }) => {
     return {
       ...layout.flexCenter,
-      ...size.size1,
+      ...sizes.size1,
       ...buttonColors(isDisabled, fontColor, bgColor)({ colors }),
       fontSize: fontSizes.body1,
       fontWeight: 500,

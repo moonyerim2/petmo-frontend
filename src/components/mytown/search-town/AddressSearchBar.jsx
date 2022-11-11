@@ -9,8 +9,8 @@ import {
 } from "../../../constants";
 
 const Wrapper = styled.div`
-  ${({ theme }) => css`
-    ${{ ...theme.layout.flexCenter, ...theme.size.size1 }}
+  ${({ theme: { layout, sizes } }) => css`
+    ${{ ...layout.flexCenter, ...sizes.size1 }}
   `}
 `;
 

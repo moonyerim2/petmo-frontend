@@ -11,11 +11,14 @@ const TagList = styled.ul`
 `;
 
 const TagListItem = styled.li`
-  ${({ theme: { fontSizes, colors, lineHeights, size, layout }, isSelected }) =>
+  ${({
+    theme: { fontSizes, colors, lineHeights, sizes, layout },
+    isSelected,
+  }) =>
     css`
       ${{
         ...layout.flex_aCenter_jBetween,
-        ...size.size2,
+        ...sizes.size2,
         color: isSelected ? colors.main : colors.black,
         fontWeight: isSelected ? 700 : 400,
         fontSize: fontSizes.body1,
