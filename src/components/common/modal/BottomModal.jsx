@@ -19,6 +19,7 @@ const Content = styled.div`
         position: "absolute",
         left: 0,
         bottom: 0,
+        zIndex: 9999,
         padding: "24px 20px",
         width: "100%",
         backgroundColor: colors.white,
