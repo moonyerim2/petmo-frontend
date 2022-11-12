@@ -1,11 +1,12 @@
 import React from "react";
+import { PropTypes } from "prop-types";
 import styled, { css } from "styled-components";
 import { BigButton, Button } from "../../common";
 import { ModalTitle } from "../../../styled";
 import {
   petModalButtonProps,
   petModalCloseButtonProps,
-  tag,
+  tags,
 } from "../../../constants";
 
 const contentTitle = "어떤 반려동물에 대해 이야기하나요?";
@@ -39,10 +40,9 @@ const tagButtonStyle =
     };
   };
 
-function PetModalContent() {
-  const selectedTag = ["강아지", "고양이"];
-
+function PetModalContent({ selectedTag }) {
   const isSeleted = (tag) => selectedTag.includes(tag);
+
   return (
     <>
       <TitleContainer>
@@ -50,7 +50,7 @@ function PetModalContent() {
         <span>{`${selectedTag.length}/3`}</span>
       </TitleContainer>
       <ButtonContainer>
-        {tag.pet.map((tag) => (
+        {tags.pet.map((tag) => (
           <Button
             key={tag}
             {...petModalButtonProps(tag)}
@@ -62,5 +62,9 @@ function PetModalContent() {
     </>
   );
 }
+
+PetModalContent.propTypes = {
+  selectedTag: PropTypes.array,
+};
 
 export default PetModalContent;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useRecoilState } from "recoil";
 import {
   PageHeader,
   RegisterPostButton,
@@ -10,6 +11,9 @@ import {
   PetModalContent,
 } from "../components";
 import { PageWrapper } from "../styled";
+import { postTagsSelector } from "../store";
+import { getKeyByValue } from "../util";
+import { tags } from "../constants";
 
 const placeholder = {
   topic: "어떤 이야기를 하고 싶나요?",
@@ -19,18 +23,29 @@ const placeholder = {
 const CLOSE = -1;
 
 function WritePostPage() {
+  const [postTags, setPostInputs] = useRecoilState(postTagsSelector);
   const [modalIndex, setModalIndex] = useState(CLOSE);
   const [isOpen, setIsOpen] = useState(false);
 
-  const registerPostButton = <RegisterPostButton />;
+  const registerPostButton = <RegisterPostButton isDisabled={false} />;
   const modalContent = [
-    <TopicModalContent key={0} selectedTag="자유" />,
-    <PetModalContent key={1} />,
+    <TopicModalContent key={0} selectedTag={postTags.topic} />,
+    <PetModalContent key={1} selectedTag={postTags.pet} />,
   ];
 
   useEffect(() => {
     setIsOpen(true);
   }, []);
+
+  const onClickBottomModal = ({ target }) => {
+    const tag = target.innerText;
+    const tagName = getKeyByValue(tags, tag);
+    const isFull = postTags.pet.length === 3 && !postTags.pet.includes(tag);
+
+    if (!tagName) return;
+    if (tagName === "pet" && isFull) return;
+    setPostInputs([tagName, tag]);
+  };
 
   const toggleModal = (isOpen) => {
     setIsOpen(isOpen);
@@ -68,6 +83,7 @@ function WritePostPage() {
         index={modalIndex}
         isOpen={isOpen}
         toggleModal={toggleModal}
+        onClick={onClickBottomModal}
       />
     </form>
   );

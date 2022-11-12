@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { ModalTitle } from "../../../styled";
-import { tag } from "../../../constants";
+import { tags } from "../../../constants";
 
 const contentTitle = "어떤 이야기를 하고 싶나요?";
 
@@ -34,8 +34,8 @@ function TopicModalContent({ selectedTag }) {
     <>
       <ModalTitle>{contentTitle}</ModalTitle>
       <TagList>
-        {tag.topic.map((tag) => (
-          <TagListItem key={tag} isSelected={isSelected(tag)}>
+        {tags.topic.map((tag) => (
+          <TagListItem key={tag} tabIndex={0} isSelected={isSelected(tag)}>
             {tag}
             {isSelected(tag) ? (
               <img src={`${process.env.PUBLIC_URL}/img/check.svg`} alt="선택" />
