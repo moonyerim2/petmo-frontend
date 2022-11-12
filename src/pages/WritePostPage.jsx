@@ -21,16 +21,23 @@ const placeholder = {
 };
 
 const CLOSE = -1;
+const PET_TAG_MAX_NUM = 3;
 
 function WritePostPage() {
   const [postTags, setPostInputs] = useRecoilState(postTagsSelector);
   const [modalIndex, setModalIndex] = useState(CLOSE);
   const [isOpen, setIsOpen] = useState(false);
 
+  const isFullySelectedPetTags = postTags.pet.length === PET_TAG_MAX_NUM;
+
   const registerPostButton = <RegisterPostButton isDisabled={false} />;
   const modalContent = [
     <TopicModalContent key={0} selectedTag={postTags.topic} />,
-    <PetModalContent key={1} selectedTag={postTags.pet} />,
+    <PetModalContent
+      key={1}
+      selectedTag={postTags.pet}
+      isDisabled={!isFullySelectedPetTags}
+    />,
   ];
 
   useEffect(() => {
@@ -40,7 +47,7 @@ function WritePostPage() {
   const onClickBottomModal = ({ target }) => {
     const tag = target.innerText;
     const tagName = getKeyByValue(tags, tag);
-    const isFull = postTags.pet.length === 3 && !postTags.pet.includes(tag);
+    const isFull = isFullySelectedPetTags && !postTags.pet.includes(tag);
 
     if (!tagName) return;
     if (tagName === "pet" && isFull) return;
@@ -69,10 +76,12 @@ function WritePostPage() {
         />
       </PageWrapper>
       <TagSelector
+        selectedTag={postTags.topic}
         placeholder={placeholder.topic}
         onClick={onClickTagSelector(0)}
       />
       <TagSelector
+        selectedTag={postTags.pet.join("/")}
         placeholder={placeholder.pet}
         onClick={onClickTagSelector(1)}
       />
