@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useRecoilState } from "recoil";
-import { postTagsSelector } from "../../store";
+import React, { useState } from "react";
 import {
   TagSelector,
   BottomModal,
@@ -9,9 +7,9 @@ import {
 } from "../../components";
 import { getKeyByValue } from "../../util";
 import { tags } from "../../constants";
+import { useTagSelector } from "../../hooks";
 
 const CLOSE = -1;
-const PET_TAG_MAX_NUM = 3;
 
 const placeholder = {
   topic: "어떤 이야기를 하고 싶나요?",
@@ -19,24 +17,15 @@ const placeholder = {
 };
 
 function TagSelectors() {
-  const [postTags, setPostInputs] = useRecoilState(postTagsSelector);
   const [modalIndex, setModalIndex] = useState(CLOSE);
-  const [isOpen, setIsOpen] = useState(false);
+  const { postTags, isOpen, topicTag, petTag, setIsOpen, setTags } =
+    useTagSelector();
 
-  const isFullySelectedPetTags = postTags.pet.length === PET_TAG_MAX_NUM;
-
-  useEffect(() => {
-    setIsOpen(true);
-  }, []);
-
-  const onClickBottomModal = ({ target }) => {
-    const tag = target.innerText;
+  const onClickBottomModal = (e) => {
+    const tag = e.target.innerText;
     const tagName = getKeyByValue(tags, tag);
-    const isFull = isFullySelectedPetTags && !postTags.pet.includes(tag);
-
     if (!tagName) return;
-    if (tagName === "pet" && isFull) return;
-    setPostInputs([tagName, tag]);
+    setTags(tagName, tag);
   };
 
   const toggleModal = (isOpen, index) => {
@@ -45,11 +34,11 @@ function TagSelectors() {
   };
 
   const modalContent = [
-    <TopicModalContent key={0} selectedTag={postTags.topic} />,
+    <TopicModalContent key={0} selectedTag={topicTag} />,
     <PetModalContent
       key={1}
-      selectedTag={postTags.pet}
-      isDisabled={!postTags.pet.length}
+      selectedTag={petTag}
+      isDisabled={!petTag.length}
       onClickCloseButton={() => toggleModal(false, CLOSE)}
     />,
   ];

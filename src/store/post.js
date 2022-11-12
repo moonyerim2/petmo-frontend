@@ -1,7 +1,6 @@
-import { atom, selector } from "recoil";
-import { addArrayElement, removeArrayElement } from "../util";
+import { atom } from "recoil";
 
-export const postTags = atom({
+export const postTagsAtom = atom({
   key: "postTags",
   default: {
     topic: "",
@@ -9,22 +8,10 @@ export const postTags = atom({
   },
 });
 
-export const postTagsSelector = selector({
-  key: "postTagsSelector",
-  get: ({ get }) => {
-    return get(postTags);
-  },
-  set: ({ set }, tagInput) => {
-    const [tagName, tag] = tagInput;
-
-    set(postTags, (prevState) => {
-      if (tagName === "pet") {
-        const newPetTags = prevState.pet.includes(tag)
-          ? removeArrayElement(prevState.pet, tag)
-          : addArrayElement(prevState.pet, tag);
-        return { ...prevState, ...{ pet: newPetTags } };
-      }
-      return { ...prevState, ...{ topic: tag } };
-    });
+export const postContentAtom = atom({
+  key: "postContent",
+  default: {
+    text: "",
+    image: [],
   },
 });
