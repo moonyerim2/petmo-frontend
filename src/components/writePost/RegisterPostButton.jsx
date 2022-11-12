@@ -13,10 +13,12 @@ const registerPostButtonStyle = (isDisabled) =>
     borderRadius: "medium",
   });
 
-function RegisterPostButton({ isDisabled }) {
+function RegisterPostButton({ isDisabled, onClick }) {
+  const newButtonProps = { ...registerPostButtonProps, ...isDisabled };
   return (
     <Button
-      {...registerPostButtonProps}
+      {...newButtonProps}
+      onClick={onClick}
       style={registerPostButtonStyle(isDisabled)}
     />
   );
@@ -24,6 +26,7 @@ function RegisterPostButton({ isDisabled }) {
 
 RegisterPostButton.propTypes = {
   isDisabled: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 export default RegisterPostButton;

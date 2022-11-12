@@ -6,10 +6,13 @@ import {
   PostTextarea,
   TagSelectors,
 } from "../components";
+import { useWritePost } from "../hooks";
 import { PageWrapper } from "../styled";
 
 function WritePostPage() {
-  const registerPostButton = <RegisterPostButton isDisabled={false} />;
+  const { canSubmitPost } = useWritePost();
+
+  const registerPostButton = <RegisterPostButton isDisabled={!canSubmitPost} />;
 
   return (
     <form>
