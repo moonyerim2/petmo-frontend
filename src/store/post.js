@@ -4,7 +4,7 @@ import { addArrayElement, removeArrayElement } from "../util";
 export const postTags = atom({
   key: "postTags",
   default: {
-    topic: "자유",
+    topic: "",
     pet: [],
   },
 });
