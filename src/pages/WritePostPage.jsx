@@ -10,12 +10,17 @@ import { useWritePost } from "../hooks";
 import { PageWrapper } from "../styled";
 
 function WritePostPage() {
-  const { canSubmitPost } = useWritePost();
+  const { canSubmitPost, registerPost, formData } = useWritePost();
 
-  const registerPostButton = <RegisterPostButton isDisabled={!canSubmitPost} />;
+  const registerPostButton = (
+    <RegisterPostButton
+      isDisabled={!canSubmitPost}
+      onClick={() => registerPost()}
+    />
+  );
 
   return (
-    <form>
+    <form encType="multipart/form-data">
       <PageWrapper>
         <PageHeader
           leftButtonType="exit"
@@ -25,7 +30,7 @@ function WritePostPage() {
       </PageWrapper>
       <TagSelectors />
       <PostTextarea />
-      <ImageUploader />
+      <ImageUploader formData={formData} />
     </form>
   );
 }

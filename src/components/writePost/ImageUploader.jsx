@@ -1,8 +1,8 @@
-import React from "react";
-import { useRef } from "react";
+import React, { useRef, useState } from "react";
+import PropTypes from "prop-types";
+import styled, { css } from "styled-components";
 import { Button } from "../common";
 import { imageUploadButtonProps } from "../../constants";
-import styled, { css } from "styled-components";
 
 const MAX_IMAGE_NUM = 5;
 
@@ -29,33 +29,48 @@ const imageUploadButtonStyle = ({ layout, colors, lineHeights, fontSizes }) => {
   };
 };
 
-function ImageUploader() {
+function ImageUploader({ formData }) {
   const input = useRef(null);
+  const [imageFiles, setImageFiles] = useState([]);
 
-  const onClick = () => {
+  const onClick = (e) => {
+    e.preventDefault();
+    if (imageFiles.length >= 5) return;
     input.current.click();
+  };
+
+  const onChange = ({ target }) => {
+    const files = target.files;
+    if (imageFiles.length + files.length > 5) return;
+
+    setImageFiles([...imageFiles, ...files]);
+    formData.append("files", imageFiles);
   };
 
   return (
     <Wrapper>
       <Button
-        {...imageUploadButtonProps(1, MAX_IMAGE_NUM)}
+        {...imageUploadButtonProps(imageFiles.length, MAX_IMAGE_NUM)}
         onClick={onClick}
         style={imageUploadButtonStyle}
-      >
-        {`${0}/${MAX_IMAGE_NUM}`}
-      </Button>
+      />
       <label htmlFor="img-upload" style={{ display: "none" }}>
         <input
           ref={input}
           type="file"
           id="img-upload"
           name="image"
-          accept="image/*"
+          accept="image/jpg, image/jpeg, image/png"
+          onChange={onChange}
+          multiple={true}
         />
       </label>
     </Wrapper>
   );
 }
+
+ImageUploader.propTypes = {
+  formData: PropTypes.object,
+};
 
 export default ImageUploader;

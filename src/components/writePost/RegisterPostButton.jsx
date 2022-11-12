@@ -18,7 +18,12 @@ function RegisterPostButton({ isDisabled, onClick }) {
   return (
     <Button
       {...newButtonProps}
-      onClick={onClick}
+      onClick={(e) => {
+        e.preventDefault();
+        if (!isDisabled && onClick) {
+          onClick(e);
+        }
+      }}
       style={registerPostButtonStyle(isDisabled)}
     />
   );

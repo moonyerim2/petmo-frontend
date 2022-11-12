@@ -1,29 +1,51 @@
 import { useState, useEffect } from "react";
-import { useRecoilValue } from "recoil";
-import { postContentAtom, postTagsAtom } from "../store";
+import { useRecoilValue, useResetRecoilState } from "recoil";
+import { postTextAtom, postTagsAtom } from "../store";
+import { callRegisterPostApi } from "../api";
 
 const useWritePost = () => {
   const [canSubmitPost, setCanSubmitPost] = useState(false);
   const postTags = useRecoilValue(postTagsAtom);
-  const postContent = useRecoilValue(postContentAtom);
+  const postText = useRecoilValue(postTextAtom);
+  const formData = new FormData();
+
+  const resetPostTags = useResetRecoilState(postTagsAtom);
+  const resetPostText = useResetRecoilState(postTextAtom);
+
+  useEffect(() => {
+    return () => {
+      resetPostTags();
+      resetPostText();
+    };
+  }, []);
 
   useEffect(() => {
     confirmPost();
-  }, [postTags, postContent]);
+  }, [postTags, postText]);
 
   const confirmPost = () => {
     const hasTopicTag = postTags.topic !== "";
     const hasPetTag = postTags.pet.length !== 0;
-    const hasContent = postContent.text !== "";
+    const hasText = postText !== "";
 
-    if (hasTopicTag && hasPetTag && hasContent) {
+    if (hasTopicTag && hasPetTag && hasText) {
       setCanSubmitPost(true);
     } else {
       setCanSubmitPost(false);
     }
   };
 
-  return { canSubmitPost };
+  const registerPost = async () => {
+    const payload = {
+      topic: postTags.topic,
+      pet: postTags.pet,
+      text: postText,
+      formData,
+    };
+    const response = await callRegisterPostApi(payload);
+  };
+
+  return { canSubmitPost, registerPost, formData };
 };
 
 export default useWritePost;

@@ -8,10 +8,7 @@ export const postTagsAtom = atom({
   },
 });
 
-export const postContentAtom = atom({
-  key: "postContent",
-  default: {
-    text: "",
-    image: [],
-  },
+export const postTextAtom = atom({
+  key: "postText",
+  default: "",
 });
