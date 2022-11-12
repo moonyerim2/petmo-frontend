@@ -40,7 +40,7 @@ const tagButtonStyle =
     };
   };
 
-function PetModalContent({ selectedTag, isDisabled }) {
+function PetModalContent({ selectedTag, isDisabled, onClickCloseButton }) {
   const isSeleted = (tag) => selectedTag.includes(tag);
 
   return (
@@ -61,6 +61,7 @@ function PetModalContent({ selectedTag, isDisabled }) {
       <BigButton
         buttonProps={petModalCloseButtonProps}
         isDisabled={isDisabled}
+        onClick={onClickCloseButton}
       />
     </>
   );
@@ -69,6 +70,7 @@ function PetModalContent({ selectedTag, isDisabled }) {
 PetModalContent.propTypes = {
   selectedTag: PropTypes.array,
   isDisabled: PropTypes.bool,
+  onClickCloseButton: PropTypes.func,
 };
 
 export default PetModalContent;

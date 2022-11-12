@@ -44,16 +44,22 @@ const Item = styled.div`
   width: 100%;
 `;
 
-function BottomModal({ content, index, isOpen, toggleModal, onClick }) {
-  const onClickDimLayer = (e) => {
+function BottomModal({
+  content,
+  index,
+  isOpen,
+  onClickDimLayer,
+  onClickModal,
+}) {
+  const onClickDim = (e) => {
     if (e.target !== e.currentTarget) return;
-    toggleModal(false);
+    onClickDimLayer(e);
   };
 
   return (
-    <DimLayer isOpen={isOpen} onClick={onClickDimLayer}>
+    <DimLayer isOpen={isOpen} onClick={onClickDim}>
       <Content>
-        <List onClick={onClick}>
+        <List onClick={onClickModal}>
           <Items turn={index}>
             {content.map((item, i) => (
               <Item key={i}>{item}</Item>
@@ -69,8 +75,8 @@ BottomModal.propTypes = {
   content: PropTypes.node,
   index: PropTypes.number,
   isOpen: PropTypes.bool,
-  toggleModal: PropTypes.func,
-  onClick: PropTypes.func,
+  onClickDimLayer: PropTypes.func,
+  onClickModal: PropTypes.func,
 };
 
 export default BottomModal;

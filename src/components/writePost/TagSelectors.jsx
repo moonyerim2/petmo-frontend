@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
+import { postTagsSelector } from "../../store";
 import {
   TagSelector,
   BottomModal,
   TopicModalContent,
   PetModalContent,
 } from "../../components";
-import { postTagsSelector } from "../../store";
 import { getKeyByValue } from "../../util";
 import { tags } from "../../constants";
 
@@ -29,15 +29,6 @@ function TagSelectors() {
     setIsOpen(true);
   }, []);
 
-  const modalContent = [
-    <TopicModalContent key={0} selectedTag={postTags.topic} />,
-    <PetModalContent
-      key={1}
-      selectedTag={postTags.pet}
-      isDisabled={!isFullySelectedPetTags}
-    />,
-  ];
-
   const onClickBottomModal = ({ target }) => {
     const tag = target.innerText;
     const tagName = getKeyByValue(tags, tag);
@@ -48,36 +39,39 @@ function TagSelectors() {
     setPostInputs([tagName, tag]);
   };
 
-  const toggleModal = (isOpen) => {
+  const toggleModal = (isOpen, index) => {
     setIsOpen(isOpen);
-    if (!isOpen) {
-      setModalIndex(CLOSE);
-    }
-  };
-
-  const onClickTagSelector = (index) => () => {
-    toggleModal(true);
     setModalIndex(index);
   };
+
+  const modalContent = [
+    <TopicModalContent key={0} selectedTag={postTags.topic} />,
+    <PetModalContent
+      key={1}
+      selectedTag={postTags.pet}
+      isDisabled={!postTags.pet.length}
+      onClickCloseButton={() => toggleModal(false, CLOSE)}
+    />,
+  ];
 
   return (
     <>
       <TagSelector
         selectedTag={postTags.topic}
         placeholder={placeholder.topic}
-        onClick={onClickTagSelector(0)}
+        onClick={() => toggleModal(true, 0)}
       />
       <TagSelector
         selectedTag={postTags.pet.join("/")}
         placeholder={placeholder.pet}
-        onClick={onClickTagSelector(1)}
+        onClick={() => toggleModal(true, 1)}
       />
       <BottomModal
         content={modalContent}
         index={modalIndex}
         isOpen={isOpen}
-        toggleModal={toggleModal}
-        onClick={onClickBottomModal}
+        onClickDimLayer={() => toggleModal(false, CLOSE)}
+        onClickModal={onClickBottomModal}
       />
     </>
   );

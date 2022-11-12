@@ -18,9 +18,11 @@ const bigButtonStyle =
   };
 
 function BigButton({ buttonProps, isDisabled, fontColor, bgColor, onClick }) {
+  const newButtonProps = { ...buttonProps, ...{ isDisabled } };
+
   return (
     <Button
-      {...buttonProps}
+      {...newButtonProps}
       style={bigButtonStyle(isDisabled, fontColor, bgColor)}
       onClick={onClick}
     />
