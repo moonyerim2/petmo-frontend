@@ -11,7 +11,7 @@ import { useWritePost } from "../hooks";
 import { PageWrapper } from "../styled";
 
 function WritePostPage() {
-  const { canSubmitPost, registerPost, formData } = useWritePost();
+  const { canSubmitPost, registerPost } = useWritePost();
 
   const registerPostButton = (
     <RegisterPostButton
@@ -32,7 +32,7 @@ function WritePostPage() {
       <TagSelectors />
       <PostTextarea />
       <ImageFilePreview />
-      <ImageUploader formData={formData} />
+      <ImageUploader />
     </form>
   );
 }

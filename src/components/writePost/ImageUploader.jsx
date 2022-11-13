@@ -1,8 +1,9 @@
-import React, { useRef, useState } from "react";
-import PropTypes from "prop-types";
+import React, { useRef } from "react";
 import styled, { css } from "styled-components";
+import { useRecoilState } from "recoil";
 import { Button } from "../common";
 import { imageUploadButtonProps } from "../../constants";
+import { postImageFilesAtom } from "../../store";
 
 const MAX_IMAGE_NUM = 5;
 
@@ -29,27 +30,30 @@ const imageUploadButtonStyle = ({ layout, colors, lineHeights, fontSizes }) => {
   };
 };
 
-function ImageUploader({ formData }) {
-  const input = useRef(null);
-  const [imageFiles, setImageFiles] = useState([]);
+function ImageUploader() {
+  const inputFile = useRef(null);
+  const [imageFiles, setImageFiles] = useRecoilState(postImageFilesAtom);
 
   const onClick = (e) => {
     e.preventDefault();
     if (imageFiles.length >= 5) return;
-    input.current.click();
+    inputFile.current.click();
   };
 
   const onChange = ({ target }) => {
     const files = target.files;
     if (imageFiles.length + files.length > 5) return;
 
-    const images = Object.entries(files).reduce((images, [i, file]) => {
-      formData.append("images", file);
-      images[i] = file;
-      return images;
-    }, []);
+    const newImagesFiles = Object.entries(files).reduce(
+      (imageFiles, [i, file]) => {
+        const src = URL.createObjectURL(file);
+        imageFiles[i] = { file, src };
+        return imageFiles;
+      },
+      []
+    );
 
-    setImageFiles([...imageFiles, ...images]);
+    setImageFiles([...imageFiles, ...newImagesFiles]);
   };
 
   return (
@@ -61,7 +65,7 @@ function ImageUploader({ formData }) {
       />
       <label htmlFor="img-upload" style={{ display: "none" }}>
         <input
-          ref={input}
+          ref={inputFile}
           type="file"
           id="img-upload"
           name="image"
@@ -73,9 +77,5 @@ function ImageUploader({ formData }) {
     </Wrapper>
   );
 }
-
-ImageUploader.propTypes = {
-  formData: PropTypes.object,
-};
 
 export default ImageUploader;
