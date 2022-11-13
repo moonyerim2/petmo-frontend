@@ -1,54 +1,41 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import ContentText from "./content/ContentText.js";
+import ContentImage from "./content/ContentImage.js";
 
 const Wrapper = styled.div`
   margin: 16px 20px;
 `;
-const TextArea = styled.div`
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-family: "Pretendard";
-  font-style: normal;
-  font-weight: 300;
-  font-size: 16px;
-  line-height: 22px;
-  color: #111111;
-`;
-const MoreButton = styled.span`
-  font-family: "Pretendard";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 140%;
-  color: #999999;
-  padding: 3px;
-`;
-function Content({ content }) {
-  const [limit] = useState(80);
-  const handleShortText = (str, limit) => {
-    return {
-      string: str.slice(0, limit),
-      isShowMore: str.length > limit,
-    };
-  };
 
-  return (
-    <Wrapper>
-      <Link to="/post/:postId">
-        <TextArea>
-          {handleShortText(content.text, limit).string}
-          {handleShortText(content.text, limit).isShowMore && (
-            <>
-              <span>...</span>
-              <MoreButton>더 보기</MoreButton>
-            </>
-          )}
-        </TextArea>
-      </Link>
-    </Wrapper>
-  );
+function Content({ content }) {
+  if (content.text !== null && content.image === null) {
+    return (
+      <Wrapper>
+        <Link to="/post/:postId">
+          <ContentText content_text={content.text} />
+        </Link>
+      </Wrapper>
+    );
+  }
+  if (content.image !== null && content.text === null) {
+    return (
+      <Wrapper>
+        <ContentImage content_image={content.image} />
+      </Wrapper>
+    );
+  }
+  if (content.text !== null && content.image !== null) {
+    return (
+      <Wrapper>
+        <Link to="/post/:postId">
+          <ContentText content_text={content.text} />
+        </Link>
+        <ContentImage content_image={content.image} />
+      </Wrapper>
+    );
+  }
 }
 
 Content.propTypes = {
