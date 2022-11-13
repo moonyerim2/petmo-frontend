@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useRef } from "react";
 import PropTypes from "prop-types";
+import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { Button } from "../common";
+import { postImageFilesSelector } from "../../store";
 import { deleteImageFileButtonProps } from "../../constants";
 
 const Wrapper = styled.span`
@@ -14,7 +16,7 @@ const Wrapper = styled.span`
 `;
 
 const Image = styled.img`
-  width: 100%;
+  max-width: 100%;
 `;
 
 const deleteImageFileButtonStyle = () => {
@@ -28,11 +30,19 @@ const deleteImageFileButtonStyle = () => {
 };
 
 function PreviewImage({ src }) {
+  const setImageFiles = useSetRecoilState(postImageFilesSelector);
+  const image = useRef(null);
+
+  const onClickFileDeleteButton = () => {
+    setImageFiles({ action: "DELETE", deleteImageSrc: image.current.src });
+  };
+
   return (
     <Wrapper className="preview-image">
-      <Image src={src} alt="미리보기" />
+      <Image ref={image} src={src} alt="미리보기" />
       <Button
         {...deleteImageFileButtonProps}
+        onClick={onClickFileDeleteButton}
         style={deleteImageFileButtonStyle}
       />
     </Wrapper>

@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { useRecoilState } from "recoil";
 import { Button } from "../common";
 import { imageUploadButtonProps } from "../../constants";
-import { postImageFilesAtom } from "../../store";
+import { postImageFilesSelector } from "../../store";
 
 const MAX_IMAGE_NUM = 5;
 
@@ -32,7 +32,7 @@ const imageUploadButtonStyle = ({ layout, colors, lineHeights, fontSizes }) => {
 
 function ImageUploader() {
   const inputFile = useRef(null);
-  const [imageFiles, setImageFiles] = useRecoilState(postImageFilesAtom);
+  const [imageFiles, setImageFiles] = useRecoilState(postImageFilesSelector);
 
   const onClick = (e) => {
     e.preventDefault();
@@ -53,7 +53,10 @@ function ImageUploader() {
       []
     );
 
-    setImageFiles([...imageFiles, ...newImagesFiles]);
+    setImageFiles({
+      action: "ADD",
+      newImagesFiles,
+    });
   };
 
   return (

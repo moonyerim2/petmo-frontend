@@ -1,4 +1,4 @@
-import { atom } from "recoil";
+import { atom, selector } from "recoil";
 
 export const postTagsAtom = atom({
   key: "postTags",
@@ -16,4 +16,24 @@ export const postTextAtom = atom({
 export const postImageFilesAtom = atom({
   key: "postImageFiles",
   default: [],
+});
+
+export const postImageFilesSelector = selector({
+  key: "postImageFilesSelector",
+  get: ({ get }) => {
+    return get(postImageFilesAtom);
+  },
+  set: ({ set }, { action, deleteImageSrc, newImagesFiles }) => {
+    console.log(action, newImagesFiles);
+
+    set(postImageFilesAtom, (prevState) => {
+      if (action === "ADD") {
+        return [...prevState, ...newImagesFiles];
+      }
+      if (action === "DELETE") {
+        const newState = prevState.filter(({ src }) => src !== deleteImageSrc);
+        return newState;
+      }
+    });
+  },
 });
