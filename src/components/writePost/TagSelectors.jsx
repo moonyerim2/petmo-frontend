@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   TagSelector,
   BottomModal,
@@ -20,6 +20,8 @@ function TagSelectors() {
   const [modalIndex, setModalIndex] = useState(CLOSE);
   const { postTags, isOpen, topicTag, petTag, setIsOpen, setTags } =
     useTagSelector();
+
+  useEffect(() => setModalIndex(modalIndex + 1), [topicTag]);
 
   const onClickBottomModal = (e) => {
     const tag = e.target.innerText;

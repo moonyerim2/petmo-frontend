@@ -36,7 +36,7 @@ const Items = styled.div`
   display: flex;
   flexwrap: nowrap;
   transform: ${({ turn }) => `translateX(-${turn}00%)`};
-  transition: transform 500ms;
+  transition: transform 700ms;
 `;
 
 const Item = styled.div`
