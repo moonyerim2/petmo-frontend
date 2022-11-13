@@ -36,13 +36,10 @@ const useWritePost = () => {
   };
 
   const registerPost = async () => {
-    const payload = {
-      topic: postTags.topic,
-      pet: postTags.pet,
-      text: postText,
-      formData,
-    };
-    const response = await callRegisterPostApi(payload);
+    formData.set("topic", postTags.topic);
+    formData.set("pet", postTags.pet);
+    formData.set("text", postText);
+    const response = await callRegisterPostApi(formData);
   };
 
   return { canSubmitPost, registerPost, formData };

@@ -43,8 +43,13 @@ function ImageUploader({ formData }) {
     const files = target.files;
     if (imageFiles.length + files.length > 5) return;
 
-    setImageFiles([...imageFiles, ...files]);
-    formData.append("files", imageFiles);
+    const images = Object.entries(files).reduce((images, [i, file]) => {
+      formData.append("images", file);
+      images[i] = file;
+      return images;
+    }, []);
+
+    setImageFiles([...imageFiles, ...images]);
   };
 
   return (
