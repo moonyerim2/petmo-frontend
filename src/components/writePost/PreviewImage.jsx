@@ -7,16 +7,16 @@ import { postImageFilesSelector } from "../../store";
 import { deleteImageFileButtonProps } from "../../constants";
 
 const Wrapper = styled.span`
-  display: inline-flex;
   position: relative;
-  width: 102px;
+  width: 101px;
   height: 101px;
   border-radius: 4px;
   overflow: hidden;
 `;
 
 const Image = styled.img`
-  max-width: 100%;
+  width: 100%;
+  height: 100%;
 `;
 
 const deleteImageFileButtonStyle = () => {
@@ -33,9 +33,8 @@ function PreviewImage({ src }) {
   const setImageFiles = useSetRecoilState(postImageFilesSelector);
   const image = useRef(null);
 
-  const onClickFileDeleteButton = () => {
+  const onClickFileDeleteButton = () =>
     setImageFiles({ action: "DELETE", deleteImageSrc: image.current.src });
-  };
 
   return (
     <Wrapper className="preview-image">

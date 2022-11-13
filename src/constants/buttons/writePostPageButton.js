@@ -30,6 +30,14 @@ export const petModalCloseButtonProps = {
   isDisabled: true,
 };
 
+export const addImageFileButtonProps = {
+  type: "button",
+  text: "",
+  img: { src: "/img/file-add.svg", alt: "이미지 파일 추가" },
+  imgLocation: "left",
+  isDisabled: false,
+};
+
 export const deleteImageFileButtonProps = {
   type: "button",
   text: "",

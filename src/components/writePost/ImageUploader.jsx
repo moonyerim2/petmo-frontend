@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+import React from "react";
+import { PropTypes } from "prop-types";
 import styled, { css } from "styled-components";
 import { useRecoilState } from "recoil";
 import { Button } from "../common";
@@ -30,14 +31,13 @@ const imageUploadButtonStyle = ({ layout, colors, lineHeights, fontSizes }) => {
   };
 };
 
-function ImageUploader() {
-  const inputFile = useRef(null);
+function ImageUploader({ inputRef }) {
   const [imageFiles, setImageFiles] = useRecoilState(postImageFilesSelector);
 
   const onClick = (e) => {
     e.preventDefault();
     if (imageFiles.length >= 5) return;
-    inputFile.current.click();
+    inputRef.current.click();
   };
 
   const onChange = ({ target }) => {
@@ -68,7 +68,7 @@ function ImageUploader() {
       />
       <label htmlFor="img-upload" style={{ display: "none" }}>
         <input
-          ref={inputFile}
+          ref={inputRef}
           type="file"
           id="img-upload"
           name="image"
@@ -80,5 +80,9 @@ function ImageUploader() {
     </Wrapper>
   );
 }
+
+ImageUploader.propTypes = {
+  inputRef: PropTypes.object,
+};
 
 export default ImageUploader;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   PageHeader,
   RegisterPostButton,
@@ -11,6 +11,7 @@ import { useWritePost } from "../hooks";
 import { PageWrapper } from "../styled";
 
 function WritePostPage() {
+  const inputFile = useRef(null);
   const { canSubmitPost, registerPost } = useWritePost();
 
   const registerPostButton = (
@@ -31,8 +32,8 @@ function WritePostPage() {
       </PageWrapper>
       <TagSelectors />
       <PostTextarea />
-      <ImageFilePreview />
-      <ImageUploader />
+      <ImageFilePreview inputRef={inputFile} />
+      <ImageUploader inputRef={inputFile} />
     </form>
   );
 }

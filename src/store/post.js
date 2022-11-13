@@ -24,8 +24,6 @@ export const postImageFilesSelector = selector({
     return get(postImageFilesAtom);
   },
   set: ({ set }, { action, deleteImageSrc, newImagesFiles }) => {
-    console.log(action, newImagesFiles);
-
     set(postImageFilesAtom, (prevState) => {
       if (action === "ADD") {
         return [...prevState, ...newImagesFiles];
