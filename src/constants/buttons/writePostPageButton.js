@@ -29,3 +29,11 @@ export const petModalCloseButtonProps = {
   text: "확인",
   isDisabled: true,
 };
+
+export const deleteImageFileButtonProps = {
+  type: "button",
+  text: "",
+  img: { src: "/img/file-delete.svg", alt: "이미지 파일 삭제" },
+  imgLocation: "left",
+  isDisabled: false,
+};

@@ -5,6 +5,7 @@ import {
   ImageUploader,
   PostTextarea,
   TagSelectors,
+  ImageFilePreview,
 } from "../components";
 import { useWritePost } from "../hooks";
 import { PageWrapper } from "../styled";
@@ -30,6 +31,7 @@ function WritePostPage() {
       </PageWrapper>
       <TagSelectors />
       <PostTextarea />
+      <ImageFilePreview />
       <ImageUploader formData={formData} />
     </form>
   );

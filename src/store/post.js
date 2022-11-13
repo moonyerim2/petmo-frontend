@@ -12,3 +12,8 @@ export const postTextAtom = atom({
   key: "postText",
   default: "",
 });
+
+export const postImageFilesAtom = atom({
+  key: "postImageFiles",
+  default: [],
+});
