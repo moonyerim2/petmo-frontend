@@ -6,7 +6,7 @@ import styled from "@emotion/styled";
 
 const Wrapper = styled(Box)`
   background-color: #f1f1f5;
-  width: 360px;
+  width: 100%;
   height: 56px;
   display: flex;
   align-items: center;
