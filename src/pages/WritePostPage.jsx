@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState, useRef } from "react";
 import {
   PageHeader,
   RegisterPostButton,
@@ -6,23 +6,26 @@ import {
   PostTextarea,
   TagSelectors,
   ImageFilePreview,
+  Snackbar,
 } from "../components";
 import { useWritePost } from "../hooks";
 import { PageWrapper } from "../styled";
 
 function WritePostPage() {
+  const { canSubmitPost, snackbarMessage, registerPost } = useWritePost();
+  const [isOpenSnackbar, setIsOpenSnackbar] = useState(false);
   const inputFile = useRef(null);
-  const { canSubmitPost, registerPost } = useWritePost();
 
   const registerPostButton = (
     <RegisterPostButton
       isDisabled={!canSubmitPost}
-      onClick={() => registerPost()}
+      onClickWhenAble={() => registerPost()}
+      onClickWhenDisable={() => setIsOpenSnackbar(true)}
     />
   );
 
   return (
-    <form encType="multipart/form-data">
+    <form>
       <PageWrapper>
         <PageHeader
           leftButtonType="exit"
@@ -34,6 +37,11 @@ function WritePostPage() {
       <PostTextarea />
       <ImageFilePreview inputRef={inputFile} />
       <ImageUploader inputRef={inputFile} />
+      <Snackbar
+        open={isOpenSnackbar}
+        setOpen={setIsOpenSnackbar}
+        snackbarMessage={snackbarMessage}
+      />
     </form>
   );
 }
