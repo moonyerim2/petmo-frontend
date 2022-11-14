@@ -1,8 +1,3 @@
-export const petItemButtonProps = {
-  type: "button",
-  isDisabled: false,
-};
-
 export const registerPetButtonProps = {
   type: "submit",
   name: "pet",
