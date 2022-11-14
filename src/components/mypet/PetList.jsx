@@ -18,11 +18,19 @@ const Ul = styled.ul`
   }
 `;
 
-function PetList({ petList }) {
+function PetList({ petList, selectedPet, onClickListItem }) {
   return (
     <Ul>
-      {petList.map((pet) => {
-        return <PetListItem key={pet} species={pet} />;
+      {petList.map((species) => {
+        const isChecked = selectedPet.includes(species);
+        return (
+          <PetListItem
+            key={species}
+            species={species}
+            isChecked={isChecked}
+            onClick={onClickListItem}
+          />
+        );
       })}
     </Ul>
   );
@@ -30,6 +38,8 @@ function PetList({ petList }) {
 
 PetList.propTypes = {
   petList: PropTypes.array,
+  selectedPet: PropTypes.array,
+  onClickListItem: PropTypes.func,
 };
 
 export default PetList;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
@@ -44,20 +44,16 @@ const petImage = {
   기타: "others.png",
 };
 
-function PetListItem({ species }) {
-  const [isChecked, setIsChecked] = useState(false);
-
-  const onClick = () => {
-    if (!isChecked) {
-      setIsChecked(true);
-    } else {
-      setIsChecked(false);
+function PetListItem({ species, isChecked, onClick }) {
+  const onClickItem = (e) => {
+    if (onClick) {
+      onClick(e, species);
     }
   };
 
   return (
     <Li className="pet-item">
-      <button type="button" onClick={onClick}>
+      <button type="button" onClick={onClickItem}>
         <Image
           src={process.env.PUBLIC_URL + "/img/pet/" + petImage[species]}
           alt="동물 이미지"
@@ -71,6 +67,8 @@ function PetListItem({ species }) {
 
 PetListItem.propTypes = {
   species: PropTypes.string,
+  isChecked: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 export default PetListItem;

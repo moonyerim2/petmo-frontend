@@ -1,9 +1,8 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { PageHeader, PetList, BottomButton } from "../components";
+import { PageHeader, PetSelectForm } from "../components";
 import { PageWrapper } from "../styled";
 import { SubText } from "../styled";
-import { tags, registerPetButtonProps } from "../constants";
 
 const MainText = styled.p`
   ${({ theme: { fontSizes, lineHeights } }) => css`
@@ -36,8 +35,7 @@ function MyPetPage() {
           {mainText2}
         </MainText>
         <SubText>{subText}</SubText>
-        <PetList petList={tags.pet} />
-        <BottomButton buttonProps={registerPetButtonProps} isDisabled={true} />
+        <PetSelectForm />
       </PageWrapper>
     </>
   );
