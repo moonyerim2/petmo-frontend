@@ -19,3 +19,15 @@ export const BodyText2 = styled.p`
     }}
   `}
 `;
+
+export const SubText = styled.p`
+  ${({ theme: { colors, fontSizes, lineHeights } }) => css`
+    ${{
+      padding: "8px 0 24px",
+      color: colors.fontLight2,
+      fontSize: fontSizes.body2,
+      textAlign: "center",
+      lineHeight: lineHeights[150],
+    }}
+  `}
+`;

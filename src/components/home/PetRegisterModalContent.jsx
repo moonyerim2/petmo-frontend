@@ -2,6 +2,7 @@ import React from "react";
 import { registerButtonProps, noRegisterButtonProps } from "../../constants";
 import styled, { css } from "styled-components";
 import { BigButton } from "../common";
+import { SubText } from "../../styled";
 
 const mainText = "반려동물\n정보를 등록해보세요!";
 const subText = "'프로필'에서 언제든 변경할 수 있어요.";
@@ -23,17 +24,6 @@ const MainText = styled.p`
       fontSize: fontSizes.subtitle2,
       lineHeight: lineHeights[140],
       fontWeight: 500,
-    }}
-  `}
-`;
-
-const SubText = styled.p`
-  ${({ theme: { colors, fontSizes, lineHeights } }) => css`
-    ${{
-      padding: "8px 0 24px",
-      color: colors.fontLight2,
-      fontSize: fontSizes.body2,
-      lineHeight: lineHeights[150],
     }}
   `}
 `;
