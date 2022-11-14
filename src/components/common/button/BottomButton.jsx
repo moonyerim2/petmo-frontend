@@ -16,7 +16,7 @@ const bottomButtonStyle =
     };
   };
 
-function BottomButton({ buttonProps, isDisabled }) {
+function BottomButton({ buttonProps, isDisabled, onClick }) {
   const bottomButtonProps = () => {
     return {
       ...buttonProps,
@@ -24,14 +24,10 @@ function BottomButton({ buttonProps, isDisabled }) {
     };
   };
 
-  const onClickBottomButton = (e) => {
-    e.preventDefault();
-  };
-
   return (
     <Button
       {...bottomButtonProps()}
-      onClick={onClickBottomButton}
+      onClick={onClick}
       style={bottomButtonStyle(isDisabled)}
     />
   );
