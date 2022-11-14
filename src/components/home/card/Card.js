@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import CardHeader from "./CardHeader";
+import { UserInfoHeader, Tags } from "../../../components";
 import Content from "./Content";
 import CardFooter from "./CardFooter";
 import PropTypes from "prop-types";
@@ -17,6 +17,7 @@ const Wrapper = styled.div`
 `;
 
 function Card({
+  id,
   author,
   village,
   time,
@@ -26,11 +27,14 @@ function Card({
   commentNumber,
   myLike,
   myBookmark,
+  categoryTag,
+  animalTag,
 }) {
   return (
     <Wrapper>
-      <CardHeader author={author} village={village} time={time} />
-      <Content content={content} />
+      <UserInfoHeader author={author} village={village} time={time} />
+      <Tags categoryTag={categoryTag} animalTag={animalTag} />
+      <Content content={content} postId={id} />
       <CardFooter
         myLike={myLike}
         myBookmark={myBookmark}
@@ -42,6 +46,7 @@ function Card({
   );
 }
 Card.propTypes = {
+  id: PropTypes.node,
   author: PropTypes.node,
   village: PropTypes.node,
   time: PropTypes.node,
@@ -51,6 +56,8 @@ Card.propTypes = {
   commentNumber: PropTypes.number,
   myLike: PropTypes.bool,
   myBookmark: PropTypes.bool,
+  categoryTag: PropTypes.string,
+  animalTag: PropTypes.array,
 };
 
 export default Card;

@@ -9,11 +9,11 @@ const Wrapper = styled.div`
   margin: 16px 20px;
 `;
 
-function Content({ content }) {
+function Content({ content, postId }) {
   if (content.text !== null && content.image === null) {
     return (
       <Wrapper>
-        <Link to="/post/:postId">
+        <Link to={`/post/${postId}`}>
           <ContentText content_text={content.text} />
         </Link>
       </Wrapper>
@@ -29,7 +29,7 @@ function Content({ content }) {
   if (content.text !== null && content.image !== null) {
     return (
       <Wrapper>
-        <Link to="/post/:postId">
+        <Link to={`/post/${postId}`}>
           <ContentText content_text={content.text} />
         </Link>
         <ContentImage content_image={content.image} />
@@ -39,6 +39,7 @@ function Content({ content }) {
 }
 
 Content.propTypes = {
+  postId: PropTypes.node,
   content: PropTypes.object,
 };
 export default Content;

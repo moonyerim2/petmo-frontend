@@ -18,7 +18,7 @@ const Select = styled.select`
   padding: 17px;
 `;
 
-function Header() {
+function FeedHeader() {
   return (
     <HeaderBox>
       <Select>
@@ -28,4 +28,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default FeedHeader;
