@@ -94,4 +94,9 @@ export const handlers = [
       ])
     );
   }),
+
+  rest.post(`${BASE_URL}/registerPost`, async (req, res, ctx) => {
+    console.log(req);
+    return res(ctx.status(200));
+  }),
 ];

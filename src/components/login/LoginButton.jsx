@@ -1,18 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button, bigButtonStyle } from "../common";
+import { BigButton } from "../common";
 
-function LoginButton({ loginFn, buttonProps, buttonStyle }) {
+function LoginButton({ loginFn, buttonProps, fontColor, bgColor }) {
   const onClickLoginButton = async (e) => {
     e.preventDefault();
     loginFn();
   };
 
   return (
-    <Button
-      {...buttonProps}
+    <BigButton
+      buttonProps={buttonProps}
+      fontColor={fontColor}
+      bgColor={bgColor}
       onClick={onClickLoginButton}
-      style={bigButtonStyle(buttonStyle.fontColor, buttonStyle.bgColor)}
     />
   );
 }
@@ -21,6 +22,8 @@ LoginButton.propTypes = {
   loginFn: PropTypes.func,
   buttonProps: PropTypes.object,
   buttonStyle: PropTypes.object,
+  fontColor: PropTypes.string,
+  bgColor: PropTypes.string,
 };
 
 export default LoginButton;

@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import CaptionWithSideLine from "../common/CaptionWithSideLine";
 import LoginButton from "./LoginButton";
-
 import { kakaoLoginButtonProps, naverLoginButtonProps } from "../../constants";
 import { useSocialLogin } from "../../hooks";
 
@@ -28,12 +27,14 @@ function SocialLogin() {
         <LoginButton
           loginFn={login("kakao")}
           buttonProps={kakaoLoginButtonProps}
-          buttonStyle={{ fontColor: "black", bgColor: "kakao" }}
+          fontColor="black"
+          bgColor="kakao"
         />
         <LoginButton
           loginFn={login("naver")}
           buttonProps={naverLoginButtonProps}
-          buttonStyle={{ fontColor: "white", bgColor: "naver" }}
+          fontColor="white"
+          bgColor="naver"
         />
       </ButtonWrapper>
     </Wrapper>

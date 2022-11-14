@@ -16,6 +16,8 @@ import {
 } from "../../constants";
 import { hasNotEmptyStingValue, hasOnlyEmptyStingValue } from "../../util";
 
+const authType = "join";
+
 function JoinForm() {
   const joinInputs = useRecoilValue(joinInputsSelector);
   const validationMessages = useRecoilValue(joinValidationMessagesSelector);
@@ -49,11 +51,11 @@ function JoinForm() {
           isValid={isValid("nickname")}
         />
         <JoinTextField
-          fieldProps={emailFieldProps}
+          fieldProps={emailFieldProps(authType)}
           isValid={isValid("email")}
         />
         <JoinTextField
-          fieldProps={passwordFieldProps}
+          fieldProps={passwordFieldProps(authType)}
           isValid={isValid("password")}
         />
         <JoinTextField

@@ -1,10 +1,49 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useRef } from "react";
+import {
+  PageHeader,
+  RegisterPostButton,
+  ImageUploader,
+  PostTextarea,
+  TagSelectors,
+  ImageFilePreview,
+  Snackbar,
+} from "../components";
+import { useWritePost } from "../hooks";
+import { PageWrapper } from "../styled";
 
 function WritePostPage() {
-  const { postId } = useParams();
+  const { canSubmitPost, snackbarMessage, registerPost } = useWritePost();
+  const [isOpenSnackbar, setIsOpenSnackbar] = useState(false);
+  const inputFile = useRef(null);
 
-  return postId ? <div>게시물 {postId}수정</div> : <div>게시물 작성</div>;
+  const registerPostButton = (
+    <RegisterPostButton
+      isDisabled={!canSubmitPost}
+      onClickWhenAble={() => registerPost()}
+      onClickWhenDisable={() => setIsOpenSnackbar(true)}
+    />
+  );
+
+  return (
+    <form>
+      <PageWrapper>
+        <PageHeader
+          leftButtonType="exit"
+          pageTitle="게시글"
+          rightButton={registerPostButton}
+        />
+      </PageWrapper>
+      <TagSelectors />
+      <PostTextarea />
+      <ImageFilePreview inputRef={inputFile} />
+      <ImageUploader inputRef={inputFile} />
+      <Snackbar
+        open={isOpenSnackbar}
+        setOpen={setIsOpenSnackbar}
+        snackbarMessage={snackbarMessage}
+      />
+    </form>
+  );
 }
 
 export default WritePostPage;

@@ -6,25 +6,26 @@ export const textFieldLabels = {
   nickname: "닉네임",
 };
 
-export const emailFieldProps = {
+export const emailFieldProps = (authType) => ({
   id: "email",
   label: textFieldLabels.email,
   isLabelHidden: false,
   text: "",
   type: "email",
   name: "email",
-  placeholder: "",
-};
+  placeholder: authType === "join" ? "예) pmr7348.navaer.com" : "",
+});
 
-export const passwordFieldProps = {
+export const passwordFieldProps = (authType) => ({
   id: "password",
   label: textFieldLabels.password,
   isLabelHidden: false,
   text: "",
   type: "password",
   name: "password",
-  placeholder: "",
-};
+  placeholder:
+    authType === "join" ? "영문, 숫자, 특수문자 조합 8자리 이상" : "",
+});
 
 export const passwordCheckFieldProps = {
   id: "passwordCheck",
@@ -33,7 +34,7 @@ export const passwordCheckFieldProps = {
   text: "",
   type: "password",
   name: "passwordCheck",
-  placeholder: "",
+  placeholder: "영문, 숫자, 특수문자 조합 8자리 이상",
 };
 
 export const nicknameFieldProps = {
@@ -43,7 +44,7 @@ export const nicknameFieldProps = {
   text: "",
   type: "text",
   name: "nickname",
-  placeholder: "",
+  placeholder: "최소 2글자 이상",
 };
 
 export const addressSearchFieldProps = {
