@@ -24,6 +24,17 @@ const cardsDummyList = [
     likeNumber: 2,
     bookmarkNumber: 3,
     commentNumber: 6,
+    categoryTag: "축하해요",
+    animalTag: [
+      {
+        tagName: "강아지",
+        id: 1,
+      },
+      {
+        tagName: "고양이",
+        id: 2,
+      },
+    ],
   },
   {
     id: 2,
@@ -43,6 +54,17 @@ const cardsDummyList = [
     likeNumber: 2,
     bookmarkNumber: 3,
     commentNumber: 6,
+    categoryTag: "축하해요",
+    animalTag: [
+      {
+        tagName: "강아지",
+        id: 1,
+      },
+      {
+        tagName: "고양이",
+        id: 2,
+      },
+    ],
   },
   {
     id: 3,
@@ -58,6 +80,17 @@ const cardsDummyList = [
     likeNumber: 4,
     bookmarkNumber: 1,
     commentNumber: 8,
+    categoryTag: "축하해요",
+    animalTag: [
+      {
+        tagName: "강아지",
+        id: 1,
+      },
+      {
+        tagName: "고양이",
+        id: 2,
+      },
+    ],
   },
   {
     id: 4,
@@ -73,6 +106,17 @@ const cardsDummyList = [
     likeNumber: 4,
     bookmarkNumber: 1,
     commentNumber: 8,
+    categoryTag: "축하해요",
+    animalTag: [
+      {
+        tagName: "강아지",
+        id: 1,
+      },
+      {
+        tagName: "고양이",
+        id: 2,
+      },
+    ],
   },
 ];
 function Board() {

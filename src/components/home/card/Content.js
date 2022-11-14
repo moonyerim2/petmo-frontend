@@ -2,18 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import ContentText from "./content/ContentText.js";
-import ContentImage from "./content/ContentImage.js";
+import { ContentText, ContentImage } from "./contents";
 
 const Wrapper = styled.div`
   margin: 16px 20px;
 `;
 
-function Content({ content }) {
+function Content({ content, postId }) {
   if (content.text !== null && content.image === null) {
     return (
       <Wrapper>
-        <Link to="/post/:postId">
+        <Link to={`/post/${postId}`}>
           <ContentText content_text={content.text} />
         </Link>
       </Wrapper>
@@ -29,7 +28,7 @@ function Content({ content }) {
   if (content.text !== null && content.image !== null) {
     return (
       <Wrapper>
-        <Link to="/post/:postId">
+        <Link to={`/post/${postId}`}>
           <ContentText content_text={content.text} />
         </Link>
         <ContentImage content_image={content.image} />
@@ -39,6 +38,7 @@ function Content({ content }) {
 }
 
 Content.propTypes = {
+  postId: PropTypes.node,
   content: PropTypes.object,
 };
 export default Content;
