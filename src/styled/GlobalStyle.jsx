@@ -51,6 +51,18 @@ const GlobalStyle = createGlobalStyle`
     color: ${({ theme: { colors } }) => colors.black};
     text-decoration: none;
   }
+
+  input, textarea {
+    outline: none;
+  }
+
+  textarea::-webkit-scrollbar{
+    display: none;
+  }
+  
+  input::placeholder, textarea::placeholder {
+    color: ${({ theme: { colors } }) => colors.gray600};
+  }
 `;
 
 export default GlobalStyle;

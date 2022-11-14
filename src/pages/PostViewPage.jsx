@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { PageHeader, UserInfoHeader } from "../components";
+import { Content } from "../components";
 const sample = {
   id: 1,
   author: "각이",
@@ -32,6 +33,7 @@ function PostViewPage() {
         village={sample.village}
         time={sample.time}
       />
+      <Content content={sample.content} />
       <div>게시글 {postId}</div>;
     </>
   );

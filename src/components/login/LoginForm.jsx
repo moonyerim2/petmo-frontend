@@ -9,6 +9,8 @@ import {
   passwordFieldProps,
 } from "../../constants";
 
+const authType = "login";
+
 function LoginForm() {
   const { errorField, validationMessage, login, setLoginInputs } =
     useLocalLogin();
@@ -24,12 +26,12 @@ function LoginForm() {
       <form>
         <FormField>
           <FormTextField
-            {...emailFieldProps}
+            {...emailFieldProps(authType)}
             onBlur={onBlurTextField}
             isValid={!errorField.email}
           />
           <FormTextField
-            {...passwordFieldProps}
+            {...passwordFieldProps(authType)}
             onBlur={onBlurTextField}
             isValid={!errorField.password}
           />
@@ -38,11 +40,7 @@ function LoginForm() {
           message={validationMessage}
           style={{ padding: "6px 0 16px" }}
         />
-        <LoginButton
-          loginFn={login}
-          buttonProps={localLoginButtonProps}
-          buttonStyle={{ fontColor: "white", bgColor: "main" }}
-        />
+        <LoginButton loginFn={login} buttonProps={localLoginButtonProps} />
       </form>
     </>
   );

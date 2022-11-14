@@ -2,8 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import ContentText from "./content/ContentText.js";
-import ContentImage from "./content/ContentImage.js";
+import { ContentText, ContentImage } from "./contents";
 
 const Wrapper = styled.div`
   margin: 16px 20px;

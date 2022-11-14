@@ -1,23 +1,22 @@
 import React from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import PropTypes from "prop-types";
-import { Button } from "../common";
+import { Button, buttonColors } from "../common";
 import { isJoinCompleted, joinInputsSelector } from "../../store";
 import { callJoinApi } from "../../api";
 import { joinButtonProps as defaultJoinButtonProps } from "../../constants";
 
 const joinButtonStyle =
   (isDisabled) =>
-  ({ colors, fontSizes, size }) => {
+  ({ fontSizes, sizes, colors }) => {
     return {
-      ...size.bigButtonSize,
+      ...sizes.size1,
+      ...buttonColors(isDisabled)({ colors }),
       position: "absolute",
       left: 0,
       bottom: 0,
-      color: isDisabled ? colors.gray600 : colors.white,
       fontSize: fontSizes.body1,
       fontWeight: 500,
-      backgroundColor: isDisabled ? colors.gray400 : colors.main,
     };
   };
 
