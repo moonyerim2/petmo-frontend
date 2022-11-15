@@ -20,7 +20,7 @@ const MoreButton = styled.span`
   color: #999999;
   padding: 3px;
 `;
-function ContentText({ content_text }) {
+function ContentText({ content_text, type }) {
   const [limit] = useState(80);
   const handleShortText = (str, limit) => {
     return {
@@ -29,21 +29,26 @@ function ContentText({ content_text }) {
     };
   };
 
-  return (
-    <TextArea>
-      {handleShortText(content_text, limit).string}
-      {handleShortText(content_text, limit).isShowMore && (
-        <>
-          <span>...</span>
-          <MoreButton>더 보기</MoreButton>
-        </>
-      )}
-    </TextArea>
-  );
+  if (type === "full") {
+    return content_text;
+  } else {
+    return (
+      <TextArea>
+        {handleShortText(content_text, limit).string}
+        {handleShortText(content_text, limit).isShowMore && (
+          <>
+            <span>...</span>
+            <MoreButton>더 보기</MoreButton>
+          </>
+        )}
+      </TextArea>
+    );
+  }
 }
 
 export default ContentText;
 
 ContentText.propTypes = {
   content_text: PropTypes.node,
+  type: PropTypes.node,
 };

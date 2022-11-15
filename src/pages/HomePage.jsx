@@ -6,7 +6,7 @@ export function HomePage() {
     <div>
       <FeedHeader />
       <SearchBar />
-      <Board />
+      <Board type={"part"} />
       <WritePostBtn />
       <Nav />
     </div>

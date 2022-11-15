@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { PageHeader, UserInfoHeader } from "../components";
-import { Content } from "../components";
+import { PageHeader } from "../components";
+import { Card } from "../components";
 const sample = {
   id: 1,
   author: "각이",
@@ -20,6 +20,17 @@ const sample = {
   likeNumber: 2,
   bookmarkNumber: 3,
   commentNumber: 6,
+  categoryTag: "축하해요",
+  animalTag: [
+    {
+      tagName: "강아지",
+      id: 1,
+    },
+    {
+      tagName: "고양이",
+      id: 2,
+    },
+  ],
 };
 
 function PostViewPage() {
@@ -28,12 +39,7 @@ function PostViewPage() {
   return (
     <>
       <PageHeader pageTitle="게시글" />
-      <UserInfoHeader
-        author={sample.author}
-        village={sample.village}
-        time={sample.time}
-      />
-      <Content content={sample.content} />
+      <Card key={sample.id} type={"full"} {...sample} />
       <div>게시글 {postId}</div>;
     </>
   );

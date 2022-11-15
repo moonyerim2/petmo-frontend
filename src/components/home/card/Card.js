@@ -18,6 +18,7 @@ const Wrapper = styled.div`
 
 function Card({
   id,
+  type,
   author,
   village,
   time,
@@ -34,7 +35,7 @@ function Card({
     <Wrapper>
       <UserInfoHeader author={author} village={village} time={time} />
       <Tags categoryTag={categoryTag} animalTag={animalTag} />
-      <Content content={content} postId={id} />
+      <Content type={type} content={content} postId={id} />
       <CardFooter
         myLike={myLike}
         myBookmark={myBookmark}
@@ -47,6 +48,7 @@ function Card({
 }
 Card.propTypes = {
   id: PropTypes.node,
+  type: PropTypes.node,
   author: PropTypes.node,
   village: PropTypes.node,
   time: PropTypes.node,

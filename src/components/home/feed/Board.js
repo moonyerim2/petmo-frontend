@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import CardList from "./CardList";
+import PropTypes from "prop-types";
 
 const Wrapper = styled.div`
   box-sizing: border-box;
@@ -119,12 +120,16 @@ const cardsDummyList = [
     ],
   },
 ];
-function Board() {
+function Board({ type }) {
   return (
     <Wrapper>
-      <CardList cardsDummyList={cardsDummyList} />
+      <CardList cardsDummyList={cardsDummyList} type={type} />
     </Wrapper>
   );
 }
 
 export default Board;
+
+Board.propTypes = {
+  type: PropTypes.node,
+};
