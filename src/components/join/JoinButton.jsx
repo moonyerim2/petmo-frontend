@@ -1,6 +1,6 @@
 import React from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
 import PropTypes from "prop-types";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { Button, buttonColors } from "../common";
 import { isJoinCompleted, joinInputsSelector } from "../../store";
 import { callJoinApi } from "../../api";
