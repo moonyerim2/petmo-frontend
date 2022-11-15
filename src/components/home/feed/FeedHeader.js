@@ -1,28 +1,49 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
+import styled, { css } from "styled-components";
+import { useRecoilValue } from "recoil";
+import { useNavigate } from "react-router-dom";
+import { Select, Option } from "../../common";
+import { DimLayer } from "../../../styled";
+import { userSelector } from "../../../store/user";
 
 const HeaderBox = styled.div`
-  box-sizing: border-box;
-  background: rgba(255, 255, 255, 1);
-  width: 100%;
-  height: 56px;
   display: flex;
-`;
+  align-items: center;
+  padding-left: 20px;
 
-const Select = styled.select`
-  border: none;
-  font-weight: Bold;
-  font-size: 18px;
-  opacity: 1;
-  text-align: left;
-  padding: 17px;
+  ${({ theme: { sizes } }) => css`
+    ${{ ...sizes.size1 }}
+  `}
 `;
 
 function FeedHeader() {
+  const {
+    address: { regionDepth2 },
+  } = useRecoilValue(userSelector);
+  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const onClickSelect = ({ target }) => {
+    const isSeletElement =
+      target.classList.contains("town-select") ||
+      target.parentElement.classList.contains("town-select");
+
+    if (!isOpen && isSeletElement) {
+      setIsOpen(true);
+    } else {
+      setIsOpen(false);
+    }
+  };
+
   return (
-    <HeaderBox>
-      <Select>
-        <option value="공덕동">공덕동</option>
+    <HeaderBox onClick={onClickSelect}>
+      <DimLayer isOpen={isOpen} />
+      <Select className="town-select" defaultValue={regionDepth2}>
+        <Option value={regionDepth2}>{regionDepth2}</Option>
+        <Option value={"전국지역"}>전국지역</Option>
+        <Option value={"내 동네 설정하기"} onClick={() => navigate("/mytown")}>
+          내 동네 설정하기
+        </Option>
       </Select>
     </HeaderBox>
   );

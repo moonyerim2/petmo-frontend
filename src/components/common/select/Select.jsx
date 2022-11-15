@@ -57,7 +57,7 @@ const StyledListbox = styled("ul")`
 `;
 
 const StyledPopper = styled(PopperUnstyled)`
-  z-index: 1;
+  z-index: 999;
 `;
 
 const Select = React.forwardRef(function CustomSelect(props, ref) {
