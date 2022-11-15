@@ -3,6 +3,7 @@ import { BottomButton } from "../common";
 import PetList from "./PetList";
 import { tags, registerPetButtonProps } from "../../constants";
 import { addArrayElement, removeArrayElement } from "../../util";
+import { callRegisterPetApi } from "../../api";
 
 const MAX_PET_NUM = 3;
 
@@ -21,6 +22,11 @@ function PetSelectForm() {
     setSelectedPet(newSelectedPet);
   };
 
+  const onClickRegisterPetButton = async () => {
+    const response = await callRegisterPetApi(selectedPet);
+    console.log(response);
+  };
+
   return (
     <>
       <PetList
@@ -28,7 +34,11 @@ function PetSelectForm() {
         selectedPet={selectedPet}
         onClickListItem={onClickPetListItem}
       />
-      <BottomButton buttonProps={registerPetButtonProps} isDisabled={true} />
+      <BottomButton
+        buttonProps={registerPetButtonProps}
+        isDisabled={!selectedPet.length}
+        onClick={onClickRegisterPetButton}
+      />
     </>
   );
 }
