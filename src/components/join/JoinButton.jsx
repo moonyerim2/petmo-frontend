@@ -1,39 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { Button, buttonColors } from "../common";
+import { BottomButton } from "../common";
 import { isJoinCompleted, joinInputsSelector } from "../../store";
 import { callJoinApi } from "../../api";
 import { joinButtonProps as defaultJoinButtonProps } from "../../constants";
 
-const joinButtonStyle =
-  (isDisabled) =>
-  ({ fontSizes, sizes, colors }) => {
-    return {
-      ...sizes.size1,
-      ...buttonColors(isDisabled)({ colors }),
-      position: "absolute",
-      left: 0,
-      bottom: 0,
-      fontSize: fontSizes.body1,
-      fontWeight: 500,
-    };
-  };
-
 function JoinButton({ isDisabled, failToJoin }) {
   const joinInputs = useRecoilValue(joinInputsSelector);
   const setIsCompleted = useSetRecoilState(isJoinCompleted);
-
-  const joinButtonProps = () => {
-    if (!isDisabled) {
-      return {
-        ...defaultJoinButtonProps,
-        isDisabled: false,
-      };
-    }
-
-    return defaultJoinButtonProps;
-  };
 
   const payload = Object.entries(joinInputs).reduce(
     (payload, [fieldName, input]) =>
@@ -55,10 +30,10 @@ function JoinButton({ isDisabled, failToJoin }) {
   };
 
   return (
-    <Button
-      {...joinButtonProps()}
+    <BottomButton
+      buttonProps={defaultJoinButtonProps}
       onClick={onClickJoinButton}
-      style={joinButtonStyle(isDisabled)}
+      isDisabled={isDisabled}
     />
   );
 }

@@ -97,4 +97,9 @@ export const handlers = [
     console.log(req);
     return res(ctx.status(200));
   }),
+
+  rest.post(`${BASE_URL}/users/animals`, async (req, res, ctx) => {
+    console.log(req);
+    return res(ctx.status(200));
+  }),
 ];
