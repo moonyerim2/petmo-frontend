@@ -29,8 +29,8 @@ function AddressList({ searchResults, setIsSearchMode }) {
 
   return (
     <ul>
-      {searchResults.map(({ id, regionDepth1, regionDepth2 }) => (
-        <AddressItem key={id} tabIndex={0} onClick={onClick}>
+      {searchResults.map(({ regionDepth1, regionDepth2 }, i) => (
+        <AddressItem key={i} tabIndex={0} onClick={onClick}>
           {regionDepth1} {regionDepth2}
         </AddressItem>
       ))}

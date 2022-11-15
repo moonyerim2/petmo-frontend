@@ -1,14 +1,12 @@
 import axios from "axios";
 import { BASE_URL } from "../constants";
 
-export const callSearchTownByQueryApi = async (query, signal) => {
+export const callSearchTownByQueryApi = async (query) => {
   try {
     const encodedUrl = encodeURI(
       `${BASE_URL}/users/address/search/query?query=${query}`
     );
-    const response = await axios.get(encodedUrl, {
-      signal,
-    });
+    const response = await axios.get(encodedUrl);
     return response.data;
   } catch (error) {
     if (error.name === "AbortError") {
@@ -19,22 +17,16 @@ export const callSearchTownByQueryApi = async (query, signal) => {
   }
 };
 
-export const callSearchTownByIpApi = async (payload, signal) => {
+export const callSearchTownByIpApi = async () => {
   try {
-    const response = await axios.post(
-      `${BASE_URL}/users/address/search/ip`,
-      payload,
-      {
-        signal,
-      }
-    );
-    return response.data;
+    const response = await axios.post(`${BASE_URL}/users/address/search/ip`);
+    return response;
   } catch (error) {
     if (error.name === "AbortError") {
       return "Request Aborted";
     }
     console.log(error);
-    return error.response.status;
+    return error.response;
   }
 };
 

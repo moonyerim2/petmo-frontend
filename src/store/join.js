@@ -6,8 +6,9 @@ export const joinInputs = atom({
   key: "joinInputs",
   default: {
     email: "",
-    password: "",
     nickname: "",
+    password: "",
+    passwordCheck: "",
   },
 });
 
