@@ -4,11 +4,13 @@ import PetList from "./PetList";
 import { tags, registerPetButtonProps } from "../../constants";
 import { addArrayElement, removeArrayElement } from "../../util";
 import { callRegisterPetApi } from "../../api";
+import { useNavigate } from "react-router-dom";
 
 const MAX_PET_NUM = 3;
 
 function PetSelectForm() {
   const [selectedPet, setSelectedPet] = useState([]);
+  const navigate = useNavigate();
 
   const onClickPetListItem = (e, species) => {
     const isFull = selectedPet.length === MAX_PET_NUM;
@@ -24,7 +26,9 @@ function PetSelectForm() {
 
   const onClickRegisterPetButton = async () => {
     const response = await callRegisterPetApi(selectedPet);
-    console.log(response);
+    if (response.status === 200) {
+      navigate(-1);
+    }
   };
 
   return (
