@@ -1,16 +1,7 @@
 import React from "react";
 import { PropTypes } from "prop-types";
 import styled, { css } from "styled-components";
-
-const DimLayer = styled.div`
-  display: ${({ isOpen }) => (isOpen ? "block" : "none")};
-  position: absolute;
-  left: 0;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  width: 100%;
-  height: 100vh;
-`;
+import { DimLayer } from "../../../styled";
 
 const Content = styled.div`
   ${({ theme: { colors } }) =>
