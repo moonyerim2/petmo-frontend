@@ -35,9 +35,17 @@ function JoinButton({ isDisabled }) {
     return defaultJoinButtonProps;
   };
 
+  const payload = Object.entries(joinInputs).reduce(
+    (payload, [fieldName, input]) =>
+      fieldName !== "passwordCheck"
+        ? { ...payload, [fieldName]: input }
+        : payload,
+    {}
+  );
+
   const onClickJoinButton = async (e) => {
     e.preventDefault();
-    const response = await callJoinApi(joinInputs);
+    const response = await callJoinApi(payload);
     if (response.status === 201) {
       setIsCompleted(true);
     }
