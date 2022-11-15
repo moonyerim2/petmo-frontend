@@ -61,14 +61,12 @@ export const handlers = [
     return res(
       ctx.json([
         {
-          id: 1,
           addressName: "서울특별시 강서구 마곡동",
           regionDepth1: "서울특별시",
           regionDepth2: "강서구",
           regionDepth3: "마곡동",
         },
         {
-          id: 2,
           addressName: "서울특별시 강서구 마곡동",
           regionDepth1: "서울특별시",
           regionDepth2: "강서구",

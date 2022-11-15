@@ -34,11 +34,7 @@ function AddressSearchBar({ searchTownByInput, setIsSearchMode }) {
 
   useDebouncedEffect(
     () => {
-      const abortController = new AbortController();
-      searchTownByInput(userInput, abortController.signal);
-      return () => {
-        abortController.abort();
-      };
+      searchTownByInput(userInput);
     },
     500,
     [userInput]

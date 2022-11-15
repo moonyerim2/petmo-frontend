@@ -1,27 +1,25 @@
 import { useState, useEffect } from "react";
 import { callSearchTownByIpApi, callSearchTownByQueryApi } from "../api";
-import { useIp } from "../hooks";
 
 const useSearchTown = () => {
-  const ip = useIp();
   const [subTitle, setSubTitle] = useState("근처동네");
   const [searchResults, setSearchResults] = useState([]);
 
-  const searchTownByIp = async (ip, signal) => {
-    const data = await callSearchTownByIpApi({ ip }, signal);
-    if (data !== 500) {
-      setSearchResults(data);
+  const searchTownByIp = async () => {
+    const response = await callSearchTownByIpApi();
+    if (response.status !== 500) {
+      setSearchResults(response.data);
       setSubTitle("근처동네");
     }
   };
 
-  const searchTownByInput = async (input, signal) => {
+  const searchTownByInput = async (input) => {
     if (input.length < 2) {
       setSearchResults([]);
       return;
     }
 
-    const data = await callSearchTownByQueryApi(input, signal);
+    const data = await callSearchTownByQueryApi(input);
     if (data !== 500) {
       setSearchResults(data);
       setSubTitle(`${input} 검색결과`);
@@ -29,12 +27,10 @@ const useSearchTown = () => {
   };
 
   useEffect(() => {
-    if (ip) {
-      searchTownByIp(ip);
-    }
-  }, [ip]);
+    searchTownByIp();
+  }, []);
 
-  return { subTitle, searchResults, ip, searchTownByIp, searchTownByInput };
+  return { subTitle, searchResults, searchTownByIp, searchTownByInput };
 };
 
 export default useSearchTown;
