@@ -20,7 +20,7 @@ const joinButtonStyle =
     };
   };
 
-function JoinButton({ isDisabled }) {
+function JoinButton({ isDisabled, failToJoin }) {
   const joinInputs = useRecoilValue(joinInputsSelector);
   const setIsCompleted = useSetRecoilState(isJoinCompleted);
 
@@ -48,6 +48,9 @@ function JoinButton({ isDisabled }) {
     const response = await callJoinApi(payload);
     if (response.status === 201) {
       setIsCompleted(true);
+    } else if (response.status === 400) {
+      const message = response.data.message;
+      failToJoin(message);
     }
   };
 
@@ -62,6 +65,7 @@ function JoinButton({ isDisabled }) {
 
 JoinButton.propTypes = {
   isDisabled: PropTypes.bool,
+  failToJoin: PropTypes.func,
 };
 
 export default JoinButton;

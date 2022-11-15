@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useRecoilValue, useResetRecoilState } from "recoil";
-import { JoinButton, JoinTextField } from "../../components";
+import { JoinButton, JoinTextField, Snackbar } from "../../components";
 import { FormField } from "../../styled";
 import {
   joinInputs as joinInputsAtom,
@@ -22,6 +22,8 @@ function JoinForm() {
   const joinInputs = useRecoilValue(joinInputsSelector);
   const validationMessages = useRecoilValue(joinValidationMessagesSelector);
   const [isRightInput, setIsRightInput] = useState(false);
+  const [isOpenSnackbar, setIsOpenSnackbar] = useState(false);
+  const snackbarMessage = useRef("");
 
   const resetJoinInputs = useResetRecoilState(joinInputsAtom);
   const resetValidationMessages = useResetRecoilState(joinValidationMessages);
@@ -43,6 +45,11 @@ function JoinForm() {
 
   const isValid = (fieldName) => validationMessages[fieldName] === "";
 
+  const failToJoin = (message) => {
+    snackbarMessage.current = message;
+    setIsOpenSnackbar(true);
+  };
+
   return (
     <form>
       <FormField>
@@ -63,7 +70,13 @@ function JoinForm() {
           isValid={isValid("passwordCheck")}
         />
       </FormField>
-      <JoinButton isDisabled={!isRightInput} />
+      <Snackbar
+        open={isOpenSnackbar}
+        setOpen={setIsOpenSnackbar}
+        snackbarMessage={snackbarMessage.current}
+        type={"error"}
+      />
+      <JoinButton isDisabled={!isRightInput} failToJoin={failToJoin} />
     </form>
   );
 }
