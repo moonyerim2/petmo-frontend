@@ -29,6 +29,7 @@ export const postImageFilesSelector = selector({
         return [...prevState, ...newImagesFiles];
       }
       if (action === "DELETE") {
+        URL.revokeObjectURL(deleteImageSrc);
         const newState = prevState.filter(({ src }) => src !== deleteImageSrc);
         return newState;
       }
