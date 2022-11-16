@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { FeedHeader, SearchBar, Board, Nav, WritePostBtn } from "../components";
+import { useRecoilState } from "recoil";
+import {
+  FeedHeader,
+  SearchBar,
+  Board,
+  Nav,
+  WritePostBtn,
+  BottomModal,
+  PetRegisterModalContent,
+} from "../components";
+import { userSelector } from "../store";
+import { useEffect } from "react";
 
 const StyledHeader = styled.div`
   position: fixed;
@@ -12,6 +23,17 @@ const StyledHeader = styled.div`
 `;
 
 export function HomePage() {
+  const [user, setUser] = useRecoilState(userSelector);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    setIsOpen(user.first);
+  }, [user]);
+
+  useEffect(() => {
+    setUser({ ...user, first: false });
+  }, []);
+
   return (
     <>
       <StyledHeader>
@@ -21,6 +43,11 @@ export function HomePage() {
       <Board />
       <WritePostBtn />
       <Nav />
+      <BottomModal
+        content={[<PetRegisterModalContent key={1} setIsOpen={setIsOpen} />]}
+        isOpen={isOpen}
+        onClickDimLayer={() => setIsOpen(false)}
+      />
     </>
   );
 }
