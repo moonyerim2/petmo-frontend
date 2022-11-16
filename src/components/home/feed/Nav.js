@@ -22,11 +22,13 @@ const Wrapper = styled(Box)`
     background-color: white;
   }
 `;
+
 const NavButtonBox = styled(BottomNavigation)`
   &.MuiBottomNavigation-root {
     width: 100%;
     display: flex;
     align-items: center;
+    box-shadow: 0px -4px 12px rgba(0, 0, 0, 0.06);
   }
 `;
 
@@ -36,14 +38,16 @@ const NavButton = styled(BottomNavigationAction)`
     margin: 0px;
     min-width: 0px;
   }
+
   &&.Mui-selected {
-    color: #fa3c89;
+    color: ${({ theme: { colors } }) => colors.main};
   }
 `;
 
 const Icon = styled.img`
-  color: #fa3c89;
+  color: ${({ theme: { colors } }) => colors.main};
 `;
+
 function Nav() {
   const [value, setValue] = React.useState(0);
 
@@ -78,4 +82,5 @@ function Nav() {
     </Wrapper>
   );
 }
+
 export default Nav;
