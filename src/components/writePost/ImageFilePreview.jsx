@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { PropTypes } from "prop-types";
 import styled from "styled-components";
 import { useRecoilValue } from "recoil";
@@ -48,7 +48,16 @@ const addImageFileButtonStyle = ({ colors }) => {
 };
 
 function ImageFilePreview({ inputRef }) {
+  const [isFullImages, setIsFullImages] = useState(false);
   const imageFiles = useRecoilValue(postImageFilesSelector);
+
+  useEffect(() => {
+    if (imageFiles.length === 0 || imageFiles.length === 5) {
+      setIsFullImages(false);
+    } else {
+      setIsFullImages(true);
+    }
+  }, [imageFiles]);
 
   const onClickFileAddButton = () => inputRef.current.click();
 
@@ -57,11 +66,13 @@ function ImageFilePreview({ inputRef }) {
       {imageFiles.map(({ src }) => (
         <PreviewImage key={src} src={src} alt="" />
       ))}
-      <Button
-        {...addImageFileButtonProps}
-        onClick={onClickFileAddButton}
-        style={addImageFileButtonStyle}
-      />
+      {isFullImages && (
+        <Button
+          {...addImageFileButtonProps}
+          onClick={onClickFileAddButton}
+          style={addImageFileButtonStyle}
+        />
+      )}
     </Wrapper>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import styled from "styled-components";
 import { useRecoilValue, useResetRecoilState } from "recoil";
 import { JoinButton, JoinFormField, Snackbar } from "../../components";
 import {
@@ -8,6 +9,10 @@ import {
   joinValidationMessagesSelector,
 } from "../../store";
 import { hasNotEmptyStingValue, hasOnlyEmptyStingValue } from "../../util";
+
+const StyledForm = styled.form`
+  margin-bottom: 100px;
+`;
 
 function JoinForm() {
   const joinInputs = useRecoilValue(joinInputsSelector);
@@ -40,7 +45,7 @@ function JoinForm() {
   };
 
   return (
-    <form>
+    <StyledForm>
       <JoinFormField validationMessages={validationMessages} />
       <Snackbar
         open={isOpenSnackbar}
@@ -49,7 +54,7 @@ function JoinForm() {
         type={"error"}
       />
       <JoinButton isDisabled={!isRightInput} failToJoin={failToJoin} />
-    </form>
+    </StyledForm>
   );
 }
 

@@ -8,7 +8,7 @@ const bottomButtonStyle =
     return {
       ...sizes.size1,
       ...buttonColors(isDisabled)({ colors }),
-      position: "absolute",
+      position: "fixed",
       left: 0,
       bottom: 0,
       fontSize: fontSizes.body1,

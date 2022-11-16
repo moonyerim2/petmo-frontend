@@ -10,8 +10,8 @@ const useUser = () => {
   useEffect(() => {
     (async () => {
       if (isAuthenticated) {
-        const data = await callGetUserApi();
-        setUser(data);
+        const response = await callGetUserApi();
+        setUser(response.data);
       }
     })();
   }, [isAuthenticated]);
