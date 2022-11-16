@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 import { useNavigate } from "react-router-dom";
 import { Select, Option } from "../../common";
 import { DimLayer } from "../../../styled";
-import { userSelector } from "../../../store/user";
+import { userSelector } from "../../../store";
 
 const HeaderBox = styled.div`
   display: flex;
@@ -20,8 +20,8 @@ function FeedHeader() {
   const {
     address: { regionDepth2 },
   } = useRecoilValue(userSelector);
-  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const onClickSelect = ({ target }) => {
     const isSeletElement =
@@ -38,10 +38,10 @@ function FeedHeader() {
   return (
     <HeaderBox onClick={onClickSelect}>
       <DimLayer isOpen={isOpen} />
-      <Select className="town-select" defaultValue={regionDepth2}>
-        <Option value={regionDepth2}>{regionDepth2}</Option>
-        <Option value={"전국지역"}>전국지역</Option>
-        <Option value={"내 동네 설정하기"} onClick={() => navigate("/mytown")}>
+      <Select className="town-select" defaultValue={10}>
+        <Option value={10}>{regionDepth2}</Option>
+        <Option value={20}>전국지역</Option>
+        <Option value={30} onClick={() => navigate("/mytown")}>
           내 동네 설정하기
         </Option>
       </Select>
