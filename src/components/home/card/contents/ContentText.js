@@ -6,7 +6,7 @@ const TextArea = styled.div`
   text-overflow: ellipsis;
   font-family: "Pretendard";
   font-style: normal;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 16px;
   line-height: 22px;
   color: #111111;

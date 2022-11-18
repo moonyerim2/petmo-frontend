@@ -21,7 +21,7 @@ function Content({ content, postId, type }) {
   if (content.image !== null && content.text === null) {
     return (
       <Wrapper>
-        <ContentImage content_image={content.image} />
+        <ContentImage content_image={content.image} type={type} />
       </Wrapper>
     );
   }
@@ -31,7 +31,7 @@ function Content({ content, postId, type }) {
         <Link to={`/post/${postId}`}>
           <ContentText content_text={content.text} type={type} />
         </Link>
-        <ContentImage content_image={content.image} />
+        <ContentImage content_image={content.image} type={type} />
       </Wrapper>
     );
   }

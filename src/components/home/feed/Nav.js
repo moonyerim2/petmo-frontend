@@ -13,7 +13,7 @@ import coloredProfile from "../../../css/icon/coloredProfile.svg";
 
 const Wrapper = styled(Box)`
   &.MuiBox-root {
-    height: 57px;
+    height: 56px;
     width: 100%;
     display: flex;
     align-items: center;
