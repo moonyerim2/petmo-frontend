@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import SubmitBtn from "../../css/icon/SubmitBtn.svg";
+import ColoredSubmitBtn from "../../css/icon/ColoredSubmitBtn.svg";
 
 const Wrapper = styled.div`
   height: 64px;
@@ -42,6 +43,7 @@ const InputBox = styled.div`
 
 function PostCommentBox() {
   const [input, setInput] = useState();
+  const [isValid, setIsValid] = useState(false);
   const handleInput = (e) => {
     setInput(e.target.value);
   };
@@ -54,9 +56,12 @@ function PostCommentBox() {
           type="text"
           placeholder="답글을 입력하세요."
           onChange={handleInput}
+          onKeyUp={(e) => {
+            e.target.value.length > 0 ? setIsValid(true) : setIsValid(false);
+          }}
         />
-        <button>
-          <img src={SubmitBtn} alt="img" />
+        <button disabled={isValid ? false : true}>
+          <img src={isValid ? ColoredSubmitBtn : SubmitBtn} alt="img" />
         </button>
       </InputBox>
     </Wrapper>
