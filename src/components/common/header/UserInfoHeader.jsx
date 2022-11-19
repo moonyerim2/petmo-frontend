@@ -3,17 +3,16 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const CardHeaderInfo = styled.div`
-  height: 57px;
   display: flex;
   align-items: center;
-  padding-top: 20px;
-  padding-bottom: 8px;
+  padding-top: 0px;
+  padding-bottom: 2px;
   padding-right: 20px;
   padding-left: 20px;
 `;
 const Photo = styled.span`
-  width: 36px;
-  height: 36px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background-color: black;
   margin-right: 8px;
@@ -33,10 +32,13 @@ const UserName = styled.span`
   line-height: 140%;
 `;
 const UserInfo = styled.span`
-  font-family: Pretendard;
-  font-weight: Regular;
-  font-size: 12px;
-  color: rgba(118, 118, 118, 1);
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 140%;
+  font-size: 11px;
+  color: #767676;
 `;
 
 function UserInfoHeader({ author, village, time }) {
