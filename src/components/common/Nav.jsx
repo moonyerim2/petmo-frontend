@@ -4,12 +4,12 @@ import styled from "styled-components";
 import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import FeedIcon from "../../../css/icon/FeedIcon.svg";
-import coloredFeed from "../../../css/icon/coloredFeed.svg";
-import BookmarkIcon from "../../../css/icon/BookmarkIcon.svg";
-import coloredBookmark from "../../../css/icon/coloredBookmark.svg";
-import ProfileIcon from "../../../css/icon/ProfileIcon.svg";
-import coloredProfile from "../../../css/icon/coloredProfile.svg";
+import FeedIcon from "../../css/icon/FeedIcon.svg";
+import coloredFeed from "../../css/icon/coloredFeed.svg";
+import BookmarkIcon from "../../css/icon/BookmarkIcon.svg";
+import coloredBookmark from "../../css/icon/coloredBookmark.svg";
+import ProfileIcon from "../../css/icon/ProfileIcon.svg";
+import coloredProfile from "../../css/icon/coloredProfile.svg";
 
 const Wrapper = styled(Box)`
   &.MuiBox-root {

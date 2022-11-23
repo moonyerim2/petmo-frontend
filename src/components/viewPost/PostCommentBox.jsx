@@ -34,37 +34,70 @@ const InputBox = styled.div`
   input {
     width: 260px;
     padding: 12px;
+    caret-color: #fa3c89;
   }
   button {
     display: flex;
     justify-content: center;
   }
 `;
-
+const CommentInfo = styled.div`
+  background: #f1f1f5;
+  height: 36px;
+  display: flex;
+  align-items: center;
+`;
+const CommentInfoText = styled.div`
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 140%;
+  color: #767676;
+  margin-left: 20px;
+  span {
+    color: #fa3c89;
+  }
+`;
 function PostCommentBox() {
   const [input, setInput] = useState();
   const [isValid, setIsValid] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
   const handleInput = (e) => {
     setInput(e.target.value);
   };
+  const handleClick = () => {
+    setShowInfo(true);
+  };
 
   return (
-    <Wrapper>
-      <InputBox>
-        <input
-          value={input}
-          type="text"
-          placeholder="답글을 입력하세요."
-          onChange={handleInput}
-          onKeyUp={(e) => {
-            e.target.value.length > 0 ? setIsValid(true) : setIsValid(false);
-          }}
-        />
-        <button disabled={isValid ? false : true}>
-          <img src={isValid ? ColoredSubmitBtn : SubmitBtn} alt="img" />
-        </button>
-      </InputBox>
-    </Wrapper>
+    <>
+      {showInfo ? (
+        <CommentInfo>
+          <CommentInfoText>
+            <span>챌이2</span>님에게 답글 남기는 중
+          </CommentInfoText>
+        </CommentInfo>
+      ) : null}
+
+      <Wrapper>
+        <InputBox>
+          <input
+            value={input}
+            type="text"
+            placeholder="답글을 입력하세요."
+            onChange={handleInput}
+            onKeyUp={(e) => {
+              e.target.value.length > 0 ? setIsValid(true) : setIsValid(false);
+            }}
+            onClick={handleClick}
+          />
+          <button disabled={isValid ? false : true}>
+            <img src={isValid ? ColoredSubmitBtn : SubmitBtn} alt="img" />
+          </button>
+        </InputBox>
+      </Wrapper>
+    </>
   );
 }
 

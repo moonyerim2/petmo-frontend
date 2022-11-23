@@ -21,7 +21,7 @@ const MoreButton = styled.span`
   padding: 3px;
 `;
 function ContentText({ content_text, type }) {
-  const [limit] = useState(80);
+  const [limit] = useState(78);
   const handleShortText = (str, limit) => {
     return {
       string: str.slice(0, limit),

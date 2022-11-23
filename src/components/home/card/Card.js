@@ -14,6 +14,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   position: relative;
   margin-bottom: 8px;
+  padding-top: 20px;
 `;
 
 function Card({

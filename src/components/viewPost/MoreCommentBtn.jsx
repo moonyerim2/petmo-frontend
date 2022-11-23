@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-
 const Button = styled.button`
   font-family: "Pretendard";
   font-style: normal;

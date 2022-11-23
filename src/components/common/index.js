@@ -6,3 +6,5 @@ export { default as CaptionWithSideLine } from "./CaptionWithSideLine";
 export { default as FormErrorMessage } from "./FormErrorMessage";
 export { default as Tags } from "./Tags.jsx";
 export { default as Snackbar } from "./Snackbar";
+export { default as Nav } from "./Nav.jsx";
+export { default as UserProfile } from "./UserProfile.jsx";
