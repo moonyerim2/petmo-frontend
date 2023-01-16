@@ -4,3 +4,4 @@ export * from "./mytownPageButton";
 export * from "./writePostPageButton";
 export * from "./homePageButton";
 export * from "./mypetPageButton";
+export * from "./onboardingButton";
