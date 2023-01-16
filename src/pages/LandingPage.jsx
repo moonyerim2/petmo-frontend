@@ -1,13 +1,37 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import { PageWrapper } from "../styled";
+import { onboardingStartButtonProps } from "../constants";
+import { OnboardingStartButton, OnboardingContent } from "../components";
+
+const LandingPageWrapper = styled(PageWrapper)`
+  height: 100vh;
+  padding-top: 200px;
+  text-align: center;
+  background-color: ${({ theme: { colors } }) => colors.main};
+`;
 
 function LandingPage() {
+  const [loading, setLoading] = useState(false);
+  const handleBtnClick = () => {};
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(true);
+    }, 1000);
+  }, [loading]);
+
   return (
-    <>
-      <Link to="../join">시작하기</Link>
-      <div>이미 계정이 있나요?</div>
-      <Link to="../login">로그인</Link>
-    </>
+    <LandingPageWrapper>
+      <OnboardingContent loading={loading} />
+      <OnboardingStartButton
+        loading={loading}
+        onClick={handleBtnClick}
+        buttonProps={onboardingStartButtonProps}
+        fontColor="main"
+        bgColor="white"
+      />
+    </LandingPageWrapper>
   );
 }
 
