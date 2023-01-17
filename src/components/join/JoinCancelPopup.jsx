@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "../common";
 import { noButtonProps, yesButtonProps } from "../../constants";
 
-function CancelJoinPopup({ setIsGoBack }) {
+function JoinCancelPopup({ setIsGoBack }) {
   const navigate = useNavigate();
 
   const onClickYesButton = () => {
@@ -24,8 +24,8 @@ function CancelJoinPopup({ setIsGoBack }) {
   );
 }
 
-CancelJoinPopup.propTypes = {
+JoinCancelPopup.propTypes = {
   setIsGoBack: PropTypes.func,
 };
 
-export default CancelJoinPopup;
+export default JoinCancelPopup;
