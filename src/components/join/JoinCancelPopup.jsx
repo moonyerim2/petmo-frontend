@@ -8,7 +8,7 @@ function JoinCancelPopup({ setIsGoBack }) {
   const navigate = useNavigate();
 
   const onClickYesButton = () => {
-    navigate("../");
+    navigate("../login");
   };
 
   const onClickNoButton = () => {
