@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import history from "history/browser";
-import { CancelJoinPopup, PageHeader, JoinForm } from "../components";
+import { JoinCancelPopup, PageHeader, JoinForm } from "../components";
 import { PageWrapper } from "../styled";
 import { isJoinCompleted } from "../store";
 
@@ -45,7 +45,7 @@ function JoinPage() {
     <PageWrapper>
       <PageHeader pageTitle="계정정보" />
       <JoinForm />
-      {isGoBack && <CancelJoinPopup setIsGoBack={setIsGoBack} />}
+      {isGoBack && <JoinCancelPopup setIsGoBack={setIsGoBack} />}
     </PageWrapper>
   );
 }
