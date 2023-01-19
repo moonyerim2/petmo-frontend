@@ -1,9 +1,9 @@
 import React from "react";
+import { useSetRecoilState } from "recoil";
 import Button from "../common/button/Button";
-import { useRecoilState } from "recoil";
-import { callDeleteMyTownApi } from "../../api";
-import { user } from "../../store";
+import { callDeleteMyTownApi, callGetUserApi } from "../../api";
 import { deleteButtonProps } from "../../constants";
+import { userSelector } from "../../store";
 
 const deleteButtonStyle = () => {
   return {
@@ -13,11 +13,12 @@ const deleteButtonStyle = () => {
 };
 
 function DeleteButton() {
-  const [{ userId }, setUser] = useRecoilState(user);
+  const setUser = useSetRecoilState(userSelector);
 
-  const onClick = () => {
-    const data = callDeleteMyTownApi(userId);
-    setUser(data);
+  const onClick = async () => {
+    callDeleteMyTownApi();
+    const response = await callGetUserApi();
+    setUser(response.data);
   };
 
   return (
