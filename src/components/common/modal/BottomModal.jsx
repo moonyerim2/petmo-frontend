@@ -7,7 +7,7 @@ const Content = styled.div`
   ${({ theme: { colors } }) =>
     css`
       ${{
-        position: "absolute",
+        position: "fixed",
         left: 0,
         bottom: 0,
         zIndex: 9999,
@@ -25,7 +25,7 @@ const List = styled.div`
 
 const Items = styled.div`
   display: flex;
-  flexwrap: nowrap;
+  flex-wrap: nowrap;
   transform: ${({ turn }) => `translateX(-${turn}00%)`};
   transition: transform 700ms;
 `;
