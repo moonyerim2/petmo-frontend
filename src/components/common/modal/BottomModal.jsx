@@ -2,6 +2,7 @@ import React from "react";
 import { PropTypes } from "prop-types";
 import styled, { css } from "styled-components";
 import { DimLayer } from "../../../styled";
+import { usePreventScroll } from "../../../hooks";
 
 const Content = styled.div`
   ${({ theme: { colors } }) =>
@@ -42,6 +43,8 @@ function BottomModal({
   onClickDimLayer,
   onClickModal,
 }) {
+  usePreventScroll();
+
   const onClickDim = (e) => {
     if (e.target !== e.currentTarget) return;
     onClickDimLayer(e);
