@@ -3,8 +3,8 @@ import { useEffect } from "react";
 function usePreventScroll() {
   useEffect(() => {
     document.body.style.cssText = `
-    position: fixed;
-    top: -${window.scrollY}px;
+      position: fixed;
+      top: -${window.scrollY}px;
       height: 100vh;
       overflow-y: scroll;
       width: 100%;`;

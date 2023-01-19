@@ -43,11 +43,13 @@ export function HomePage() {
       <Board />
       <WritePostBtn />
       <Nav />
-      <BottomModal
-        content={[<PetRegisterModalContent key={1} setIsOpen={setIsOpen} />]}
-        isOpen={isOpen}
-        onClickDimLayer={() => setIsOpen(false)}
-      />
+      {isOpen && (
+        <BottomModal
+          content={[<PetRegisterModalContent key={1} setIsOpen={setIsOpen} />]}
+          isOpen={isOpen}
+          onClickDimLayer={() => setIsOpen(false)}
+        />
+      )}
     </>
   );
 }
