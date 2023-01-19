@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { useSetRecoilState } from "recoil";
+import { callRegisterMyTownApi, callGetUserApi } from "../../../api";
 import { user } from "../../../store";
-import { callRegisterMyTownApi } from "../../../api";
 
 const AddressItem = styled.li`
   ${({ theme: { fontSizes, colors } }) =>
@@ -22,8 +22,9 @@ function AddressList({ searchResults, setIsSearchMode }) {
   const setUser = useSetRecoilState(user);
 
   const onClick = async ({ target }) => {
-    const data = await callRegisterMyTownApi({ town: target.innerText });
-    setUser(data);
+    callRegisterMyTownApi({ town: target.innerText });
+    const response = await callGetUserApi();
+    setUser(response.data);
     setIsSearchMode(false);
   };
 
