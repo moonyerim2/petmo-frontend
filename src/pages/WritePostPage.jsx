@@ -28,7 +28,7 @@ function WritePostPage() {
     <form>
       <PageWrapper>
         <PageHeader
-          leftButtonType="exit"
+          leftButtonType="goback"
           pageTitle="게시글"
           rightButton={registerPostButton}
         />
