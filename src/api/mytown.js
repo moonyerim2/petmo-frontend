@@ -32,8 +32,8 @@ export const callSearchTownByIpApi = async () => {
 
 export const callDeleteMyTownApi = async () => {
   try {
-    const response = await axios.delete(`${BASE_URL}/delete-mytown`);
-    return response.data;
+    const response = await axios.delete(`${BASE_URL}/users/address`);
+    return response;
   } catch (error) {
     console.log(error);
   }
