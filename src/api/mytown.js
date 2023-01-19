@@ -41,8 +41,8 @@ export const callDeleteMyTownApi = async () => {
 
 export const callRegisterMyTownApi = async (payload) => {
   try {
-    const response = await axios.post(`${BASE_URL}/register-mytown`, payload);
-    return response.data;
+    const response = await axios.post(`${BASE_URL}/users/address`, payload);
+    return response;
   } catch (error) {
     console.log(error);
   }
