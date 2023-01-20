@@ -7,19 +7,21 @@ import Watched from "./buttons/Watched.js";
 import PropTypes from "prop-types";
 
 const Wrapper = styled.div`
-  border-top: 1px solid rgba(241, 241, 245, 1);
-  width: 100%;
-  height: 40px;
-  bottom: 0px;
-  padding: 0px 20px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  height: 46px;
+  padding: 0px 20px;
+  background-color: white;
+  border-top: 1px solid #f0f0f6;
+  border-bottom: 8px solid #f0f0f6;
 `;
+
 const Column_buttons = styled.div`
   display: flex;
 `;
+
 const Button = styled.button`
   background-color: white;
   font-family: Pretendard;
@@ -32,6 +34,7 @@ const Button = styled.button`
   justify-content: center;
   align-items: center;
 `;
+
 const Collumn_watched = styled.div`
   color: #9a9a9a;
   font-family: Pretendard;
@@ -70,6 +73,7 @@ function CardFooter({
     </Wrapper>
   );
 }
+
 CardFooter.propTypes = {
   likeNumberProps: PropTypes.number,
   bookmarkNumberProps: PropTypes.number,

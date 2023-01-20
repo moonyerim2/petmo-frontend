@@ -11,7 +11,6 @@ const CardContent = styled.div`
       display: "flex",
       justifyContent: "center",
       flexDirection: "column",
-      marginBottom: "8px",
       padding: "20px",
       minWidth: "200px",
       backgroundColor: colors.white,
