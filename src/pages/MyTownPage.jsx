@@ -7,12 +7,14 @@ import {
   Description,
   Address,
 } from "../components";
-import { user } from "../store";
+import { userSelector } from "../store";
 import { SubTitle1, PageWrapper } from "../styled";
 
 function MyTownPage() {
   const [isSearchMode, setIsSearchMode] = useState(false);
-  const { town } = useRecoilValue(user);
+  const {
+    address: { regionDepth2 },
+  } = useRecoilValue(userSelector);
 
   const onClickRegisterTownButton = () => {
     setIsSearchMode(true);
@@ -27,8 +29,8 @@ function MyTownPage() {
           <PageHeader pageTitle="내 동네 설정하기" />
           <SubTitle1>동네 선택</SubTitle1>
           <Description />
-          {town ? (
-            <Address town={town} />
+          {regionDepth2 ? (
+            <Address town={regionDepth2} />
           ) : (
             <AddressSearchOpenButton onClick={onClickRegisterTownButton} />
           )}
