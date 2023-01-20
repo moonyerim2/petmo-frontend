@@ -1,20 +1,22 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { UserInfoHeader, Tags } from "../../../components";
 import Content from "./Content";
 import CardFooter from "./CardFooter";
 import PropTypes from "prop-types";
 
-const Wrapper = styled.div`
-  box-sizing: border-box;
-  background-color: white;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  position: relative;
-  margin-bottom: 8px;
-  padding-top: 20px;
+const CardContent = styled.div`
+  ${({ theme: { colors } }) => css`
+    ${{
+      display: "flex",
+      justifyContent: "center",
+      flexDirection: "column",
+      marginBottom: "8px",
+      padding: "20px",
+      minWidth: "200px",
+      backgroundColor: colors.white,
+    }}
+  `};
 `;
 
 function Card({
@@ -33,10 +35,12 @@ function Card({
   animalTag,
 }) {
   return (
-    <Wrapper>
-      <UserInfoHeader author={author} village={village} time={time} />
-      <Tags categoryTag={categoryTag} animalTag={animalTag} />
-      <Content type={type} content={content} postId={id} />
+    <>
+      <CardContent>
+        <UserInfoHeader author={author} village={village} time={time} />
+        <Tags categoryTag={categoryTag} animalTag={animalTag} />
+        <Content type={type} content={content} postId={id} />
+      </CardContent>
       <CardFooter
         myLike={myLike}
         myBookmark={myBookmark}
@@ -44,9 +48,10 @@ function Card({
         bookmarkNumberProps={bookmarkNumber}
         commentNumberProps={commentNumber}
       />
-    </Wrapper>
+    </>
   );
 }
+
 Card.propTypes = {
   id: PropTypes.node,
   type: PropTypes.node,

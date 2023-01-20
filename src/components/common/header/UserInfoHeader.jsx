@@ -5,11 +5,9 @@ import PropTypes from "prop-types";
 const CardHeaderInfo = styled.div`
   display: flex;
   align-items: center;
-  padding-top: 0px;
-  padding-bottom: 2px;
-  padding-right: 20px;
-  padding-left: 20px;
+  margin-bottom: 8px;
 `;
+
 const Photo = styled.span`
   width: 28px;
   height: 28px;
@@ -17,11 +15,13 @@ const Photo = styled.span`
   background-color: black;
   margin-right: 8px;
 `;
+
 const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 `;
+
 const UserName = styled.span`
   font-family: Pretendard;
   font-size: 12px;
@@ -31,6 +31,7 @@ const UserName = styled.span`
   font-size: 12px;
   line-height: 140%;
 `;
+
 const UserInfo = styled.span`
   font-family: "Pretendard";
   font-style: normal;
@@ -60,4 +61,5 @@ UserInfoHeader.propTypes = {
   village: PropTypes.node,
   time: PropTypes.node,
 };
+
 export default UserInfoHeader;
