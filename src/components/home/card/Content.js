@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { ContentText, ContentImage } from "./contents";
 
 const Wrapper = styled.div`
-  margin: 16px 20px;
+  margin-top: 16px;
 `;
 
 function Content({ content, postId, type }) {
@@ -44,4 +44,5 @@ Content.propTypes = {
   content_text: PropTypes.node,
   content_image: PropTypes.array,
 };
+
 export default Content;
