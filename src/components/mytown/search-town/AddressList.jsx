@@ -22,9 +22,16 @@ function AddressList({ searchResults, setIsSearchMode }) {
   const setUser = useSetRecoilState(user);
 
   const onClick = async ({ target }) => {
-    callRegisterMyTownApi({ town: target.innerText });
+    const addressName = target.innerText;
+    const region = addressName.split(" ");
+    callRegisterMyTownApi({
+      addressName: target.innerText,
+      regionDepth1: region[0],
+      regionDepth2: region[1],
+    });
+
     const response = await callGetUserApi();
-    setUser(response.data);
+    await setUser(response.data);
     setIsSearchMode(false);
   };
 

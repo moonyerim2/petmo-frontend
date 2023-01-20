@@ -18,7 +18,7 @@ function DeleteButton() {
   const onClick = async () => {
     callDeleteMyTownApi();
     const response = await callGetUserApi();
-    setUser(response.data);
+    await setUser(response.data);
   };
 
   return (
