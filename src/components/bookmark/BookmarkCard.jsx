@@ -7,20 +7,22 @@ import TextContent from "./TextContent";
 
 const Wrapper = styled.div`
   box-sizing: border-box;
-  margin: 0px 20px;
-  height: 106px;
-  border-bottom: 1px solid #f0f0f6;
   display: flex;
-  justfiy-content: center;
   align-items: center;
+  margin: 0px 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f0f6;
 `;
+
 const Textside = styled.div`
   height: 74px;
 `;
+
 const Imgside = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
+
 const Img = styled.img`
   width: 64px;
   height: 64px;
@@ -54,10 +56,10 @@ function BookmarkCard({ categoryTag, animalTag, content }) {
   }
 }
 
-export default BookmarkCard;
-
 BookmarkCard.propTypes = {
   categoryTag: PropTypes.node,
   animalTag: PropTypes.array,
   content: PropTypes.object,
 };
+
+export default BookmarkCard;
