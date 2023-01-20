@@ -4,43 +4,55 @@ import PropTypes from "prop-types";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
 const ImageArea = styled.div`
   margin-top: 16px;
-`;
-const StyledSlider = styled(Slider)`
-  width: 320px;
-  height: 220px;
   border-radius: 4px;
-  margin-bottom: 34px;
+  overflow: hidden;
+`;
+
+const Image = styled.img`
+  display: block;
+  width: 100%;
+`;
+
+const StyledSlider = styled(Slider)`
+  width: 100%;
   margin-top: 20px;
+
   .slick-list {
     border-radius: 4px;
+    margin-bottom: 8px;
   }
 
   .slick-dots {
-    display: flex;
-    list-style-type: none;
+    position: static;
+    height: 6px;
 
     li {
       width: 6px;
-      height: 6px;
+      height: 100%;
     }
 
     button {
       display: block;
-      width: 6px;
-      height: 6px;
+      width: 100%;
+      height: 100%;
       padding: 0;
-
-      border: none;
       border-radius: 100%;
       background-color: #e9e9ed;
-
       text-indent: -9999px;
     }
 
     li.slick-active button {
       background-color: #fa3c89;
+    }
+
+    button:before,
+    .slick-active button:before {
+      position: static;
+      width: 6px;
+      height: 6px;
     }
   }
 `;
@@ -57,22 +69,22 @@ function ContentImage({ content_image, type }) {
     return (
       <StyledSlider {...settings}>
         {content_image.map((image) => {
-          return <img key={image.id} src={image.src} alt="img"></img>;
+          return <Image key={image.id} src={image.src} alt="img" />;
         })}
       </StyledSlider>
     );
   } else {
     return (
       <ImageArea>
-        <img src={content_image[0].src} alt="img"></img>
+        <Image src={content_image[0].src} alt="img" />
       </ImageArea>
     );
   }
 }
 
-export default ContentImage;
-
 ContentImage.propTypes = {
   content_image: PropTypes.array,
   type: PropTypes.node,
 };
+
+export default ContentImage;
