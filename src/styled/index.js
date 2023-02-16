@@ -1,4 +1,3 @@
-export { default as GlobalStyle } from "./GlobalStyle";
 export { setStyledComponent } from "./styledUtils";
 export * from "./Titles";
 export * from "./Texts";

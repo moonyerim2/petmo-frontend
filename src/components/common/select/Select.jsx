@@ -5,6 +5,7 @@ import SelectUnstyled from "@mui/base/SelectUnstyled";
 import PopperUnstyled from "@mui/base/PopperUnstyled";
 
 const Icon = styled.img`
+  display: inline;
   width: 16px;
   height: 16px;
   margin-left: 4px;

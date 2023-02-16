@@ -3,7 +3,8 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { RecoilRoot } from "recoil";
 import { ThemeProvider } from "styled-components";
-import { GlobalStyle, theme } from "./styled";
+import { theme } from "./styled";
+import { PetmoStyleProvider } from "petmo-design-system";
 
 if (process.env.NODE_ENV === "development") {
   const { worker } = require("./mocks/browser");
@@ -14,10 +15,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <RecoilRoot>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <App />
-      </ThemeProvider>
+      <PetmoStyleProvider>
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
+      </PetmoStyleProvider>
     </RecoilRoot>
   </React.StrictMode>
 );

@@ -40,7 +40,11 @@ function PetRegisterModalContent({ setIsOpen }) {
 
   return (
     <Wrapper>
-      <img src={`${process.env.PUBLIC_URL}/img/dog.svg`} alt="강아지" />
+      <img
+        src={`${process.env.PUBLIC_URL}/img/dog.svg`}
+        style={{ display: "inline" }}
+        alt="강아지"
+      />
       <MainText>{mainText}</MainText>
       <SubText>{subText}</SubText>
       <BigButton
