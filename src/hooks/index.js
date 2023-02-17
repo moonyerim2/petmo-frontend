@@ -7,3 +7,4 @@ export { default as useSocialLogin } from "./useSocialLogin";
 export { default as useWritePost } from "./useWritePost";
 export { default as useTagSelector } from "./useTagSelector";
 export { default as usePreventScroll } from "./usePreventScroll";
+export { default as useProcessPostsData } from "./useProcessPostsData";
