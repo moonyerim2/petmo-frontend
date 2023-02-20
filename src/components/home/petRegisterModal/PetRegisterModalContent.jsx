@@ -2,9 +2,9 @@ import React from "react";
 import { PropTypes } from "prop-types";
 import styled, { css } from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { BigButton } from "../common";
-import { SubText } from "../../styled";
-import { registerButtonProps, noRegisterButtonProps } from "../../constants";
+import { BigButton } from "../../common";
+import { SubText } from "../../../styled";
+import { registerButtonProps, noRegisterButtonProps } from "../../../constants";
 
 const mainText = "반려동물\n정보를 등록해보세요!";
 const subText = "'프로필'에서 언제든 변경할 수 있어요.";
@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   text-align: center;
   white-space: pre-wrap;
 
-  button: last-child {
+  button:last-child {
     margin-top: 8px;
   }
 `;

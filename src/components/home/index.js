@@ -1,4 +1,5 @@
 export * from "./card";
 export * from "./feed";
-export { default as PetRegisterModalContent } from "./PetRegisterModalContent";
+export * from "./petRegisterModal";
+export { default as PetRegisterModalContent } from "./petRegisterModal/PetRegisterModalContent";
 export { default as Header } from "./Header";

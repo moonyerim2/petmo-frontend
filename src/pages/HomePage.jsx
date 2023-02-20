@@ -1,27 +1,22 @@
 import React, { useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import {
   Header,
   Board,
   Nav,
   WritePostBtn,
-  BottomModal,
-  PetRegisterModalContent,
+  PetRegisterModal,
 } from "../components";
 import { userSelector } from "../store";
 import { useEffect } from "react";
 
 export function HomePage() {
-  const [user, setUser] = useRecoilState(userSelector);
+  const user = useRecoilValue(userSelector);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     setIsOpen(user.first);
   }, [user]);
-
-  useEffect(() => {
-    setUser({ ...user, first: false });
-  }, []);
 
   return (
     <>
@@ -29,13 +24,7 @@ export function HomePage() {
       <Board />
       <WritePostBtn />
       <Nav />
-      {isOpen && (
-        <BottomModal
-          content={[<PetRegisterModalContent key={1} setIsOpen={setIsOpen} />]}
-          isOpen={isOpen}
-          onClickDimLayer={() => setIsOpen(false)}
-        />
-      )}
+      {isOpen && <PetRegisterModal {...{ isOpen, setIsOpen }} />}
     </>
   );
 }
