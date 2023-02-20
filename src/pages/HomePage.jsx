@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { useRecoilState } from "recoil";
 import {
-  FeedHeader,
-  SearchBar,
+  Header,
   Board,
   Nav,
   WritePostBtn,
@@ -12,15 +10,6 @@ import {
 } from "../components";
 import { userSelector } from "../store";
 import { useEffect } from "react";
-
-const StyledHeader = styled.div`
-  position: fixed;
-  z-index: 999;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: ${({ theme: { colors } }) => colors.white};
-`;
 
 export function HomePage() {
   const [user, setUser] = useRecoilState(userSelector);
@@ -36,10 +25,7 @@ export function HomePage() {
 
   return (
     <>
-      <StyledHeader>
-        <FeedHeader />
-        <SearchBar />
-      </StyledHeader>
+      <Header />
       <Board />
       <WritePostBtn />
       <Nav />
