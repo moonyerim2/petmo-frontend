@@ -16,7 +16,7 @@ const CardWrapper = styled.li`
   }
 `;
 
-function post({ boardId, contentText, postData }) {
+function Post({ boardId, contentText, postData }) {
   return (
     <CardWrapper>
       <CardContent key={boardId} to={`post/:${boardId}`}>
@@ -27,10 +27,10 @@ function post({ boardId, contentText, postData }) {
   );
 }
 
-post.propTypes = {
+Post.propTypes = {
   boardId: PropTypes.string | PropTypes.number,
   contentText: PropTypes.string,
   postData: PropTypes.object,
 };
 
-export default post;
+export default Post;
