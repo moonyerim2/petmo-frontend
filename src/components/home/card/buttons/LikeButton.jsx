@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import EmptyHeartIcon from "../../../../css/icon/HeartIcon.svg";
-import FullHeartIcon from "../../../../css/icon/FullHeart.svg";
 
 const Wrapper = styled.span`
   display: flex;
@@ -10,21 +8,30 @@ const Wrapper = styled.span`
   align-items: center;
   margin-right: 12px;
 `;
+
 const Icon = styled.img`
   margin-right: 2px;
 `;
 
-function HeartBtn({ likeNumber, myLike }) {
+function LikeButton({ likeNumber, myLike }) {
   return (
     <Wrapper>
-      <Icon src={myLike ? EmptyHeartIcon : FullHeartIcon} alt="img" />
+      <Icon
+        src={
+          myLike
+            ? `${process.env.PUBLIC_URL}/img/like.svg`
+            : `${process.env.PUBLIC_URL}/img/liked.svg`
+        }
+        alt="좋아요"
+      />
       <span>{likeNumber}</span>
     </Wrapper>
   );
 }
-HeartBtn.propTypes = {
+
+LikeButton.propTypes = {
   myLike: PropTypes.bool,
   likeNumber: PropTypes.number,
 };
 
-export default HeartBtn;
+export default LikeButton;

@@ -1,10 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import HeartBtn from "./buttons/HeartBtn.js";
-import BookmarkBtn from "./buttons/BookmarkBtn.js";
-import CommentBtn from "./buttons/CommentBtn.js";
-import Watched from "./buttons/Watched.js";
 import PropTypes from "prop-types";
+import { LikeButton, BookmarkButton, CommentButton } from "./buttons";
+import Watched from "./Watched";
 
 const Wrapper = styled.div`
   display: flex;
@@ -18,7 +16,7 @@ const Wrapper = styled.div`
   border-bottom: 8px solid #f0f0f6;
 `;
 
-const Column_buttons = styled.div`
+const ColumnButtons = styled.div`
   display: flex;
 `;
 
@@ -28,19 +26,17 @@ const Button = styled.button`
   font-weight: Regular;
   font-size: 14px;
   color: #767676;
-  opacity: 1;
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-const Collumn_watched = styled.div`
+const CollumnWatched = styled.div`
   color: #9a9a9a;
   font-family: Pretendard;
   font-weight: Regular;
   font-size: 14px;
-  opacity: 1;
 `;
 
 function CardFooter({
@@ -52,24 +48,24 @@ function CardFooter({
 }) {
   return (
     <Wrapper>
-      <Column_buttons>
+      <ColumnButtons>
         <Button>
-          <HeartBtn myLike={myLike} likeNumber={likeNumberProps} />
+          <LikeButton myLike={myLike} likeNumber={likeNumberProps} />
         </Button>
         <Button>
-          <BookmarkBtn
+          <BookmarkButton
             myBookmark={myBookmark}
             bookmarkNumber={bookmarkNumberProps}
           />
         </Button>
         <Button>
-          <CommentBtn commentNumber={commentNumberProps} />
+          <CommentButton commentNumber={commentNumberProps} />
         </Button>
-      </Column_buttons>
+      </ColumnButtons>
 
-      <Collumn_watched>
+      <CollumnWatched>
         <Watched />
-      </Collumn_watched>
+      </CollumnWatched>
     </Wrapper>
   );
 }

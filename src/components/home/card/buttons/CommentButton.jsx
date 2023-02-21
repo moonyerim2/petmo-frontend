@@ -1,7 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
-import CommentIcon from "../../../../css/icon/CommentIcon.svg";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const Wrapper = styled.span`
   display: flex;
@@ -9,18 +8,22 @@ const Wrapper = styled.span`
   align-items: center;
   margin-right: 12px;
 `;
+
 const Icon = styled.img`
   margin-right: 2px;
 `;
-function CommentBtn({ commentNumber }) {
+
+function CommentButton({ commentNumber }) {
   return (
     <Wrapper>
-      <Icon src={CommentIcon} alt="img" />
+      <Icon src={`${process.env.PUBLIC_URL}/img/comment.svg`} alt="댓글" />
       <span>{commentNumber}</span>
     </Wrapper>
   );
 }
-CommentBtn.propTypes = {
+
+CommentButton.propTypes = {
   commentNumber: PropTypes.number,
 };
-export default CommentBtn;
+
+export default CommentButton;
