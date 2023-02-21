@@ -7,7 +7,7 @@ import { CardFooter } from "../card";
 
 const CardContent = styled(Link)`
   display: block;
-  padding: 0 20px;
+  padding: 0 20px 20px;
 `;
 
 const CardWrapper = styled.li`
@@ -28,7 +28,7 @@ function Post({ boardId, contentText, postData }) {
 }
 
 Post.propTypes = {
-  boardId: PropTypes.string | PropTypes.number,
+  boardId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   contentText: PropTypes.string,
   postData: PropTypes.object,
 };
