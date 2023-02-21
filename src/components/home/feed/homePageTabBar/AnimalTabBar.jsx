@@ -7,11 +7,14 @@ import { tags } from "../../../../constants";
 
 const Wrapper = styled(Box)`
   background-color: ${({ theme: { colors } }) => colors.bgMedium};
-  width: 100%;
   height: 56px;
-  padding: 10px 0 10px 20px;
+  padding: 10px 20px;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Malgun Gothic",
     "맑은 고딕", helvetica, "Apple SD Gothic Neo", sans-serif;
+
+  &.MuiTabs-root {
+    -webkit-overflow-scrolling: initial;
+  }
 `;
 
 const Tag = styled(Tab)`
@@ -37,17 +40,17 @@ const Tag = styled(Tab)`
   }
 `;
 
-export default function SearchBarAnimal() {
-  const [value, setValue] = React.useState(0);
+function AnimalTabBar() {
+  const [tabIndex, setTabIndex] = React.useState(0);
 
-  const handleClick = (event, newValue) => {
-    setValue(newValue);
+  const handleClick = (_, newTabIndex) => {
+    setTabIndex(newTabIndex);
   };
 
   return (
     <Wrapper>
       <Tabs
-        value={value}
+        value={tabIndex}
         onChange={handleClick}
         variant="scrollable"
         scrollButtons={false}
@@ -66,3 +69,5 @@ export default function SearchBarAnimal() {
     </Wrapper>
   );
 }
+
+export default AnimalTabBar;

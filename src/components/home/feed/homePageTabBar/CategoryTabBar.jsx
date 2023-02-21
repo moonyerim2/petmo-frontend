@@ -1,12 +1,12 @@
-import * as React from "react";
+import React, { useState } from "react";
+import styled, { useTheme } from "styled-components";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
-import styled, { useTheme } from "styled-components";
 import { tags } from "../../../../constants";
 
-const TagBox = styled(Tabs)`
-  padding-left: 20px;
+const StyledTabs = styled(Tabs)`
+  padding: 0 20px;
 
   &&.MuiTabs-root {
     min-height: 46px;
@@ -19,8 +19,6 @@ const TagBox = styled(Tabs)`
 
 const Tag = styled(Tab)`
   &&.MuiButtonBase-root {
-    font-family: "Pretendard";
-    font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 150%;
@@ -33,18 +31,18 @@ const Tag = styled(Tab)`
   }
 `;
 
-export default function SearchBarCategory() {
-  const [value, setValue] = React.useState(0);
+function CategoryTabBar() {
   const { colors } = useTheme();
+  const [TabIndex, setTabIndex] = useState(0);
 
-  const handleClick = (event, newValue) => {
-    setValue(newValue);
+  const handleClick = (_, newTabIndex) => {
+    setTabIndex(newTabIndex);
   };
 
   return (
     <Box>
-      <TagBox
-        value={value}
+      <StyledTabs
+        value={TabIndex}
         onChange={handleClick}
         variant="scrollable"
         scrollButtons={false}
@@ -59,7 +57,9 @@ export default function SearchBarCategory() {
         {tags.topic.map((topic) => (
           <Tag key={topic} label={topic} />
         ))}
-      </TagBox>
+      </StyledTabs>
     </Box>
   );
 }
+
+export default CategoryTabBar;

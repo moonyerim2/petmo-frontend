@@ -1,4 +1,4 @@
-export { default as SearchBar } from "./searchBar/SearchBar";
+export * from "./homePageTabBar";
 export { default as Board } from "./Board";
 export { default as FeedHeader } from "./FeedHeader";
 export { default as Nav } from "../../common/Nav";

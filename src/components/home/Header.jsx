@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { FeedHeader, SearchBar } from "../../components";
+import { FeedHeader, HomePageTabBar } from "../../components";
 
 const HeaderWrapper = styled.div`
+  width: 100%;
   position: fixed;
   z-index: 999;
   top: 0;
@@ -14,7 +15,7 @@ function Header() {
   return (
     <HeaderWrapper>
       <FeedHeader />
-      <SearchBar />
+      <HomePageTabBar />
     </HeaderWrapper>
   );
 }
