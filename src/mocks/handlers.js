@@ -1,13 +1,7 @@
 import { rest } from "msw";
 import { BASE_URL } from "../constants";
-import { posts } from "./posts";
-
-const encodedUrl = encodeURI(
-  `${BASE_URL}/board/list?boardAddress=${"송파동"}&animalTypes=${[
-    "강아지",
-    "고양이",
-  ]}&categoryType=${"전체"}&lastBoardId=${3}`
-);
+import { allPosts } from "./postsAll";
+import { rabbitPosts } from "./postsRabbit";
 
 export const handlers = [
   rest.post(`${BASE_URL}/auth/sign-in`, (req, res, ctx) => {
@@ -96,8 +90,15 @@ export const handlers = [
     return res(ctx.status(200));
   }),
 
-  rest.get(encodedUrl, async (req, res, ctx) => {
-    return res(ctx.json(posts));
+  rest.get(`${BASE_URL}/board/list`, async (req, res, ctx) => {
+    const animalTypes = req.url.searchParams.get("animalTypes");
+    const categoryType = req.url.searchParams.get("categoryType");
+
+    if (categoryType === "전체" && animalTypes === "전체")
+      return res(ctx.json(allPosts));
+    if (categoryType === "자유" && animalTypes === "토끼")
+      return res(ctx.json(rabbitPosts));
+    return res(ctx.status(400));
   }),
 
   rest.get(`${BASE_URL}/image/1`, async (req, res, ctx) => {
