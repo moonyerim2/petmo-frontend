@@ -13,17 +13,17 @@ const Icon = styled.img`
   margin-right: 2px;
 `;
 
-function CommentButton({ commentNumber }) {
+function CommentButton({ viewCount }) {
   return (
     <Wrapper>
       <Icon src={`${process.env.PUBLIC_URL}/img/comment.svg`} alt="댓글" />
-      <span>{commentNumber}</span>
+      <span>{viewCount}</span>
     </Wrapper>
   );
 }
 
 CommentButton.propTypes = {
-  commentNumber: PropTypes.number,
+  viewCount: PropTypes.number,
 };
 
 export default CommentButton;

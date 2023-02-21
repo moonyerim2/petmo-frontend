@@ -21,6 +21,11 @@ function useProcessPostsData(postList) {
     elapsedTime,
     images,
     content,
+    likeCount,
+    likeCheck,
+    bookmarkCount,
+    bookmarkCheck,
+    viewCount,
   }) => {
     return {
       boardId: boardId,
@@ -39,6 +44,13 @@ function useProcessPostsData(postList) {
         isSummary: true,
         images: images,
         imageType: "image",
+      },
+      postFooterData: {
+        likeCount,
+        likeCheck,
+        bookmarkCount,
+        bookmarkCheck,
+        viewCount,
       },
     };
   };

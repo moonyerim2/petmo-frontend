@@ -40,42 +40,40 @@ const CollumnWatched = styled.div`
 `;
 
 function CardFooter({
-  likeNumberProps,
-  bookmarkNumberProps,
-  commentNumberProps,
-  myLike,
-  myBookmark,
+  likeCount,
+  likeCheck,
+  bookmarkCount,
+  bookmarkCheck,
+  viewCount,
 }) {
   return (
     <Wrapper>
       <ColumnButtons>
         <Button>
-          <LikeButton myLike={myLike} likeNumber={likeNumberProps} />
+          <LikeButton {...{ likeCheck, likeCount }} />
         </Button>
         <Button>
-          <BookmarkButton
-            myBookmark={myBookmark}
-            bookmarkNumber={bookmarkNumberProps}
-          />
+          <BookmarkButton {...{ bookmarkCount, bookmarkCheck }} />
         </Button>
         <Button>
-          <CommentButton commentNumber={commentNumberProps} />
+          {/* 댓글수 데이터가 api에서 빠져서 viewCount로 임시 사용 */}
+          <CommentButton viewCount={viewCount} />
         </Button>
       </ColumnButtons>
 
       <CollumnWatched>
-        <Watched />
+        <Watched viewCount={viewCount} />
       </CollumnWatched>
     </Wrapper>
   );
 }
 
 CardFooter.propTypes = {
-  likeNumberProps: PropTypes.number,
-  bookmarkNumberProps: PropTypes.number,
-  commentNumberProps: PropTypes.number,
-  myLike: PropTypes.bool,
-  myBookmark: PropTypes.bool,
+  likeCount: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  likeCheck: PropTypes.bool,
+  bookmarkCount: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  bookmarkCheck: PropTypes.bool,
+  viewCount: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 export default CardFooter;

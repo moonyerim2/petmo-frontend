@@ -13,25 +13,25 @@ const Icon = styled.img`
   margin-right: 2px;
 `;
 
-function BookmarkBtn({ bookmarkNumber, myBookmark }) {
+function BookmarkBtn({ bookmarkCount, bookmarkCheck }) {
   return (
     <Wrapper>
       <Icon
         src={
-          myBookmark
+          bookmarkCheck
             ? `${process.env.PUBLIC_URL}/img/bookmark.svg`
             : `${process.env.PUBLIC_URL}/img/bookmarked.svg`
         }
         alt="북마크"
       />
-      <span>{bookmarkNumber}</span>
+      <span>{bookmarkCount}</span>
     </Wrapper>
   );
 }
 
 BookmarkBtn.propTypes = {
-  myBookmark: PropTypes.bool,
-  bookmarkNumber: PropTypes.number,
+  bookmarkCheck: PropTypes.bool,
+  bookmarkCount: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 export default BookmarkBtn;

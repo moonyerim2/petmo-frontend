@@ -1,6 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { LargeCard } from "petmo-design-system";
 import { CardFooter } from "../card";
@@ -16,13 +16,13 @@ const CardWrapper = styled.li`
   }
 `;
 
-function Post({ boardId, contentText, postData }) {
+function Post({ boardId, contentText, postData, postFooterData }) {
   return (
     <CardWrapper>
       <CardContent key={boardId} to={`post/:${boardId}`}>
         <LargeCard {...postData}>{contentText}</LargeCard>
       </CardContent>
-      <CardFooter />
+      <CardFooter {...postFooterData} />
     </CardWrapper>
   );
 }
@@ -31,6 +31,7 @@ Post.propTypes = {
   boardId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   contentText: PropTypes.string,
   postData: PropTypes.object,
+  postFooterData: PropTypes.object,
 };
 
 export default Post;
