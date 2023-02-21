@@ -1,4 +1,4 @@
-export const posts = [
+export const allPosts = [
   {
     boardId: 1,
     content:
@@ -7,7 +7,7 @@ export const posts = [
     nickname: "각이",
     boardAnimalTypes: ["강아지"],
     categoryType: "반려고수",
-    boardAddress: "강남구",
+    boardAddress: "광진구",
     likeCount: 2,
     likeCheck: true,
     viewCount: 5,
@@ -25,7 +25,7 @@ export const posts = [
     nickname: "각이",
     boardAnimalTypes: ["강아지"],
     categoryType: "반려고수",
-    boardAddress: "강남구",
+    boardAddress: "광진구",
     likeCount: 2,
     likeCheck: true,
     viewCount: 5,
@@ -43,7 +43,7 @@ export const posts = [
     nickname: "각이",
     boardAnimalTypes: ["강아지"],
     categoryType: "반려고수",
-    boardAddress: "강남구",
+    boardAddress: "광진구",
     likeCount: 2,
     likeCheck: true,
     viewCount: 5,
