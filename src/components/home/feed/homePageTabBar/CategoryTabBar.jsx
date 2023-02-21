@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import styled, { useTheme } from "styled-components";
+import { useSetRecoilState } from "recoil";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
-import { tags } from "../../../../constants";
+import { tabBarTags } from "../../../../constants";
+import { selectedCategoryTabAtom } from "../../../../store";
 
 const StyledTabs = styled(Tabs)`
   padding: 0 20px;
@@ -34,9 +36,11 @@ const Tag = styled(Tab)`
 function CategoryTabBar() {
   const { colors } = useTheme();
   const [TabIndex, setTabIndex] = useState(0);
+  const setSelectedCategoryTab = useSetRecoilState(selectedCategoryTabAtom);
 
   const handleClick = (_, newTabIndex) => {
     setTabIndex(newTabIndex);
+    setSelectedCategoryTab(tabBarTags.topic[newTabIndex]);
   };
 
   return (
@@ -53,8 +57,7 @@ function CategoryTabBar() {
           },
         }}
       >
-        <Tag label="전체" />
-        {tags.topic.map((topic) => (
+        {tabBarTags.topic.map((topic) => (
           <Tag key={topic} label={topic} />
         ))}
       </StyledTabs>

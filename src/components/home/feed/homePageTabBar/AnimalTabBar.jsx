@@ -1,9 +1,11 @@
 import * as React from "react";
+import { useSetRecoilState } from "recoil";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import styled from "styled-components";
-import { tags } from "../../../../constants";
+import { tabBarTags } from "../../../../constants";
+import { selectedAnimalTabsAtom } from "../../../../store";
 
 const Wrapper = styled(Box)`
   background-color: ${({ theme: { colors } }) => colors.bgMedium};
@@ -42,9 +44,11 @@ const Tag = styled(Tab)`
 
 function AnimalTabBar() {
   const [tabIndex, setTabIndex] = React.useState(0);
+  const setSelectedAnimalTabs = useSetRecoilState(selectedAnimalTabsAtom);
 
   const handleClick = (_, newTabIndex) => {
     setTabIndex(newTabIndex);
+    setSelectedAnimalTabs([tabBarTags.pet[newTabIndex]]);
   };
 
   return (
@@ -61,8 +65,7 @@ function AnimalTabBar() {
           },
         }}
       >
-        <Tag label="전체" />
-        {tags.pet.map((species) => (
+        {tabBarTags.pet.map((species) => (
           <Tag key={species} label={species} />
         ))}
       </Tabs>

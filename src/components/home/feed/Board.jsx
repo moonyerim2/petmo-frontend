@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { callPostsApi } from "../../../api";
 import PostList from "./PostList.jsx";
+import {
+  selectedAnimalTabsAtom,
+  selectedCategoryTabAtom,
+  userSelector,
+} from "../../../store";
 
 const Wrapper = styled.div`
   box-sizing: border-box;
@@ -19,20 +25,25 @@ const Wrapper = styled.div`
 
 function Board() {
   const [postList, setPostList] = useState([]);
+  const {
+    address: { regionDepth2 },
+  } = useRecoilValue(userSelector);
+  const selectedAnimalTabs = useRecoilValue(selectedAnimalTabsAtom);
+  const selectedCategoryTab = useRecoilValue(selectedCategoryTabAtom);
 
   useEffect(() => {
     (async () => {
       const payload = {
-        boardAddress: "송파동",
-        animalTypes: ["강아지", "고양이"],
-        categoryType: "전체",
+        boardAddress: regionDepth2,
+        animalTypes: selectedAnimalTabs,
+        categoryType: selectedCategoryTab,
         lastBoardId: 3,
       };
 
       const response = await callPostsApi(payload);
       setPostList(response.data);
     })();
-  }, []);
+  }, [regionDepth2, selectedAnimalTabs, selectedCategoryTab]);
 
   return (
     <Wrapper>
