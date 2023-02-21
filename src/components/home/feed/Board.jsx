@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
 import styled from "styled-components";
+import { useRecoilValue } from "recoil";
 import { callPostsApi } from "../../../api";
 import PostList from "./PostList.jsx";
+import NoPost from "./NoPost";
 import {
   selectedAnimalTabsAtom,
   selectedCategoryTabAtom,
@@ -47,7 +48,7 @@ function Board() {
 
   return (
     <Wrapper>
-      <PostList postList={postList} />
+      {postList ? <PostList postList={postList} /> : <NoPost />}
     </Wrapper>
   );
 }
