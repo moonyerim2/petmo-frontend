@@ -2,9 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import CardFooterButton from "./CardFooterButton";
 import { useCardFooterButtonClick } from "../../../../hooks";
+import { callBookmarkApi } from "../../../../api";
 
-function BookmarkBtn({ bookmarkCount, bookmarkCheck }) {
+function BookmarkBtn({ boardId, bookmarkCount, bookmarkCheck }) {
   const { isChecked, count, handleButtonClick } = useCardFooterButtonClick(
+    () => {
+      const method = isChecked ? "delete" : "post";
+      callBookmarkApi(method, boardId);
+    },
     bookmarkCount,
     bookmarkCheck
   );
@@ -24,6 +29,7 @@ function BookmarkBtn({ bookmarkCount, bookmarkCheck }) {
 }
 
 BookmarkBtn.propTypes = {
+  boardId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   bookmarkCheck: PropTypes.bool,
   bookmarkCount: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };

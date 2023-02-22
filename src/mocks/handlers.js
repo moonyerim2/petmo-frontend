@@ -118,4 +118,16 @@ export const handlers = [
       })
     );
   }),
+  rest.post(`${BASE_URL}/like/1`, async (req, res, ctx) => {
+    return res(ctx.status(201));
+  }),
+  rest.delete(`${BASE_URL}/like/1`, async (req, res, ctx) => {
+    return res(ctx.status(200));
+  }),
+  rest.post(`${BASE_URL}/bookmark/1`, async (req, res, ctx) => {
+    return res(ctx.status(201));
+  }),
+  rest.delete(`${BASE_URL}/bookmark/1`, async (req, res, ctx) => {
+    return res(ctx.status(200));
+  }),
 ];

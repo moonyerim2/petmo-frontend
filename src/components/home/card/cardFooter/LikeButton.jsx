@@ -2,9 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import CardFooterButton from "./CardFooterButton";
 import { useCardFooterButtonClick } from "../../../../hooks";
+import { callLikeApi } from "../../../../api";
 
-function LikeButton({ likeCount, likeCheck }) {
+function LikeButton({ boardId, likeCount, likeCheck }) {
   const { isChecked, count, handleButtonClick } = useCardFooterButtonClick(
+    () => {
+      const method = isChecked ? "delete" : "post";
+      callLikeApi(method, boardId);
+    },
     likeCount,
     likeCheck
   );
@@ -24,6 +29,7 @@ function LikeButton({ likeCount, likeCheck }) {
 }
 
 LikeButton.propTypes = {
+  boardId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   likeCheck: PropTypes.bool,
   likeCount: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };

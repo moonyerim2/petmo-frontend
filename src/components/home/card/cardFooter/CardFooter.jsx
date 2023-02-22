@@ -25,6 +25,7 @@ const ButtonWrapper = styled.div`
 `;
 
 function CardFooter({
+  boardId,
   likeCount,
   likeCheck,
   bookmarkCount,
@@ -34,8 +35,8 @@ function CardFooter({
   return (
     <Wrapper>
       <ButtonWrapper>
-        <LikeButton {...{ likeCheck, likeCount }} />
-        <BookmarkButton {...{ bookmarkCount, bookmarkCheck }} />
+        <LikeButton {...{ boardId, likeCount, likeCheck }} />
+        <BookmarkButton {...{ boardId, bookmarkCount, bookmarkCheck }} />
         {/* 댓글수 데이터가 api에서 빠져서 viewCount로 임시 사용 */}
         <CommentButton commentCount={viewCount} />
       </ButtonWrapper>
@@ -46,6 +47,7 @@ function CardFooter({
 }
 
 CardFooter.propTypes = {
+  boardId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   likeCount: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   likeCheck: PropTypes.bool,
   bookmarkCount: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),

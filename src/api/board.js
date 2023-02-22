@@ -21,3 +21,29 @@ export const callPostsApi = async ({
     return error.response;
   }
 };
+
+export const callLikeApi = async (method, boardId) => {
+  try {
+    const response = await axios[method](`${BASE_URL}/like/${boardId}`);
+
+    if (response.status !== 200 || response.status !== 201)
+      throw new Error("Request faild");
+    return response;
+  } catch (error) {
+    console.log(error);
+    return error.response;
+  }
+};
+
+export const callBookmarkApi = async (method, boardId) => {
+  try {
+    const response = await axios[method](`${BASE_URL}/bookmark/${boardId}`);
+
+    if (response.status !== 200 || response.status !== 201)
+      throw new Error("Request faild");
+    return response;
+  } catch (error) {
+    console.log(error);
+    return error.response;
+  }
+};

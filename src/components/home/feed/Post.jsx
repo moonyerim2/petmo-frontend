@@ -22,7 +22,7 @@ function Post({ boardId, contentText, postData, postFooterData }) {
       <CardContent key={boardId} to={`post/:${boardId}`}>
         <LargeCard {...postData}>{contentText}</LargeCard>
       </CardContent>
-      <CardFooter {...postFooterData} />
+      <CardFooter boardId={boardId} {...postFooterData} />
     </CardWrapper>
   );
 }
