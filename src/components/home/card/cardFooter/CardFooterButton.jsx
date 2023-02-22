@@ -21,9 +21,9 @@ const Icon = styled.img`
   margin-right: 2px;
 `;
 
-function CardFooterButton({ dataCount, iconSrc, iconAlt }) {
+function CardFooterButton({ dataCount, iconSrc, iconAlt, ...rest }) {
   return (
-    <StyledButton>
+    <StyledButton {...rest}>
       <Icon src={iconSrc} alt={iconAlt} />
       <span>{dataCount}</span>
     </StyledButton>
