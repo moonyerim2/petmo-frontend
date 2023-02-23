@@ -15,6 +15,7 @@ import {
   BookmarkPage,
   ProfilePage,
   NotFoundPage,
+  NavigationOutlet,
 } from "./pages";
 
 function App() {
@@ -24,10 +25,14 @@ function App() {
     <BrowserRouter>
       <Reset />
       <Routes>
-        <Route
-          path="/"
-          element={isAuthenticated ? <HomePage /> : <LandingPage />}
-        />
+        <Route element={<NavigationOutlet />}>
+          <Route
+            path="/"
+            element={isAuthenticated ? <HomePage /> : <LandingPage />}
+          />
+          <Route path="bookmark" element={<BookmarkPage />} />
+          <Route path="profile/:userId" element={<ProfilePage />} />
+        </Route>
 
         <Route path="login" element={<LoginPage />} />
         <Route path="join" element={<JoinPage />} />
@@ -39,9 +44,6 @@ function App() {
         <Route path="write" element={<WritePostPage />}>
           <Route path=":postId" element={<WritePostPage />} />
         </Route>
-
-        <Route path="bookmark" element={<BookmarkPage />} />
-        <Route path="profile/:userId" element={<ProfilePage />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
