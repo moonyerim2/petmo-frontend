@@ -9,3 +9,4 @@ export { default as useTagSelector } from "./useTagSelector";
 export { default as usePreventScroll } from "./usePreventScroll";
 export { default as useProcessPostsData } from "./useProcessPostsData";
 export { default as useCardFooterButtonClick } from "./useCardFooterButtonClick";
+export { default as useInfiniteScroll } from "./useInfiniteScroll";
