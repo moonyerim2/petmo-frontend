@@ -9,3 +9,4 @@ export { default as PostViewPage } from "./PostViewPage";
 export { default as BookmarkPage } from "./BookmarkPage";
 export { default as ProfilePage } from "./ProfilePage";
 export { default as NotFoundPage } from "./NotFoundPage";
+export { default as NavigationOutlet } from "./NavigationOutlet";

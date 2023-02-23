@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
-import {
-  Header,
-  Board,
-  Nav,
-  WritePostBtn,
-  PetRegisterModal,
-} from "../components";
+import { Header, Board, WritePostBtn, PetRegisterModal } from "../components";
 import { userSelector } from "../store";
 import { useEffect } from "react";
 
@@ -23,7 +17,6 @@ export function HomePage() {
       <Header />
       <Board />
       <WritePostBtn />
-      <Nav />
       {isOpen && <PetRegisterModal {...{ isOpen, setIsOpen }} />}
     </>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { PageHeader2, Nav } from "../components";
+import { PageHeader2 } from "../components";
 import BookmarkBoard from "../components/bookmark/BookmarkBoard";
 
 const bookmarkDummyList = [
@@ -64,7 +64,6 @@ function BookmarkPage() {
     <>
       <PageHeader2 pageTitle="북마크" />
       <BookmarkBoard cards={bookmarkDummyList} />
-      <Nav />
     </>
   );
 }

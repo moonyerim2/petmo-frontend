@@ -1,5 +1,4 @@
 import React from "react";
-import { Nav } from "../components";
 import ProfileBoard from "../components/Profile/ProfileBoard";
 import ProfileHeader from "../components/Profile/ProfileHeader";
 
@@ -195,7 +194,6 @@ function ProfilePage() {
         userPosts={postsDummyData}
         userComments={userCommentsData}
       />
-      <Nav />
     </>
   );
 }
