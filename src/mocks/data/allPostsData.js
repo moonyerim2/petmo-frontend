@@ -1,4 +1,4 @@
-export const allPosts = [
+export const allPostsData = [
   {
     boardId: 1,
     content:

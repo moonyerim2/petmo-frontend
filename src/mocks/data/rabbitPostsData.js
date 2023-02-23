@@ -1,4 +1,4 @@
-export const rabbitPosts = [
+export const rabbitPostsData = [
   {
     boardId: 1,
     content:
