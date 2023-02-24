@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { UserInfoHeader, Tags } from "../../../components";
+import { UserInfoHeader, Tags } from "../../components";
 import Content from "./Content";
 import { CardFooter } from "./cardFooter";
 import PropTypes from "prop-types";

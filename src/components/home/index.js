@@ -1,4 +1,3 @@
-export * from "./card";
 export * from "./feed";
 export * from "./petRegisterModal";
 export { default as PetRegisterModalContent } from "./petRegisterModal/PetRegisterModalContent";
