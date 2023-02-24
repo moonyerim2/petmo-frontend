@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import CardFooterButton from "./CardFooterButton";
-import { useCardFooterButtonClick } from "../../../../hooks";
-import { callLikeApi } from "../../../../api";
+import { useCardFooterButtonClick } from "../../../hooks";
+import { callLikeApi } from "../../../api";
 
 function LikeButton({ boardId, likeCount, likeCheck }) {
   const { isChecked, count, handleButtonClick } = useCardFooterButtonClick(

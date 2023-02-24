@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import CardFooterButton from "./CardFooterButton";
-import { useCardFooterButtonClick } from "../../../../hooks";
-import { callBookmarkApi } from "../../../../api";
+import { useCardFooterButtonClick } from "../../../hooks";
+import { callBookmarkApi } from "../../../api";
 
 function BookmarkBtn({ boardId, bookmarkCount, bookmarkCheck }) {
   const { isChecked, count, handleButtonClick } = useCardFooterButtonClick(
