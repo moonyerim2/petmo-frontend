@@ -1,5 +1,6 @@
 export * from "./common";
 export * from "./home";
+export * from "./card";
 export * from "./join";
 export * from "./login";
 export * from "./mytown";

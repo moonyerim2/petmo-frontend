@@ -5,7 +5,7 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import styled from "@emotion/styled";
-import Card from "../home/card/Card";
+import Card from "../card/Card";
 import ProfileCommentCard from "./ProfileCommentCard";
 import PropTypes from "prop-types";
 
