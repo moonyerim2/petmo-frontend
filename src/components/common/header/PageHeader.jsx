@@ -9,8 +9,9 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   height: 56px;
-  background-color: white;
-  border-bottom: 1px solid #e5e5ec;
+  background-color: ${({ theme: { color } }) => {
+    color.white;
+  }};
 `;
 
 const LeftButton = styled.span`
