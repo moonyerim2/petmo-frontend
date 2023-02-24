@@ -14,11 +14,8 @@ function PostList({ postList }) {
 
   return (
     <Posts>
-      {posts.map(({ boardId, contentText, postData, postFooterData }) => (
-        <Post
-          key={boardId}
-          {...{ boardId, contentText, postData, postFooterData }}
-        />
+      {posts.map((post) => (
+        <Post key={post.boardId} post={post} />
       ))}
     </Posts>
   );
