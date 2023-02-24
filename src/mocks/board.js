@@ -2,6 +2,7 @@ import { rest } from "msw";
 import { BASE_URL } from "../constants";
 import { allPostsData } from "./data/allPostsData";
 import { rabbitPostsData } from "./data/rabbitPostsData";
+import { singlePostData } from "./data/singlePostData";
 
 export const boardHandler = [
   rest.get(`${BASE_URL}/board/list`, async (req, res, ctx) => {
@@ -13,6 +14,10 @@ export const boardHandler = [
     if (categoryType === "자유" && animalTypes === "토끼")
       return res(ctx.json(rabbitPostsData));
     return res(ctx.status(400));
+  }),
+
+  rest.get(`${BASE_URL}/board/1`, async (req, res, ctx) => {
+    return res(ctx.json(singlePostData));
   }),
 
   rest.post(`${BASE_URL}/like/1`, async (req, res, ctx) => {
