@@ -2,26 +2,21 @@ import React from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  height: 116px;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  div {
-    font-family: "Pretendard";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 140%;
-    color: #999999;
-  }
+  padding: 32px 0 72px;
+  text-align: center;
+  line-height: 150%;
+  font-size: 16px;
+  color: ${({ theme: { color } }) => color.disable};
 `;
+
 function BlankComment() {
   return (
     <Wrapper>
-      <div>아직 댓글이 없어요.</div>
-      <div>가장 먼저 댓글을 남겨보세요.</div>
+      <p>
+        아직 댓글이 없어요.
+        <br />
+        가장 먼저 댓글을 남겨보세요.
+      </p>
     </Wrapper>
   );
 }
