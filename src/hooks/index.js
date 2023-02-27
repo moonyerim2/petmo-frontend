@@ -9,4 +9,5 @@ export { default as useTagSelector } from "./useTagSelector";
 export { default as usePreventScroll } from "./usePreventScroll";
 export { default as useCardFooterButtonClick } from "./useCardFooterButtonClick";
 export { default as useInfiniteScroll } from "./useInfiniteScroll";
+export { default as useProcessCommentsData } from "./useProcessCommentsData";
 export * from "./post";
