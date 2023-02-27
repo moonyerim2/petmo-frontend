@@ -5,3 +5,4 @@ export * from "./ip";
 export * from "./writePost";
 export * from "./board";
 export * from "./image";
+export * from "./comments";
