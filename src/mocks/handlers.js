@@ -3,6 +3,7 @@ import {
   boardHandler,
   usersHandler,
   imageHandler,
+  commentsHandler,
 } from "../mocks";
 
 export const handlers = [
@@ -11,4 +12,5 @@ export const handlers = [
   ...boardHandler,
   ...imageHandler,
   ...boardHandler,
+  ...commentsHandler,
 ];
