@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { PageWrapper } from "../../styled";
 import CommentInputInfomation from "./CommentInputInfomation";
 import CommentSubmitButton from "./CommentSubmitButton";
 import { commentToWhoAtom, commentPayloadIdsAtom } from "../../store";
+import { callAddCommentsApi, callAddReplyCommentsApi } from "../../api";
 
 const Wrapper = styled.div`
   position: fixed;
@@ -14,13 +14,14 @@ const Wrapper = styled.div`
   background-color: ${({ theme: { color } }) => color.white};
 `;
 
-const InputBox = styled(PageWrapper)`
+const InputForm = styled.form`
   ${({ theme: { color, fontSize, layout } }) => {
     return css`
       ${{
         ...layout.flex_aCenter_jBetween,
         color: color.gray600,
         fontSize: fontSize.body1,
+        padding: "0 20px",
         boxShadow: "0px -4px 12px rgba(0, 0, 0, 0.06)",
       }}
     `;
@@ -35,33 +36,41 @@ const Input = styled.input`
 
 function CommentInput({ inputRef }) {
   const [input, setInput] = useState("");
-  const [isValid, setIsValid] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
+  const [submitTrigger, setSubmitTrigger] = useState(false);
   const [{ commentToWho }, setCommentToWho] = useRecoilState(commentToWhoAtom);
   const [commentPayloadIds, setCommentPayloadIds] = useRecoilState(
     commentPayloadIdsAtom
   );
 
   useEffect(() => {
-    const payload = {
-      ...commentPayloadIds,
-      content: input,
-    };
-
-    if (!payload.commentId) {
-      delete payload.commentId;
-    }
-  }, [commentPayloadIds, input]);
-
-  useEffect(() => {
-    if (!showInfo)
+    if (!input)
       setCommentPayloadIds((prevState) => {
         return { ...prevState, commentId: "" };
       });
-  }, [showInfo]);
+  }, [input]);
 
-  const handleInput = ({ target: { value } }) => {
-    setInput(value);
+  useEffect(() => {
+    if (submitTrigger) {
+      const payload = {
+        ...commentPayloadIds,
+        content: inputRef.current.value,
+      };
+
+      if (!payload.commentId) {
+        delete payload.commentId;
+        callAddCommentsApi(payload);
+      } else {
+        callAddReplyCommentsApi(payload);
+      }
+
+      setSubmitTrigger(false);
+    }
+  }, [submitTrigger, commentPayloadIds]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitTrigger(true);
   };
 
   const handleFocus = () => {
@@ -73,28 +82,27 @@ function CommentInput({ inputRef }) {
       return { ...prevState, commentToWho: prevState.postAuthor };
     });
     setShowInfo(false);
+    setSubmitTrigger(false);
   };
 
-  const handleKeyUp = ({ target: { value } }) => {
-    value.length > 0 ? setIsValid(true) : setIsValid(false);
+  const handleChange = ({ target: { value } }) => {
+    setInput(value);
   };
 
   return (
     <Wrapper>
       {showInfo ? <CommentInputInfomation commentToWho={commentToWho} /> : null}
-      <InputBox>
+      <InputForm onSubmit={handleSubmit}>
         <Input
           ref={inputRef}
-          value={input}
           type="text"
           placeholder="답글을 입력하세요."
-          onChange={handleInput}
-          onKeyUp={handleKeyUp}
+          onChange={handleChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
-        <CommentSubmitButton isDisabled={!isValid} />
-      </InputBox>
+        <CommentSubmitButton isDisabled={!input} />
+      </InputForm>
     </Wrapper>
   );
 }
