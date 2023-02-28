@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useRecoilState } from "recoil";
+import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { PageWrapper } from "../../styled";
 import CommentInputInfomation from "./CommentInputInfomation";
 import CommentSubmitButton from "./CommentSubmitButton";
+import { commentToWhoAtom } from "../../store";
 
 const Wrapper = styled.div`
   position: fixed;
@@ -30,10 +33,11 @@ const Input = styled.input`
   width: calc(100% - 50px);
 `;
 
-function CommentInput() {
+function CommentInput({ inputRef }) {
   const [input, setInput] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
+  const [{ commentToWho }, setCommentToWho] = useRecoilState(commentToWhoAtom);
 
   const handleInput = ({ target: { value } }) => {
     setInput(value);
@@ -44,6 +48,9 @@ function CommentInput() {
   };
 
   const handleBlur = () => {
+    setCommentToWho((prevState) => {
+      return { ...prevState, commentToWho: prevState.postAuthor };
+    });
     setShowInfo(false);
   };
 
@@ -53,9 +60,10 @@ function CommentInput() {
 
   return (
     <Wrapper>
-      {showInfo ? <CommentInputInfomation /> : null}
+      {showInfo ? <CommentInputInfomation commentToWho={commentToWho} /> : null}
       <InputBox>
         <Input
+          ref={inputRef}
           value={input}
           type="text"
           placeholder="답글을 입력하세요."
@@ -69,5 +77,9 @@ function CommentInput() {
     </Wrapper>
   );
 }
+
+CommentInput.propTypes = {
+  inputRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+};
 
 export default CommentInput;
