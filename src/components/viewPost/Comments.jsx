@@ -1,11 +1,24 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
+import { useSetRecoilState } from "recoil";
 import { Comment } from "petmo-design-system";
 import { useRecoilValue } from "recoil";
 import { user } from "../../store";
+import { commentToWhoAtom } from "../../store";
 
-function Comments({ comments }) {
+function Comments({ onClickReply, comments }) {
   const nickName = useRecoilValue(user);
+  const setCommentToWho = useSetRecoilState(commentToWhoAtom);
+
+  const handleOnClickReply = (commentToWho, commentId) => {
+    setCommentToWho((prevState) => {
+      return {
+        ...prevState,
+        commentToWho: commentToWho,
+      };
+    });
+    onClickReply(commentId);
+  };
 
   return (
     <>
@@ -14,7 +27,16 @@ function Comments({ comments }) {
           const isMyComment = userBadgeData.userName === nickName;
           return (
             <Fragment key={commentId}>
-              <Comment {...{ isMyComment, userBadgeData, content, depth }} />
+              <Comment
+                {...{
+                  isMyComment,
+                  userBadgeData,
+                  content,
+                  depth,
+                  onClickReply: () =>
+                    handleOnClickReply(userBadgeData.userName, commentId),
+                }}
+              />
               {depth !== 2 && <Comments comments={children} />}
             </Fragment>
           );
@@ -26,6 +48,7 @@ function Comments({ comments }) {
 
 Comments.propTypes = {
   comments: PropTypes.array,
+  onClickReply: PropTypes.func,
 };
 
 export default Comments;

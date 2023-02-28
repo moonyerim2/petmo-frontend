@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { PageWrapper } from "../../styled";
 import CommentInputInfomation from "./CommentInputInfomation";
 import CommentSubmitButton from "./CommentSubmitButton";
-import { commentToWhoAtom } from "../../store";
+import { commentToWhoAtom, commentPayloadIdsAtom } from "../../store";
 
 const Wrapper = styled.div`
   position: fixed;
@@ -38,6 +38,27 @@ function CommentInput({ inputRef }) {
   const [isValid, setIsValid] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
   const [{ commentToWho }, setCommentToWho] = useRecoilState(commentToWhoAtom);
+  const [commentPayloadIds, setCommentPayloadIds] = useRecoilState(
+    commentPayloadIdsAtom
+  );
+
+  useEffect(() => {
+    const payload = {
+      ...commentPayloadIds,
+      content: input,
+    };
+
+    if (!payload.commentId) {
+      delete payload.commentId;
+    }
+  }, [commentPayloadIds, input]);
+
+  useEffect(() => {
+    if (!showInfo)
+      setCommentPayloadIds((prevState) => {
+        return { ...prevState, commentId: "" };
+      });
+  }, [showInfo]);
 
   const handleInput = ({ target: { value } }) => {
     setInput(value);
