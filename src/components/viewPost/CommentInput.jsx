@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import CommentInputInfomation from "./CommentInputInfomation";
 import CommentSubmitButton from "./CommentSubmitButton";
-import { commentToWhoAtom, commentPayloadIdsAtom } from "../../store";
-import { callAddCommentsApi, callAddReplyCommentsApi } from "../../api";
+import { commentToWhoAtom } from "../../store";
+import { useSubmitComment } from "../../hooks";
 
 const Wrapper = styled.div`
   position: fixed;
@@ -37,36 +37,8 @@ const Input = styled.input`
 function CommentInput({ inputRef }) {
   const [input, setInput] = useState("");
   const [showInfo, setShowInfo] = useState(false);
-  const [submitTrigger, setSubmitTrigger] = useState(false);
+  const { setSubmitTrigger } = useSubmitComment(input);
   const [{ commentToWho }, setCommentToWho] = useRecoilState(commentToWhoAtom);
-  const [commentPayloadIds, setCommentPayloadIds] = useRecoilState(
-    commentPayloadIdsAtom
-  );
-
-  useEffect(() => {
-    if (!input)
-      setCommentPayloadIds((prevState) => {
-        return { ...prevState, commentId: "" };
-      });
-  }, [input]);
-
-  useEffect(() => {
-    if (submitTrigger) {
-      const payload = {
-        ...commentPayloadIds,
-        content: inputRef.current.value,
-      };
-
-      if (!payload.commentId) {
-        delete payload.commentId;
-        callAddCommentsApi(payload);
-      } else {
-        callAddReplyCommentsApi(payload);
-      }
-
-      setSubmitTrigger(false);
-    }
-  }, [submitTrigger, commentPayloadIds]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
