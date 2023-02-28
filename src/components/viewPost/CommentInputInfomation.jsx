@@ -23,18 +23,18 @@ const CommentAuthor = styled.span`
   color: ${({ theme: { color } }) => color.main};
 `;
 
-function CommentInputInfomation({ commentAuthor }) {
+function CommentInputInfomation({ commentToWho }) {
   return (
     <CommentInfo>
       <CommentInfoText>
-        <CommentAuthor>{commentAuthor}</CommentAuthor>님에게 답글 남기는 중
+        <CommentAuthor>{commentToWho}</CommentAuthor>님에게 답글 남기는 중
       </CommentInfoText>
     </CommentInfo>
   );
 }
 
 CommentInputInfomation.propTypes = {
-  commentAuthor: PropTypes.string,
+  commentToWho: PropTypes.string,
 };
 
 export default CommentInputInfomation;
