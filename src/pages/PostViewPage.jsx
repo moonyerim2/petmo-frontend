@@ -11,7 +11,7 @@ import {
 } from "../components";
 import { useProcessSinglePostData, useProcessCommentsData } from "../hooks";
 import { PageWrapper } from "../styled";
-import { commentToWhoAtom } from "../store";
+import { commentToWhoAtom, commentPayloadIdsAtom } from "../store";
 
 const CommentsWrapper = styled.div`
   padding: 20px 20px 60px;
@@ -22,17 +22,26 @@ function PostViewPage() {
   const post = useProcessSinglePostData(postId.replace(":", ""));
   const comments = useProcessCommentsData(postId.replace(":", ""));
   const setCommentToWho = useSetRecoilState(commentToWhoAtom);
+  const setCommentPayloadIds = useSetRecoilState(commentPayloadIdsAtom);
   const commentInput = useRef(null);
 
   useEffect(() => {
+    setCommentPayloadIds((prevState) => {
+      return { ...prevState, boardId: post.boardId };
+    });
+
     setCommentToWho({
       postAuthor: post.postData?.userBadgeData.userName,
       commentToWho: post.postData?.userBadgeData.userName,
     });
   }, [post]);
 
-  const onClickReply = () => {
+  const onClickReply = (commentId) => {
     commentInput.current.focus();
+
+    setCommentPayloadIds((prevState) => {
+      return { ...prevState, commentId: commentId };
+    });
   };
 
   return (
