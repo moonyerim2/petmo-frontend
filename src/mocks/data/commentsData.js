@@ -1,6 +1,8 @@
-export const commentsData = [
+import uuid from "react-uuid";
+
+export const commentsData = () => [
   {
-    commentId: 1,
+    commentId: uuid(),
     author: "오즈",
     address: "광진구",
     content: "강아지가 너무 귀엽네요~!",
@@ -8,7 +10,7 @@ export const commentsData = [
     deleted: false,
     children: [
       {
-        commentId: 2,
+        commentId: uuid(),
         author: "설이맘",
         address: "송파구",
         content: "동의2222",
@@ -17,7 +19,7 @@ export const commentsData = [
         createdData: "2022-12-11 16:32:23",
       },
       {
-        commentId: 3,
+        commentId: uuid(),
         author: "훈이",
         address: "광진구",
         content: "설이맘님 안녕하세요~",
@@ -29,7 +31,7 @@ export const commentsData = [
     createdData: "2022-12-10 16:32:23",
   },
   {
-    commentId: 4,
+    commentId: uuid(),
     author: "또치",
     address: "광진구",
     content: "귀여워요~",
@@ -37,7 +39,7 @@ export const commentsData = [
     deleted: false,
     children: [
       {
-        commentId: 5,
+        commentId: uuid(),
         author: "광진구불주먹",
         address: "광진구",
         content: "넵넵2222",
@@ -46,7 +48,7 @@ export const commentsData = [
         createdData: "2022-12-13 16:32:23",
       },
       {
-        commentId: 6,
+        commentId: uuid(),
         author: "안냥",
         address: "광진구",
         content: "333333333333333333",

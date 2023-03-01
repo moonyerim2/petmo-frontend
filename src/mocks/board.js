@@ -10,29 +10,21 @@ export const boardHandler = [
     const categoryType = req.url.searchParams.get("categoryType");
 
     if (categoryType === "전체" && animalTypes === "전체")
-      return res(ctx.json(allPostsData));
+      return res(ctx.json(allPostsData()));
     if (categoryType === "자유" && animalTypes === "토끼")
-      return res(ctx.json(rabbitPostsData));
+      return res(ctx.json(rabbitPostsData()));
     return res(ctx.status(400));
   }),
 
-  rest.get(`${BASE_URL}/board/1`, async (req, res, ctx) => {
-    return res(ctx.json(singlePostData));
+  rest.get(`${BASE_URL}/board/:boardId`, async (req, res, ctx) => {
+    return res(ctx.json(singlePostData()));
   }),
 
-  rest.post(`${BASE_URL}/like/1`, async (req, res, ctx) => {
+  rest.post(`${BASE_URL}/like/:boardId`, async (req, res, ctx) => {
     return res(ctx.status(201));
   }),
 
-  rest.delete(`${BASE_URL}/like/1`, async (req, res, ctx) => {
-    return res(ctx.status(200));
-  }),
-
-  rest.post(`${BASE_URL}/bookmark/1`, async (req, res, ctx) => {
+  rest.post(`${BASE_URL}/bookmark/:boardId`, async (req, res, ctx) => {
     return res(ctx.status(201));
-  }),
-
-  rest.delete(`${BASE_URL}/bookmark/1`, async (req, res, ctx) => {
-    return res(ctx.status(200));
   }),
 ];
