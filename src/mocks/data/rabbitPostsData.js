@@ -1,6 +1,8 @@
-export const rabbitPostsData = [
+import uuid from "react-uuid";
+
+export const rabbitPostsData = () => [
   {
-    boardId: 1,
+    boardId: uuid(),
     content:
       "토끼가 사람을 좋아하고 따른다는 것은 쉽게 알 수 있어요. 하지만 강아지가 우리에게 '고마움'을 느끼는 건 쉽게 알기 어려운데요. 과연 강아지는 보호자에게 고마움을 느낄까요? 그렇다면, 강아지가 고마워할 때 보이는 행동은 어떤 것이 있을까요?",
     imageIds: [1],
@@ -18,7 +20,7 @@ export const rabbitPostsData = [
     lastModifiedDate: "2023-02-15T16:32:23",
   },
   {
-    boardId: 2,
+    boardId: uuid(),
     content:
       "토끼가 사람을 좋아하고 따른다는 것은 쉽게 알 수 있어요. 하지만 강아지가 우리에게 '고마움'을 느끼는 건 쉽게 알기 어려운데요. 과연 강아지는 보호자에게 고마움을 느낄까요? 그렇다면, 강아지가 고마워할 때 보이는 행동은 어떤 것이 있을까요?",
     imageIds: [1],
@@ -36,7 +38,7 @@ export const rabbitPostsData = [
     lastModifiedDate: "2022-12-11T16:32:23",
   },
   {
-    boardId: 3,
+    boardId: uuid(),
     content:
       "토끼가 사람을 좋아하고 따른다는 것은 쉽게 알 수 있어요. 하지만 강아지가 우리에게 '고마움'을 느끼는 건 쉽게 알기 어려운데요. 과연 강아지는 보호자에게 고마움을 느낄까요? 그렇다면, 강아지가 고마워할 때 보이는 행동은 어떤 것이 있을까요?",
     imageIds: [1, 2],
