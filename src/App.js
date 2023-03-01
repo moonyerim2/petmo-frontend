@@ -25,11 +25,15 @@ function App() {
     <BrowserRouter>
       <Reset />
       <Routes>
+        {isAuthenticated ? (
+          <Route element={<NavigationOutlet />}>
+            <Route path="/" element={<HomePage />} />
+          </Route>
+        ) : (
+          <Route path="/" element={<LandingPage />} />
+        )}
+
         <Route element={<NavigationOutlet />}>
-          <Route
-            path="/"
-            element={isAuthenticated ? <HomePage /> : <LandingPage />}
-          />
           <Route path="bookmark" element={<BookmarkPage />} />
           <Route path="profile/:userId" element={<ProfilePage />} />
         </Route>
