@@ -63,10 +63,9 @@ const useWritePost = () => {
   };
 
   const registerPost = async () => {
-    const imageIds = await registerImages();
     const payload = {
       content: postText,
-      imageIds: imageIds,
+      imageIds: imageFiles.length ? await registerImages() : [],
       categoryType: postTags.topic,
       boardAddress: regionDepth2,
       boardAnimalTypes: postTags.pet,
