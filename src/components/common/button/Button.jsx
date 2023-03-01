@@ -7,6 +7,10 @@ const StyledButton = styled.button`
   ${({ theme, style }) => {
     return setStyledComponent({ theme, style });
   }}
+
+  img {
+    margin: ${({ text }) => (!text ? "0 auto" : null)};
+  }
 `;
 
 const Text = styled.span`
@@ -29,6 +33,7 @@ function Button({
 }) {
   return (
     <StyledButton
+      text={text}
       type={type}
       name={name}
       disabled={isDisabled}
