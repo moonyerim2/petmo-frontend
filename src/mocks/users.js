@@ -17,7 +17,7 @@ const UserInfo = (() => {
   let profileInfo = {
     nickname: "모찌누나",
     profile: "모찌/비숑/6살",
-    refionDepth2: "광진구",
+    regionDepth2: "광진구",
     animals: [],
   };
 
@@ -30,8 +30,14 @@ const UserInfo = (() => {
     profileInfo = { ...profileInfo, animals: petData };
   };
 
+  const deleteAddress = () => {
+    staticInfo.address = {};
+    profileInfo.regionDepth2 = "";
+  };
+
   return {
     setPetData,
+    deleteAddress,
     getStaticInfo,
     getProfileInfo,
   };
@@ -47,6 +53,7 @@ export const usersHandler = [
   }),
 
   rest.delete(`${BASE_URL}/users/address`, (_, res, ctx) => {
+    UserInfo.deleteAddress();
     return res(ctx.status(200));
   }),
 
