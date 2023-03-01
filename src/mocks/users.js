@@ -25,7 +25,13 @@ const UserInfo = (() => {
 
   const getProfileInfo = () => profileInfo;
 
+  const setPetData = (petData) => {
+    staticInfo = { ...staticInfo, hasPet: true, first: false };
+    profileInfo = { ...profileInfo, animals: petData };
+  };
+
   return {
+    setPetData,
     getStaticInfo,
     getProfileInfo,
   };
@@ -81,6 +87,7 @@ export const usersHandler = [
   }),
 
   rest.post(`${BASE_URL}/users/animals`, async (req, res, ctx) => {
+    UserInfo.setPetData(await req.json());
     return res(ctx.status(200));
   }),
 ];

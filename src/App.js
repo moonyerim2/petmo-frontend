@@ -19,7 +19,7 @@ import {
 } from "./pages";
 
 function App() {
-  const isAuthenticated = useUser();
+  const { isAuthenticated } = useUser();
 
   return (
     <BrowserRouter>
