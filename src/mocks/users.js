@@ -1,21 +1,39 @@
 import { rest } from "msw";
 import { BASE_URL } from "../constants";
 
+const UserInfo = (() => {
+  let staticInfo = {
+    email: "asd@naver.com",
+    address: {
+      addressName: "서울특별시 광진구",
+      regionDepth1: "서울특별시",
+      regionDepth2: "광진구",
+    },
+    nickname: "모찌",
+    hasPet: false,
+    first: true,
+  };
+
+  let profileInfo = {
+    nickname: "모찌누나",
+    profile: "모찌/비숑/6살",
+    refionDepth2: "광진구",
+    animals: [],
+  };
+
+  const getStaticInfo = () => staticInfo;
+
+  const getProfileInfo = () => profileInfo;
+
+  return {
+    getStaticInfo,
+    getProfileInfo,
+  };
+})();
+
 export const usersHandler = [
   rest.get(`${BASE_URL}/users/static-info`, (req, res, ctx) => {
-    return res(
-      ctx.json({
-        email: "asd@naver.com",
-        address: {
-          addressName: "서울특별시 광진구",
-          regionDepth1: "서울특별시",
-          regionDepth2: "광진구",
-        },
-        nickname: "모찌",
-        hasPet: false,
-        first: true,
-      })
-    );
+    return res(ctx.json(UserInfo.getStaticInfo()));
   }),
 
   rest.post(`${BASE_URL}/users/address`, async (req, res, ctx) => {
