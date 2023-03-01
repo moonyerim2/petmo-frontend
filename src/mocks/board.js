@@ -1,3 +1,4 @@
+import uuid from "react-uuid";
 import { rest } from "msw";
 import { BASE_URL } from "../constants";
 import { allPostsData } from "./data/allPostsData";
@@ -37,6 +38,6 @@ export const boardHandler = [
   }),
 
   rest.post(`${BASE_URL}/board/add`, async (req, res, ctx) => {
-    return res(ctx.status(201));
+    return res(ctx.json(uuid()), ctx.status(201));
   }),
 ];
