@@ -7,16 +7,18 @@ const useUser = () => {
   const isAuthenticated = useRecoilValue(authenticated);
   const setUser = useSetRecoilState(userSelector);
 
+  const updateUserData = async () => {
+    const response = await callGetUserApi();
+    setUser(response.data);
+  };
+
   useEffect(() => {
     (async () => {
-      if (isAuthenticated) {
-        const response = await callGetUserApi();
-        setUser(response.data);
-      }
+      if (isAuthenticated) updateUserData();
     })();
   }, [isAuthenticated]);
 
-  return isAuthenticated;
+  return { isAuthenticated, updateUserData };
 };
 
 export default useUser;
