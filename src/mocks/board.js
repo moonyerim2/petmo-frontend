@@ -24,7 +24,15 @@ export const boardHandler = [
     return res(ctx.status(201));
   }),
 
+  rest.delete(`${BASE_URL}/like/:boardId`, async (req, res, ctx) => {
+    return res(ctx.status(201));
+  }),
+
   rest.post(`${BASE_URL}/bookmark/:boardId`, async (req, res, ctx) => {
+    return res(ctx.status(201));
+  }),
+
+  rest.delete(`${BASE_URL}/bookmark/:boardId`, async (req, res, ctx) => {
     return res(ctx.status(201));
   }),
 ];
