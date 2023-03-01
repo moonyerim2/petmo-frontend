@@ -13,7 +13,7 @@ const DescriptionStrong = styled.strong`
 `;
 
 const Logo = styled.img`
-  margin-top: 24px;
+  margin: 24px auto 0;
 `;
 
 function OnboardingContent() {
