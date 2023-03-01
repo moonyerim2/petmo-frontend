@@ -14,25 +14,25 @@ const Wrapper = styled.div`
   width: 100%;
 
   @media screen and (max-width: 460px) {
-    .preview-image: not(: nth-child(3n)) {
+    .preview-image:not(:nth-child(3n)) {
       margin: 0 8px 8px 0;
     }
   }
 
   @media (min-width: 460px) and (max-width: 575px) {
-    .preview-image: not(: nth-child(4n)) {
+    .preview-image:not(:nth-child(4n)) {
       margin: 0 8px 8px 0;
     }
   }
 
   @media (min-width: 575px) and (max-width: 670px) {
-    .preview-image: not(: nth-child(5n)) {
+    .preview-image:not(:nth-child(5n)) {
       margin: 0 8px 8px 0;
     }
   }
 
   @media (min-width: 670px) {
-    .preview-image: not(: nth-child(6n)) {
+    .preview-image:not(:nth-child(6n)) {
       margin: 0 8px 8px 0;
     }
   }
