@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useResetRecoilState } from "recoil";
 import { postTextAtom, postTagsAtom } from "../store";
 import { callRegisterPostApi, callUploadImageApi } from "../api";
 import { postImageFilesAtom, user } from "../store";
 
 const useWritePost = () => {
+  const navigate = useNavigate();
   const [canSubmitPost, setCanSubmitPost] = useState(false);
   const postTags = useRecoilValue(postTagsAtom);
   const postText = useRecoilValue(postTextAtom);
@@ -71,7 +73,7 @@ const useWritePost = () => {
     };
 
     const response = await callRegisterPostApi(payload);
-    console.log(response);
+    navigate(`/post/${response.data}`);
   };
 
   return {
