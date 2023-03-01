@@ -11,6 +11,5 @@ export const handlers = [
   ...usersHandler,
   ...boardHandler,
   ...imageHandler,
-  ...boardHandler,
   ...commentsHandler,
 ];
