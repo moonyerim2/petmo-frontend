@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { useRecoilValue, useResetRecoilState } from "recoil";
 import { postTextAtom, postTagsAtom } from "../store";
-import { callRegisterPostApi } from "../api";
-import { postImageFilesAtom } from "../store";
+import { callRegisterPostApi, callUploadImageApi } from "../api";
+import { postImageFilesAtom, user } from "../store";
 
 const useWritePost = () => {
   const [canSubmitPost, setCanSubmitPost] = useState(false);
@@ -10,6 +10,9 @@ const useWritePost = () => {
   const postText = useRecoilValue(postTextAtom);
   const imageFiles = useRecoilValue(postImageFilesAtom);
   const snackbarMessage = useRef("");
+  const {
+    address: { regionDepth2 },
+  } = useRecoilValue(user);
   const formData = new FormData();
 
   const resetPostTags = useResetRecoilState(postTagsAtom);
@@ -48,12 +51,26 @@ const useWritePost = () => {
     snackbarMessage.current = setSnackbarMessage();
   };
 
-  const registerPost = async () => {
+  const registerImages = async () => {
     imageFiles.forEach((image) => formData.append("images", image.file));
-    formData.set("topic", postTags.topic);
-    formData.set("pet", postTags.pet);
-    formData.set("text", postText);
-    const response = await callRegisterPostApi(formData);
+    const {
+      data: { createImages },
+    } = await callUploadImageApi(formData);
+
+    return createImages.map((image) => image.id);
+  };
+
+  const registerPost = async () => {
+    const imageIds = await registerImages();
+    const payload = {
+      content: postText,
+      imageIds: imageIds,
+      categoryType: postTags.topic,
+      boardAddress: regionDepth2,
+      boardAnimalTypes: postTags.pet,
+    };
+
+    const response = await callRegisterPostApi(payload);
     console.log(response);
   };
 
