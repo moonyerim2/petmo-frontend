@@ -35,8 +35,14 @@ const UserInfo = (() => {
     profileInfo.regionDepth2 = "";
   };
 
+  const setAddress = (addressData) => {
+    staticInfo.address = addressData;
+    profileInfo.regionDepth2 = staticInfo.address.regionDepth2;
+  };
+
   return {
     setPetData,
+    setAddress,
     deleteAddress,
     getStaticInfo,
     getProfileInfo,
@@ -49,6 +55,7 @@ export const usersHandler = [
   }),
 
   rest.post(`${BASE_URL}/users/address`, async (req, res, ctx) => {
+    UserInfo.setAddress(await req.json());
     return res(ctx.status(200));
   }),
 
