@@ -1,9 +1,8 @@
 import React from "react";
-import { useSetRecoilState } from "recoil";
 import Button from "../common/button/Button";
-import { callDeleteMyTownApi, callGetUserApi } from "../../api";
+import { callDeleteMyTownApi } from "../../api";
 import { deleteButtonProps } from "../../constants";
-import { userSelector } from "../../store";
+import { useUser } from "../../hooks";
 
 const deleteButtonStyle = () => {
   return {
@@ -13,12 +12,11 @@ const deleteButtonStyle = () => {
 };
 
 function DeleteButton() {
-  const setUser = useSetRecoilState(userSelector);
+  const { updateUserData } = useUser();
 
   const onClick = async () => {
-    callDeleteMyTownApi();
-    const response = await callGetUserApi();
-    await setUser(response.data);
+    const response = await callDeleteMyTownApi();
+    if (response.status === 200) updateUserData();
   };
 
   return (
