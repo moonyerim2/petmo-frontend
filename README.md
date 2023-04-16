@@ -2,17 +2,25 @@
 지역기반 반려동물 커뮤니티 펫모입니다.
 ![Frame 55](https://user-images.githubusercontent.com/75062526/232320173-95bfc59e-5606-43fd-b7ce-41e2f95c1871.png)
 
-## 디자인 시스템
-컴포넌트 문서화를 위해 디자인 시스템을 개발 중입니다.
-- [디자인 시스템 프로젝트 저장소](https://github.com/moonyerim2/petmo-design-system)
-- [디자인 시스템 문서](http://petmo-storybook.site/)
-- [디자인 시스템 npm 라이브러리 배포](https://www.npmjs.com/package/petmo-design-system)
+## 프로젝트 실행
+```
+npm i
+npm run start
+```
 
 ## WIKI
 프로젝트의 정보는 [WIKI](https://github.com/moonyerim2/petmo-frontend/wiki)에서 확인하실 수 있습니다.
 - [Git](https://github.com/moonyerim2/petmo-frontend/wiki/Git)
 - [유저스토리](https://github.com/moonyerim2/petmo-frontend/wiki/%EC%9C%A0%EC%A0%80%EC%8A%A4%ED%86%A0%EB%A6%AC)
 - [유저플로우](https://github.com/moonyerim2/petmo-frontend/wiki/%EC%9C%A0%EC%A0%80%ED%94%8C%EB%A1%9C%EC%9A%B0)
+
+## 디자인 시스템
+컴포넌트 문서화를 위해 디자인 시스템을 개발 중입니다.
+- [디자인 시스템 프로젝트 저장소](https://github.com/moonyerim2/petmo-design-system)
+- [디자인 시스템 문서](http://petmo-storybook.site/)
+- [디자인 시스템 npm 라이브러리 배포](https://www.npmjs.com/package/petmo-design-system)
+
+
 
 ## 디렉토리 구조
 ```
