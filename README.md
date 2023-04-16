@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# 펫모
+지역기반 반려동물 커뮤니티 펫모입니다.
+![Frame 55](https://user-images.githubusercontent.com/75062526/232320173-95bfc59e-5606-43fd-b7ce-41e2f95c1871.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 디자인 시스템
+컴포넌트 문서화를 위해 디자인 시스템을 개발 중입니다.
+- [디자인 시스템 프로젝트 저장소](https://github.com/moonyerim2/petmo-design-system)
+- [디자인 시스템 문서](http://petmo-storybook.site/)
+- [디자인 시스템 npm 라이브러리 배포](https://www.npmjs.com/package/petmo-design-system)
 
-## Available Scripts
+## WIKI
+프로젝트의 정보는 [WIKI](https://github.com/moonyerim2/petmo-frontend/wiki)에서 확인하실 수 있습니다.
+- [Git](https://github.com/moonyerim2/petmo-frontend/wiki/Git)
+- [유저스토리](https://github.com/moonyerim2/petmo-frontend/wiki/%EC%9C%A0%EC%A0%80%EC%8A%A4%ED%86%A0%EB%A6%AC)
+- [유저플로우](https://github.com/moonyerim2/petmo-frontend/wiki/%EC%9C%A0%EC%A0%80%ED%94%8C%EB%A1%9C%EC%9A%B0)
 
-In the project directory, you can run:
+## 디렉토리 구조
+```
+└─ src
+  ├─ api              - 서버 연결 api 함수 관련 디렉토리
+  ├─ components        - 컴포넌트 관련 디렉토리
+  ├─ constants         - 상수를 모아둔 디렉토리
+  ├─ hooks             - 커스텀 훅을 모아둔 컴포넌트
+  ├─ mocks             - mock api 관련 디렉토리
+  ├─ pages             - 페이지 컴포넌트 디렉토리
+  ├─ store             - 데이터 가공, 상태 관련 디렉토리
+  ├─ styled            - styled-component로 선언한 컴포넌트 관련 디렉토리
+  ├─ util              - 유틸 함수 관련 디렉토리
+  ├─ App.js
+  ├─ index.js
+  └─ ...
+```
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 사용 기술
+### 클라이언트
+- react
+- recoil
+- styled-components
+- mui
+- msw
+- prop-types
+- axios
+### 디자인 시스템
+- react
+- typescript
+- storybook
+- netlify
+- npm
