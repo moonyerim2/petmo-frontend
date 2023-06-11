@@ -5,7 +5,7 @@
 ## 프로젝트 실행
 ```
 npm i
-npm run start
+npm run dev
 ```
 
 ## WIKI
