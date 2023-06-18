@@ -10,24 +10,28 @@ import { useUser } from "../../hooks";
 const MAX_PET_NUM = 3;
 
 function PetSelectForm() {
-  const [selectedPet, setSelectedPet] = useState([]);
+  const [selectedPets, setSelectedPet] = useState([]);
   const navigate = useNavigate();
   const { updateUserData } = useUser();
 
   const onClickPetListItem = (e, species) => {
-    const isFull = selectedPet.length === MAX_PET_NUM;
-    const hasSpecies = selectedPet.includes(species);
+    const isFull = selectedPets.length === MAX_PET_NUM;
+    const hasSpecies = selectedPets.includes(species);
     if (isFull && !hasSpecies) return;
 
     const newSelectedPet = hasSpecies
-      ? removeArrayElement(selectedPet, species)
-      : addArrayElement(selectedPet, species);
+      ? removeArrayElement(selectedPets, species)
+      : addArrayElement(selectedPets, species);
 
     setSelectedPet(newSelectedPet);
   };
 
   const onClickRegisterPetButton = async () => {
-    const response = await callRegisterPetApi(selectedPet);
+    const payload = selectedPets.map((pet) => {
+      return { animalTypes: pet };
+    });
+
+    const response = await callRegisterPetApi({ pets: payload });
     if (response.status === 200) {
       updateUserData();
       navigate(-1);
@@ -38,12 +42,12 @@ function PetSelectForm() {
     <>
       <PetList
         petList={tags.pet}
-        selectedPet={selectedPet}
+        selectedPet={selectedPets}
         onClickListItem={onClickPetListItem}
       />
       <BottomButton
         buttonProps={registerPetButtonProps}
-        isDisabled={!selectedPet.length}
+        isDisabled={!selectedPets.length}
         onClick={onClickRegisterPetButton}
       />
     </>

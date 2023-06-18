@@ -18,7 +18,7 @@ const HeaderBox = styled.div`
 
 function FeedHeader() {
   const {
-    address: { regionDepth2 },
+    user_address: { regionDepth2 },
   } = useRecoilValue(userSelector);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();

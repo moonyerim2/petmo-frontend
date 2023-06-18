@@ -1,1 +1,1 @@
-export const BASE_URL = "http://api.server.com";
+export const BASE_URL = "https://backend-petmo.monster/api/v2";

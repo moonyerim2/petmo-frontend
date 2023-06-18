@@ -13,7 +13,7 @@ const useWritePost = () => {
   const imageFiles = useRecoilValue(postImageFilesAtom);
   const snackbarMessage = useRef("");
   const {
-    address: { regionDepth2 },
+    user_address: { regionDepth2 },
   } = useRecoilValue(user);
   const formData = new FormData();
 

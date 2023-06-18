@@ -7,7 +7,7 @@ import { user } from "../../store";
 import { commentToWhoAtom } from "../../store";
 
 function Comments({ onClickReply, comments }) {
-  const { nickname } = useRecoilValue(user);
+  const { username } = useRecoilValue(user);
   const setCommentToWho = useSetRecoilState(commentToWhoAtom);
 
   const handleOnClickReply = (commentToWho, commentId) => {
@@ -24,7 +24,7 @@ function Comments({ onClickReply, comments }) {
     <>
       {comments.map(
         ({ commentId, userBadgeData, content, depth, children }) => {
-          const isMyComment = userBadgeData.userName === nickname;
+          const isMyComment = userBadgeData.userName === username;
           return (
             <Fragment key={commentId}>
               <Comment

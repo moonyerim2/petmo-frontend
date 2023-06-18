@@ -3,7 +3,7 @@ import ProfileBoard from "../components/Profile/ProfileBoard";
 import ProfileHeader from "../components/Profile/ProfileHeader";
 
 const profileDummyData = {
-  nickname: "nickname",
+  username: "username",
   profile: "profile",
   regionDepth2: "강남구",
   animals: ["강아지", "고양이"],
@@ -156,7 +156,7 @@ const userCommentsData = [
         id: 2,
       },
     ],
-    author: "nickname",
+    author: "username",
     commentContent:
       "오 프로필 좋네요(그 뒤의 내용은 엄청청ㅁ처엋엋머처청머어청멍청ㅁ엄청엄청처멍ㅁ매우매우매우매앰우ㅐㅁ우ㅐ무우매우매우매우매우매우매우매우 깁니다",
     createdDate: "2022-11-18 19:00:25",
@@ -176,7 +176,7 @@ const userCommentsData = [
         id: 2,
       },
     ],
-    author: "nickname",
+    author: "username",
     commentContent:
       "오 프로필 좋네요(그 뒤의 내용은 엄청청ㅁ처엋엋머처청머어청멍청ㅁ엄청엄청처멍ㅁ매우매우매우매앰우ㅐㅁ우ㅐ무우매우매우매우매우매우매우매우 깁니다",
     createdDate: "2022-11-18 19:00:25",

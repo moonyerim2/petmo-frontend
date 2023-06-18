@@ -3,7 +3,7 @@ export const textFieldLabels = {
   password: "비밀번호",
   passwordCheck: "비밀번호 재입력",
   name: "이름",
-  nickname: "닉네임",
+  username: "닉네임",
 };
 
 export const emailFieldProps = (authType) => ({
@@ -37,13 +37,13 @@ export const passwordCheckFieldProps = {
   placeholder: "영문, 숫자, 특수문자 조합 8자리 이상",
 };
 
-export const nicknameFieldProps = {
-  id: "nickname",
-  label: textFieldLabels.nickname,
+export const usernameFieldProps = {
+  id: "username",
+  label: textFieldLabels.username,
   isLabelHidden: false,
   text: "",
   type: "text",
-  name: "nickname",
+  name: "username",
   placeholder: "최소 2글자 이상",
 };
 

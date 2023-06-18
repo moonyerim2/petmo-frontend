@@ -39,5 +39,5 @@ export const joinInputValidationRules = {
   email: [checkEmailFormat(), cantContainWhitespace],
   password: [checkPasswordFormat(), cantContainWhitespace],
   passwordCheck: [isSameWithPassword(), cantContainWhitespace],
-  nickname: [minimumLengthLimit(2), cantContainWhitespace],
+  username: [minimumLengthLimit(2), cantContainWhitespace],
 };

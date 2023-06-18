@@ -23,7 +23,7 @@ function ProfileBoard({ userProfile, userPosts, userComments }) {
   return (
     <Wrapper>
       <UserProfile
-        nickname={userProfile.nickname}
+        username={userProfile.username}
         regionDepth2={userProfile.regionDepth2}
         animals={userProfile.animals}
       ></UserProfile>

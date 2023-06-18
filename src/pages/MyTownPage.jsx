@@ -13,7 +13,7 @@ import { SubTitle1, PageWrapper } from "../styled";
 function MyTownPage() {
   const [isSearchMode, setIsSearchMode] = useState(false);
   const {
-    address: { regionDepth2 },
+    user_address: { regionDepth2 },
   } = useRecoilValue(userSelector);
 
   const onClickRegisterTownButton = () => {

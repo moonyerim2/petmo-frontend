@@ -3,7 +3,7 @@ import { calcElapsedTime } from "../../util";
 
 export const postDataFormat = ({
   boardId,
-  nickname,
+  username,
   boardAddress,
   boardAnimalTypes,
   categoryType,
@@ -21,7 +21,7 @@ export const postDataFormat = ({
     contentText: content,
     postData: {
       userBadgeData: {
-        userName: nickname,
+        userName: username,
         //api에서 데이터 빠져서 임의로 이미지 넣은 링크
         imgSrc:
           "http://petmo-storybook.site/static/media/avatar_no_img.deb0da5a.png",

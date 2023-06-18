@@ -10,12 +10,12 @@ export const user = atom({
   key: "user",
   default: {
     email: "",
-    address: {
+    user_address: {
       addressName: "",
       regionDepth1: "",
       regionDepth2: "",
     },
-    nickname: "",
+    username: "",
     hasPet: null,
     first: null,
   },

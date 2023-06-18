@@ -2,11 +2,11 @@ import { rest } from "msw";
 import { BASE_URL } from "../constants";
 
 export const authHandler = [
-  rest.post(`${BASE_URL}/auth/sign-in`, (req, res, ctx) => {
+  rest.post(`${BASE_URL}/auths/sign-in`, (req, res, ctx) => {
     return res(ctx.status(200), ctx.cookie("SESSION", "abc-123"));
   }),
 
-  rest.post(`${BASE_URL}/auth/sign-up`, (req, res, ctx) => {
+  rest.post(`${BASE_URL}/auths/sign-up`, (req, res, ctx) => {
     return res(ctx.status(201));
   }),
 

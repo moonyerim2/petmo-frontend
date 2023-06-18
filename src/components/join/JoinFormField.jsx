@@ -5,7 +5,7 @@ import { JoinTextField } from "../../components";
 import {
   emailFieldProps,
   passwordFieldProps,
-  nicknameFieldProps,
+  usernameFieldProps,
   passwordCheckFieldProps,
 } from "../../constants";
 
@@ -17,8 +17,8 @@ function JoinFormField({ validationMessages }) {
   return (
     <FormField>
       <JoinTextField
-        fieldProps={nicknameFieldProps}
-        isValid={isValid("nickname")}
+        fieldProps={usernameFieldProps}
+        isValid={isValid("username")}
       />
       <JoinTextField
         fieldProps={emailFieldProps(authType)}

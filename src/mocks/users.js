@@ -3,19 +3,33 @@ import { BASE_URL } from "../constants";
 
 const UserInfo = (() => {
   let staticInfo = {
-    email: "asd@naver.com",
-    address: {
-      addressName: "서울특별시 광진구",
+    pk: 2,
+    username: "momo",
+    email: "momo@gmail.com",
+    password:
+      "pbkdf2_sha256$320000$oFc3nbNMC9l8mtO7ZRmgoY$Zi5oWFNWP8xPfLB2FNoraFSr0BOT6qC6uxomvUv0TvA=",
+    profile:
+      "https://www.lifewithcats.tv/wp-content/uploads/2011/04/Jumping-Cat.jpg",
+    user_address: {
+      addressName: "서울특별시 강남구 잠원동",
       regionDepth1: "서울특별시",
-      regionDepth2: "광진구",
+      regionDepth2: "강남구",
+      regionDepth3: "잠원동",
     },
-    nickname: "모찌",
-    hasPet: false,
+    hasPet: true,
+    pets: [
+      {
+        animalTypes: "강아지",
+      },
+      {
+        animalTypes: "파충류",
+      },
+    ],
     first: true,
   };
 
   let profileInfo = {
-    nickname: "모찌누나",
+    username: "모찌누나",
     profile: "모찌/비숑/6살",
     regionDepth2: "광진구",
     animals: [],
@@ -31,13 +45,13 @@ const UserInfo = (() => {
   };
 
   const deleteAddress = () => {
-    staticInfo.address = {};
+    staticInfo.user_address = {};
     profileInfo.regionDepth2 = "";
   };
 
   const setAddress = (addressData) => {
     staticInfo.address = addressData;
-    profileInfo.regionDepth2 = staticInfo.address.regionDepth2;
+    profileInfo.regionDepth2 = staticInfo.user_address.regionDepth2;
   };
 
   return {
@@ -64,37 +78,39 @@ export const usersHandler = [
     return res(ctx.status(200));
   }),
 
-  rest.post(`${BASE_URL}/users/address/search/ip`, async (req, res, ctx) => {
+  rest.post(`${BASE_URL}/users/address/get/ip`, async (req, res, ctx) => {
     return res(
       ctx.json([
         {
-          addressName: "서울특별시 강서구 마곡동",
-          regionDepth1: "서울특별시",
-          regionDepth2: "강서구",
-          regionDepth3: "마곡동",
+          address_name: "인천광역시 연수구 송도동",
+          region_1depth_name: "인천광역시",
+          region_2depth_name: "연수구",
+          region_3depth_name: "송도동",
         },
         {
-          addressName: "서울특별시 강서구 마곡동",
-          regionDepth1: "서울특별시",
-          regionDepth2: "강서구",
-          regionDepth3: "마곡동",
+          address_name: "인천광역시 연수구 송도2동",
+          region_1depth_name: "인천광역시",
+          region_2depth_name: "연수구",
+          region_3depth_name: "송도2동",
         },
       ])
     );
   }),
 
-  rest.get(`${BASE_URL}/users/address/search/query`, async (req, res, ctx) => {
+  rest.get(`${BASE_URL}/users/address/get/query`, async (req, res, ctx) => {
     return res(
       ctx.json([
         {
-          id: 1,
-          regionDepth1: "경기",
-          regionDepth2: "시흥",
+          address_name: "인천광역시 연수구 송도동1",
+          region_1depth_name: "인천광역시",
+          region_2depth_name: "연수구",
+          region_3depth_name: "송도동",
         },
         {
-          id: 2,
-          regionDepth1: "경기",
-          regionDepth2: "시흥",
+          address_name: "인천광역시 연수구 송도2동2",
+          region_1depth_name: "인천광역시",
+          region_2depth_name: "연수구",
+          region_3depth_name: "송도2동",
         },
       ])
     );

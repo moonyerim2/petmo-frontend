@@ -28,18 +28,19 @@ function AddressList({ searchResults, setIsSearchMode }) {
       addressName: target.innerText,
       regionDepth1: region[0],
       regionDepth2: region[1],
+      regionDepth3: region[2],
     });
 
     const response = await callGetUserApi();
-    await setUser(response.data);
+    setUser(response.data);
     setIsSearchMode(false);
   };
 
   return (
     <ul>
-      {searchResults.map(({ regionDepth1, regionDepth2 }, i) => (
+      {searchResults.map(({ address_name }, i) => (
         <AddressItem key={i} tabIndex={0} onClick={onClick}>
-          {regionDepth1} {regionDepth2}
+          {address_name}
         </AddressItem>
       ))}
     </ul>

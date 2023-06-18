@@ -77,13 +77,13 @@ const UserTagTitle = styled.div`
 const UserTags = styled.div`
   display: flex;
 `;
-function UserProfile({ nickname, regionDepth2, animals }) {
+function UserProfile({ username, regionDepth2, animals }) {
   return (
     <Wrapper>
       <UserInfoBox>
         <UserPicture></UserPicture>
         <UserInfo>
-          <UserName>{nickname}</UserName>
+          <UserName>{username}</UserName>
           <UserVillage>{regionDepth2}</UserVillage>
         </UserInfo>
       </UserInfoBox>
@@ -99,7 +99,7 @@ function UserProfile({ nickname, regionDepth2, animals }) {
 }
 
 UserProfile.propTypes = {
-  nickname: PropTypes.string,
+  username: PropTypes.string,
   regionDepth2: PropTypes.string,
   animals: PropTypes.array,
 };
