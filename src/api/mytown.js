@@ -19,7 +19,7 @@ export const callSearchTownByQueryApi = async (query) => {
 
 export const callSearchTownByIpApi = async () => {
   try {
-    const response = await axios.post(`${BASE_URL}/users/address/get/ip`);
+    const response = await axios.get(`${BASE_URL}/users/address/get/ip`);
     return response;
   } catch (error) {
     if (error.name === "AbortError") {

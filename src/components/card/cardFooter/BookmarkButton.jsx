@@ -7,8 +7,7 @@ import { callBookmarkApi } from "../../../api";
 function BookmarkBtn({ boardId, bookmarkCount, bookmarkCheck }) {
   const { isChecked, count, handleButtonClick } = useCardFooterButtonClick(
     () => {
-      const method = isChecked ? "delete" : "post";
-      callBookmarkApi(method, boardId);
+      callBookmarkApi({ post: boardId });
     },
     bookmarkCount,
     bookmarkCheck

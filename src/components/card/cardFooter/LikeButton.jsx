@@ -7,8 +7,7 @@ import { callLikeApi } from "../../../api";
 function LikeButton({ boardId, likeCount, likeCheck }) {
   const { isChecked, count, handleButtonClick } = useCardFooterButtonClick(
     () => {
-      const method = isChecked ? "delete" : "post";
-      callLikeApi(method, boardId);
+      callLikeApi({ post: boardId });
     },
     likeCount,
     likeCheck
