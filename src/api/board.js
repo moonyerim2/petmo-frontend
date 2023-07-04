@@ -3,7 +3,7 @@ import { BASE_URL } from "../constants";
 
 export const callSinglePostApi = async (postId) => {
   try {
-    const response = await axios.get(`${BASE_URL}/board/${postId}`);
+    const response = await axios.get(`${BASE_URL}/posts/${postId}`);
 
     if (response.status !== 200) throw new Error("Request faild");
     return response;
@@ -21,7 +21,7 @@ export const callPostsApi = async ({
 }) => {
   try {
     const encodedUrl = encodeURI(
-      `${BASE_URL}/board/list?boardAddress=${boardAddress}&animalTypes=${animalTypes}&categoryType=${categoryType}&lastBoardId=${lastBoardId}`
+      `${BASE_URL}/posts/list?boardAddress=${boardAddress}&animalTypes=${animalTypes}&categoryType=${categoryType}&lastBoardId=${lastBoardId}`
     );
 
     const response = await axios.get(encodedUrl);
@@ -34,9 +34,9 @@ export const callPostsApi = async ({
   }
 };
 
-export const callLikeApi = async (method, boardId) => {
+export const callLikeApi = async (payload) => {
   try {
-    const response = await axios[method](`${BASE_URL}/like/${boardId}`);
+    const response = await axios.post(`${BASE_URL}/likes/post`, payload);
 
     if (response.status !== 200 || response.status !== 201)
       throw new Error("Request faild");
@@ -47,9 +47,9 @@ export const callLikeApi = async (method, boardId) => {
   }
 };
 
-export const callBookmarkApi = async (method, boardId) => {
+export const callBookmarkApi = async (payload) => {
   try {
-    const response = await axios[method](`${BASE_URL}/bookmark/${boardId}`);
+    const response = await axios.post(`${BASE_URL}/bookmarks`, payload);
 
     if (response.status !== 200 || response.status !== 201)
       throw new Error("Request faild");

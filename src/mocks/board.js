@@ -6,7 +6,7 @@ import { rabbitPostsData } from "./data/rabbitPostsData";
 import { singlePostData } from "./data/singlePostData";
 
 export const boardHandler = [
-  rest.get(`${BASE_URL}/board/list`, async (req, res, ctx) => {
+  rest.get(`${BASE_URL}/posts/list`, async (req, res, ctx) => {
     const animalTypes = req.url.searchParams.get("animalTypes");
     const categoryType = req.url.searchParams.get("categoryType");
 
@@ -21,19 +21,11 @@ export const boardHandler = [
     return res(ctx.json(singlePostData()));
   }),
 
-  rest.post(`${BASE_URL}/like/:boardId`, async (req, res, ctx) => {
+  rest.post(`${BASE_URL}/likes/post`, async (req, res, ctx) => {
     return res(ctx.status(201));
   }),
 
-  rest.delete(`${BASE_URL}/like/:boardId`, async (req, res, ctx) => {
-    return res(ctx.status(201));
-  }),
-
-  rest.post(`${BASE_URL}/bookmark/:boardId`, async (req, res, ctx) => {
-    return res(ctx.status(201));
-  }),
-
-  rest.delete(`${BASE_URL}/bookmark/:boardId`, async (req, res, ctx) => {
+  rest.post(`${BASE_URL}/bookmarks`, async (req, res, ctx) => {
     return res(ctx.status(201));
   }),
 
