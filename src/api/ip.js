@@ -1,4 +1,4 @@
-import axios from "axios";
+import { axiosInstance as axios } from "./axios";
 
 export const callGetIpApi = async () => {
   try {

@@ -1,4 +1,4 @@
-import axios from "axios";
+import { axiosInstance as axios } from "./axios";
 import { BASE_URL } from "../constants";
 
 export const callRegisterPostApi = async (payload) => {
