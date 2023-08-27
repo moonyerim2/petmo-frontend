@@ -33,12 +33,13 @@ export const callSinglePostApi = async (postId) => {
 //     return error.response;
 //   }
 // };
-
-export const callPostsApi = async (payload) => {//게시글 리스트 불러오기
+export const callPostsApi = async (payload) => {
+  const csrftoken = getCookie("csrftoken");
+  console.log(csrftoken);
   try {
     const response = await axios.post(`${BASE_URL}/posts/`, payload, {
       headers: {
-        "X-CSRFToken": getCookie("csrftoken"),
+        "X-CSRFToken": csrftoken,
       },
     });
     if (response.status !== 200) throw new Error("Request faild");
