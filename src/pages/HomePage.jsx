@@ -9,7 +9,11 @@ export function HomePage() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    setIsOpen(user.first);
+    if (user.first && !user.hasPet) {
+      setIsOpen(true);
+    } else {
+      setIsOpen(false);
+    }
   }, [user]);
 
   return (
