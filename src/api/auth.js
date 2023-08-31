@@ -3,7 +3,7 @@ import { BASE_URL } from "../constants";
 
 export const callHomeApi = async (payload) => {
   try {
-    const response = await axios.post(`${BASE_URL}/`, payload);
+    const response = await axios.post(`/`, payload);
     if (response.status !== 200) throw new Error("Request failed");
     return response.status;
   } catch (error) {
@@ -13,7 +13,7 @@ export const callHomeApi = async (payload) => {
 
 export const callLoginApi = async (payload) => {
   try {
-    const response = await axios.post(`${BASE_URL}/auths/sign-in`, payload);
+    const response = await axios.post(`/auths/sign-in`, payload);
     if (response.status !== 200) throw new Error("Request faild");
     return response.status;
   } catch (error) {
@@ -37,7 +37,7 @@ export const callSocialLoginApi = async (type) => {
 
 export const callJoinApi = async (payload) => {
   try {
-    const response = await axios.post(`${BASE_URL}/auths/sign-up`, payload);
+    const response = await axios.post(`/auths/sign-up`, payload);
     if (response.status !== 201) throw new Error("Request faild");
     return response;
   } catch (error) {
@@ -48,7 +48,7 @@ export const callJoinApi = async (payload) => {
 
 export const callGetUserApi = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}/users/static-info`);
+    const response = await axios.get(`/users/static-info`);
     if (response.status !== 200) throw new Error("Request faild");
     return response;
   } catch (error) {

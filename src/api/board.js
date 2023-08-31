@@ -3,7 +3,7 @@ import { BASE_URL } from "../constants";
 import { getCookie } from "../util";
 export const callSinglePostApi = async (postId) => {
   try {
-    const response = await axios.get(`${BASE_URL}/posts/${postId}`);
+    const response = await axios.get(`/posts/${postId}`);
 
     if (response.status !== 200) throw new Error("Request faild");
     return response;
@@ -37,7 +37,7 @@ export const callPostsApi = async (payload) => {
   const csrftoken = getCookie("csrftoken");
   console.log(csrftoken);
   try {
-    const response = await axios.post(`${BASE_URL}/posts/`, payload, {
+    const response = await axios.post(`/posts/`, payload, {
       headers: {
         "X-CSRFToken": csrftoken,
       },
